@@ -1,0 +1,43 @@
+{
+    "qualities":[
+        {
+            "id":"0",
+            "name":"Regular",
+            "spotted-save":"4+",
+            "obscured-save":"3+"
+        },
+        {
+            "id":"1",
+            "name":"Green",
+            "spotted-save":"5+",
+            "obscured-save":"3+"
+        },
+        {
+            "id":"2",
+            "name":"Confident",
+            "spotted-save":"4+",
+            "obscured-save":"3+"
+        },
+        {
+            "id":"3",
+            "name":"Veteran",
+            "spotted-save":"3+",
+            "obscured-save":"3+"
+        }
+    ],
+
+    "command-qualities":[
+        {
+            "id":"0",
+            "name":"Commander",
+            "spotted-save":"2+",
+            "obscured-save":"2+"
+        },
+        {
+            "id":"1",
+            "name":"Combat Patrol",
+            "spotted-save":"-",
+            "obscured-save":"3+"
+        }
+    ]
+}
