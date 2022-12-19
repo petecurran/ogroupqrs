@@ -19,17 +19,53 @@
     
     
     "infantry":[
-        {
-            "id":"0",
-            "name": "Rifle Infantry",
-            "default": "true"
+    {
+        "id":"0",
+        "name": "Rifle Infantry",
+        "default": "true"
     },
 
     {
         "id":"1",
-        "name": "SMG Infantry",
+        "name": "Rifle infantry with attached MMG",
         "default":"false"
-    }  
+    },
+
+    {
+        "id":"2",
+        "name": "Rifle infantry with attached PIAT",
+        "default":"false"
+    },
+
+    {
+        "id":"3",
+        "name": "Sustained fire MMG",
+        "default":"false"
+    },
+
+    {
+        "id":"4",
+        "name": "PIAT section",
+        "default":"false"
+    },
+
+    {
+        "id":"5",
+        "name": "Infantry reconnaisance platoon",
+        "default":"false"
+    },
+
+    {
+        "id":"6",
+        "name": "Assault Engineers",
+        "default":"false"
+    },
+
+    {
+        "id":"7",
+        "name": "Assault Engineers with attached flamethrower",
+        "default":"false"
+    }
     
     ],
 
@@ -46,6 +82,22 @@
         {
             "id":"2",
             "name": "Heavy Tank"
+        }
+    ],
+
+    "guns":[
+        {
+            "id":"0",
+            "name": "75mm Gun",
+            "default": "false"
+        },
+        {
+            "id":"1",
+            "name": "105mm Gun"
+        },
+        {
+            "id":"2",
+            "name": "155mm Gun"
         }
     ]
 }

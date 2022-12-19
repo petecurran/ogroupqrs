@@ -21,6 +21,7 @@ function UnitSelection (props){
     const [selectedCommand, setSelectedCommand] = useState([]);
     const [selectedInfantry, setSelectedInfantry] = useState([]);
     const [selectedArmour, setSelectedArmour] = useState([]);
+    const [selectedGuns, setSelectedGuns] = useState([]);
 
     //function to handle the battalion select
     const handleBattalionSelect = (event) => {
@@ -76,6 +77,21 @@ function UnitSelection (props){
 
         //add the temp array to the selectedArmour state
         setSelectedArmour(tempUnits);
+
+        tempUnits = [];
+        
+        //Load the gun units
+        //look through all of the armour units in units.json
+        units.current.guns.forEach((gunUnit) => {
+            //if default is true, add the unit to the selectedArmour state
+            if (gunUnit.default === "true") {
+                //add the unit to the temp array
+                tempUnits.push({unit: gunUnit, quality: quality.qualities[0]});
+            }
+        })
+
+        //add the temp array to the selectedArmour state
+        setSelectedGuns(tempUnits);
     }
 
     const handleBattalionButton = () => {
@@ -100,6 +116,7 @@ function UnitSelection (props){
         setSelectedCommand([]);
         setSelectedInfantry([]);
         setSelectedArmour([]);
+        setSelectedGuns([]);
 
         //add the default units to the battalion
         addDefaultUnits();
@@ -136,6 +153,15 @@ function UnitSelection (props){
             }
             //add the new unit to the selectedCommand state
             setSelectedCommand([...selectedCommand,unit]);
+        } else if (type === "guns"){
+            //check if the unit and quality are already selected
+            const found = selectedGuns.find((item) => item.unit.id === unit.unit.id && item.quality.id === unit.quality.id);
+            if (found) {
+                alert("Unit already added");
+                return;
+            }
+            //add the new unit to the selectedCommand state
+            setSelectedGuns([...selectedGuns,unit]);
         }
      
     
@@ -162,8 +188,9 @@ function UnitSelection (props){
                     <UnitSelect units={units.current} type="command" handleSelectedUnits={handleSelectedUnits}/>
                     <UnitSelect units={units.current} type="infantry" handleSelectedUnits={handleSelectedUnits}/>
                     <UnitSelect units={units.current} type="armour" handleSelectedUnits={handleSelectedUnits}/>
+                    <UnitSelect units={units.current} type="guns" handleSelectedUnits={handleSelectedUnits}/>
                     
-                    <UnitDisplay selectedCommand={selectedCommand} selectedInfantry={selectedInfantry} selectedArmour={selectedArmour} />
+                    <UnitDisplay selectedCommand={selectedCommand} selectedInfantry={selectedInfantry} selectedArmour={selectedArmour} selectedGuns={selectedGuns}/>
                 </Suspense>
             </div>
             }
@@ -198,6 +225,10 @@ function UnitSelect(props){
             setUnitList(units.command);
             //set the default unit and quality
             setSelectedUnit({unit: units.command[0], quality: quality.qualities[0]})
+        } else if(props.type === "guns") {
+            setUnitList(units.guns);
+            //set the default unit and quality
+            setSelectedUnit({unit: units.guns[0], quality: quality.qualities[0]})
         }
         //load the quality json into the qualityList state
         setQualityList(quality.qualities);
@@ -254,7 +285,7 @@ function UnitDisplay(props){
             <ul>
                 {props.selectedCommand.map((item) => (
                     //key is a composite of the unit and quality names
-                    <li key={item.unit.name + item.quality.name}>{item.unit.name} - {item.quality.name}</li>
+                    <li key={item.unit.name + item.quality.name}>{item.unit.name}</li>
                 ))}
             </ul>
             
@@ -268,6 +299,13 @@ function UnitDisplay(props){
             <h1>Selected Armour</h1>
             <ul>
                 {props.selectedArmour.map((item) => (
+                    //key is a composite of the unit and quality names
+                    <li key={item.unit.name + item.quality.name}>{item.unit.name} - {item.quality.name}</li>
+                ))}
+            </ul>
+            <h1>Selected Guns</h1>
+            <ul>
+                {props.selectedGuns.map((item) => (
                     //key is a composite of the unit and quality names
                     <li key={item.unit.name + item.quality.name}>{item.unit.name} - {item.quality.name}</li>
                 ))}
