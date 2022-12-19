@@ -2,11 +2,13 @@
     "command":[
         {
             "id":"0",
-            "name": "Company Commander"
+            "name": "Company Commander",
+            "default":"true"
         },
         {
             "id":"1",
-            "name": "Forward Observer"
+            "name": "Forward Observer",
+            "default":"true"
         },
         {
             "id":"2",
@@ -31,15 +33,15 @@
     "armour":[
         {
             "id":"0",
-            "name": "Sherman V"
+            "name": "Panzer IV"
         },
         {
             "id":"1",
-            "name": "Medium Tank"
+            "name": "Panzer III"
         },
         {
             "id":"2",
-            "name": "Heavy Tank"
+            "name": "Tiger"
         }
     ]
 }

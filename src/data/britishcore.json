@@ -2,15 +2,18 @@
     "command":[
         {
             "id":"0",
-            "name": "Company Commander"
+            "name": "Company Commander",
+            "default": "true"
         },
         {
             "id":"1",
-            "name": "Forward Observer"
+            "name": "Forward Observer",
+            "default": "true"
         },
         {
             "id":"2",
-            "name": "Combat Patrol"
+            "name": "Combat Patrol",
+            "default": "true"
         }
     ],
     
@@ -18,12 +21,14 @@
     "infantry":[
         {
             "id":"0",
-            "name": "Rifle Infantry"
+            "name": "Rifle Infantry",
+            "default": "true"
     },
 
     {
         "id":"1",
-        "name": "SMG Infantry"
+        "name": "SMG Infantry",
+        "default":"false"
     }  
     
     ],
@@ -31,11 +36,12 @@
     "armour":[
         {
             "id":"0",
-            "name": "Sherman V"
+            "name": "Sherman V",
+            "default": "false"
         },
         {
             "id":"1",
-            "name": "Medium Tank"
+            "name": "Bri'ish Tank"
         },
         {
             "id":"2",

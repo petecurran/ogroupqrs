@@ -1,0 +1,283 @@
+import { useState, useEffect, useRef, Suspense } from 'react';
+
+import quality from '../data/quality.json';
+
+//import the battalions available
+import british from '../data/britishcore.json';
+import german from '../data/germancore.json';
+
+function UnitSelection (props){
+
+    //list of available battalions
+    const battalionsAvailable = useRef(["British", "German"])
+    //placeholder for json data
+    const units = useRef(null);
+    //Flag to check whether the battalion has been selected
+    const [battalionFlag, setBattalionFlag] = useState(false);
+    //state to hold the chosen battalion. Default to the first battalion in the list
+    const [chosenBattalion, setChosenBattalion] = useState(battalionsAvailable.current[0]);
+
+    //holds the units for battalion 1
+    const [selectedCommand, setSelectedCommand] = useState([]);
+    const [selectedInfantry, setSelectedInfantry] = useState([]);
+    const [selectedArmour, setSelectedArmour] = useState([]);
+
+    //function to handle the battalion select
+    const handleBattalionSelect = (event) => {
+    //get the selected battalion
+    setChosenBattalion(event.target.value);
+    }
+
+    //Add the default units to the battalion
+    const addDefaultUnits = () => {
+        //temp array to hold the units
+        let tempUnits = [];        
+        
+        //load the infantry units
+        //look through all of the infantry units in units prop
+        units.current.infantry.forEach((infantryUnit) => {
+            //if default is true, add the unit to the selectedInfantry state
+            if (infantryUnit.default === "true") {
+                //add the unit to the temp array
+                tempUnits.push({unit: infantryUnit, quality: quality.qualities[0]});
+            }
+        })
+        //add the temp array to the selectedInfantry state
+        setSelectedInfantry(tempUnits);
+
+        //reset the temp array
+        tempUnits = [];        
+
+        //Load the command units
+        //look through all of the command units in units.json
+        units.current.command.forEach((commandUnit) => {
+            //if default is true, add the unit to the selectedCommand state
+            if (commandUnit.default === "true") {
+                //add the unit to the temp array
+                tempUnits.push({unit: commandUnit, quality: quality.qualities[0]});
+            }
+        })
+
+        //add the temp array to the selectedCommand state
+        setSelectedCommand(tempUnits);
+
+        //reset the temp array
+        tempUnits = [];
+        
+        //Load the armour units
+        //look through all of the armour units in units.json
+        units.current.armour.forEach((armourUnit) => {
+            //if default is true, add the unit to the selectedArmour state
+            if (armourUnit.default === "true") {
+                //add the unit to the temp array
+                tempUnits.push({unit: armourUnit, quality: quality.qualities[0]});
+            }
+        })
+
+        //add the temp array to the selectedArmour state
+        setSelectedArmour(tempUnits);
+    }
+
+    const handleBattalionButton = () => {
+        //load the correct battalion json
+        switch (chosenBattalion) {
+            case "British":
+                units.current = british;
+                break;
+            case "German":
+                units.current = german;
+                break;
+            default:
+                units.current = british;
+                break;
+        }
+    
+    
+        //set the battalion flag to true
+        setBattalionFlag(true);
+
+        //Clear the selected units
+        setSelectedCommand([]);
+        setSelectedInfantry([]);
+        setSelectedArmour([]);
+
+        //add the default units to the battalion
+        addDefaultUnits();
+
+    }
+
+    const handleSelectedUnits = (unit,type) => {
+        if (type === "infantry") {
+
+            //check if the unit and quality are already selected
+            const found = selectedInfantry.find((item) => item.unit.id === unit.unit.id && item.quality.id === unit.quality.id);
+            if (found) {
+                alert("Unit already added");
+                return;
+            }
+            //add the new unit to the selectedInfantry state
+            setSelectedInfantry([...selectedInfantry,unit]);
+
+        } else if (type === "armour") {
+            //check if the unit and quality are already selected
+            const found = selectedArmour.find((item) => item.unit.id === unit.unit.id && item.quality.id === unit.quality.id);
+            if (found) {
+                alert("Unit already added");
+                return;
+            }
+            //add the new unit to the selectedArmour state
+            setSelectedArmour([...selectedArmour,unit]);
+        } else if (type === "command"){
+            //check if the unit and quality are already selected
+            const found = selectedCommand.find((item) => item.unit.id === unit.unit.id && item.quality.id === unit.quality.id);
+            if (found) {
+                alert("Unit already added");
+                return;
+            }
+            //add the new unit to the selectedCommand state
+            setSelectedCommand([...selectedCommand,unit]);
+        }
+     
+    
+    }
+
+    
+
+
+    return(
+        <div>
+            <h1>Select a Battalion:</h1>
+            <select onChange={handleBattalionSelect}>
+                {battalionsAvailable.current.map((battalion) => (
+                    <option key={battalion} value={battalion}>{battalion}</option>
+                ))}
+            </select>
+
+            <button onClick={handleBattalionButton}>Select</button>
+
+            {/*if the battalion is selected, show the battalion setup component*/}
+            {battalionFlag === true && 
+            <div>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <UnitSelect units={units.current} type="command" handleSelectedUnits={handleSelectedUnits}/>
+                    <UnitSelect units={units.current} type="infantry" handleSelectedUnits={handleSelectedUnits}/>
+                    <UnitSelect units={units.current} type="armour" handleSelectedUnits={handleSelectedUnits}/>
+                    
+                    <UnitDisplay selectedCommand={selectedCommand} selectedInfantry={selectedInfantry} selectedArmour={selectedArmour} />
+                </Suspense>
+            </div>
+            }
+        </div>
+
+    );
+}
+
+function UnitSelect(props){
+
+    const units = props.units;
+
+    //state to hold the units from the json
+    const [unitList, setUnitList] = useState([]);
+    //steate to hold the quality from the json
+    const [qualityList, setQualityList] = useState([]);
+
+    //hold the currently selected unit and quality
+    const [selectedUnit, setSelectedUnit] = useState({unit: "", quality: ""});
+
+    //load the units json into the unitList state
+    useEffect(() => {
+        if (props.type === "infantry") {
+            setUnitList(units.infantry);
+            //set the default unit and quality
+            setSelectedUnit({unit: units.infantry[0], quality: quality.qualities[0]})
+        } else if (props.type === "armour") {
+            setUnitList(units.armour);
+            //set the default unit and quality
+            setSelectedUnit({unit: units.armour[0], quality: quality.qualities[0]})
+        } else if(props.type === "command") {
+            setUnitList(units.command);
+            //set the default unit and quality
+            setSelectedUnit({unit: units.command[0], quality: quality.qualities[0]})
+        }
+        //load the quality json into the qualityList state
+        setQualityList(quality.qualities);
+    }, []);
+    
+    //Handle the unit select change
+    const handleUnitChange = (event) => {
+        //Read the select value and update the selectedUnit.
+        const id = event.target.value;
+        const item = unitList.find((unit) => unit.id === id);
+        setSelectedUnit({...selectedUnit, unit:item});
+    }
+
+    //Handle the quality select change
+    const handleQualityChange = (event) => {
+        //Read the select value and update the selectedUnit.
+        const id = event.target.value;
+        const item = qualityList.find((level) => level.id === id);
+        setSelectedUnit({...selectedUnit, quality:item});
+    }
+
+    const handleAddUnit = () => {
+        //send the selected unit and quality to the parent component
+        props.handleSelectedUnits(selectedUnit,props.type);
+    }
+
+    return (
+        <div>
+            
+            <h1>Select {props.type}</h1>
+
+            <select onChange={handleUnitChange}>
+                {unitList.map((unit) => (
+                    <option key={unit.id} value={unit.id}>{unit.name}</option>
+                ))}
+            </select>
+            <select onChange={handleQualityChange}>
+                {qualityList.map((level) => (
+                    <option key={level.id} value={level.id}>{level.name}</option>
+                ))}
+            </select>
+
+            {/*Sends the selected unit and quality to the parent component*/}
+            <button onClick={handleAddUnit}>Add unit</button>
+
+        </div>
+    );
+}
+
+function UnitDisplay(props){
+    return(
+        <div>
+            <h1>Selected Command</h1>
+            <ul>
+                {props.selectedCommand.map((item) => (
+                    //key is a composite of the unit and quality names
+                    <li key={item.unit.name + item.quality.name}>{item.unit.name} - {item.quality.name}</li>
+                ))}
+            </ul>
+            
+            <h1>Selected Infantry</h1>
+            <ul>
+                {props.selectedInfantry.map((item) => (
+                    //key is a composite of the unit and quality names
+                    <li key={item.unit.name + item.quality.name}>{item.unit.name} - {item.quality.name}</li>
+                ))}
+            </ul>
+            <h1>Selected Armour</h1>
+            <ul>
+                {props.selectedArmour.map((item) => (
+                    //key is a composite of the unit and quality names
+                    <li key={item.unit.name + item.quality.name}>{item.unit.name} - {item.quality.name}</li>
+                ))}
+            </ul>
+
+        </div>
+    );
+}
+
+
+
+
+export default UnitSelection;
