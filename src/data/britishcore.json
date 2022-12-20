@@ -3,17 +3,23 @@
         {
             "id":"0",
             "name": "Company Commander",
-            "default": "true"
+            "default": "true",
+            "move": "3D6\" Rapid Move",
+            "specialrules":""
         },
         {
             "id":"1",
             "name": "Forward Observer",
-            "default": "true"
+            "default": "true",
+            "move": "3D6\" Rapid Move",
+            "specialrules":""
         },
         {
             "id":"2",
             "name": "Combat Patrol",
-            "default": "true"
+            "default": "true",
+            "move": "2D6\" only",
+            "specialrules":""
         }
     ],
     
@@ -22,49 +28,65 @@
     {
         "id":"0",
         "name": "Rifle Infantry",
-        "default": "true"
+        "default": "true",
+        "move": "2D6\"",
+        "specialrules":""
     },
 
     {
         "id":"1",
         "name": "Rifle infantry with attached MMG",
-        "default":"false"
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":""
     },
 
     {
         "id":"2",
         "name": "Rifle infantry with attached PIAT",
-        "default":"false"
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":""
     },
 
     {
         "id":"3",
         "name": "Sustained fire MMG",
-        "default":"false"
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":""
     },
 
     {
         "id":"4",
         "name": "PIAT section",
-        "default":"false"
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":""
     },
 
     {
         "id":"5",
         "name": "Infantry reconnaisance platoon",
-        "default":"false"
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":""
     },
 
     {
         "id":"6",
         "name": "Assault Engineers",
-        "default":"false"
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":""
     },
 
     {
         "id":"7",
         "name": "Assault Engineers with attached flamethrower",
-        "default":"false"
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":""
     }
     
     ],

@@ -32,6 +32,12 @@ function Layout(){
                             <li className="nav-item">
                                 <Link to="/" className="nav-link">Select units</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link to="/shooting" className="nav-link">Shooting</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/movement" className="nav-link">Movement</Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
