@@ -5,21 +5,24 @@
             "name": "Company Commander",
             "default": "true",
             "move": "3D6\" Rapid Move",
-            "specialrules":""
+            "specialrules":"",
+            "rapidmove": "Y"
         },
         {
             "id":"1",
             "name": "Forward Observer",
             "default": "true",
             "move": "3D6\" Rapid Move",
-            "specialrules":""
+            "specialrules":"",
+            "rapidmove": "Y"
         },
         {
             "id":"2",
             "name": "Combat Patrol",
             "default": "true",
-            "move": "2D6\" only",
-            "specialrules":""
+            "move": "2D6\"",
+            "specialrules":"",
+            "rapidmove": "N"
         }
     ],
     
@@ -95,7 +98,9 @@
         {
             "id":"0",
             "name": "Sherman V",
-            "default": "false"
+            "default": "false",
+            "move": "2D6\" + 2",
+            "specialrules":"Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!"
         },
         {
             "id":"1",
