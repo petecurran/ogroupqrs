@@ -14,14 +14,80 @@ function UnitSelection (props){
     const units = useRef(null);
     //Flag to check whether the battalion has been selected
     const [battalionFlag, setBattalionFlag] = useState(false);
+
+    //Flag to check whether the battalion has been loaded
+    const [battalionLoaded, setBattalionLoaded] = useState(false);
+    
     //state to hold the chosen battalion. Default to the first battalion in the list
     const [chosenBattalion, setChosenBattalion] = useState(battalionsAvailable.current[0]);
 
-    //holds the units for battalion 1
+    //holds the units for the battalion
     const [selectedCommand, setSelectedCommand] = useState([]);
     const [selectedInfantry, setSelectedInfantry] = useState([]);
     const [selectedArmour, setSelectedArmour] = useState([]);
     const [selectedGuns, setSelectedGuns] = useState([]);
+
+    //update local storage when the selected units change
+    useEffect(() => {
+        
+        //only update local storage if the battalion has been selected
+        if (battalionFlag) {
+            //update the local storage
+            //Store the battalion type in local storage
+            localStorage.setItem(props.order + "battalionName", JSON.stringify(chosenBattalion));
+            //Store the battalion in local storage
+            localStorage.setItem(props.order, JSON.stringify({command: selectedCommand, infantry: selectedInfantry, armour: selectedArmour, guns: selectedGuns}));
+        }
+    }, [selectedCommand, selectedInfantry, selectedArmour, selectedGuns, props.order]);
+
+    //check if there is a battalion in local storage
+    useEffect(() => {
+        //check if there is a battalion in local storage
+        if (localStorage.getItem(props.order) !== null) {
+            
+            if (localStorage.getItem(props.order + "battalionName") !== null) {
+                //get the battalion name from local storage
+                let battalionName = JSON.parse(localStorage.getItem(props.order + "battalionName"));
+                //set the chosen battalion
+                setChosenBattalion(battalionName);
+                
+                if (battalionName === "British") {
+                    units.current = british;
+                } else if (battalionName === "German") {
+                    units.current = german;
+                }
+
+            }
+            
+            //get the battalion from local storage
+            let battalion = JSON.parse(localStorage.getItem(props.order));
+
+            //set the selected units
+            setSelectedCommand(battalion.command);
+            setSelectedInfantry(battalion.infantry);
+            setSelectedArmour(battalion.armour);
+            setSelectedGuns(battalion.guns);
+
+            //flag that we've loaded the battalion
+            setBattalionLoaded(true);
+
+        }
+    }, [props.order]);
+
+    //check if the battalion has been loaded
+    useEffect(() => {
+        //check if the battalion has been loaded
+        if (battalionLoaded) {
+            //flag that the battalion has been selected
+            setBattalionFlag(true);
+        }
+    }, [battalionLoaded]);
+
+    const clearBattalion = () => {
+        localStorage.removeItem(props.order+"battalionName");
+        localStorage.removeItem(props.order);
+        setBattalionFlag(false);
+    }
 
     //function to handle the battalion select
     const handleBattalionSelect = (event) => {
@@ -165,13 +231,13 @@ function UnitSelection (props){
         }
      
     
-    }
-
-    
+    } 
 
 
     return(
         <div>
+            //clear local storage
+            <button onClick={clearBattalion}>Clear Local Storage</button>
             <h1>Select a Battalion:</h1>
             <select onChange={handleBattalionSelect}>
                 {battalionsAvailable.current.map((battalion) => (
