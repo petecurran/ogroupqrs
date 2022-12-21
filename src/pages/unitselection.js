@@ -235,17 +235,21 @@ function UnitSelection (props){
 
 
     return(
-        <div>
-            //clear local storage
-            <button onClick={clearBattalion}>Clear Local Storage</button>
-            <h1>Select a Battalion:</h1>
-            <select onChange={handleBattalionSelect}>
-                {battalionsAvailable.current.map((battalion) => (
-                    <option key={battalion} value={battalion}>{battalion}</option>
-                ))}
-            </select>
+        <div className="unitselection">
+            <div className="battalionheader">          
+                <h4>Battalion:</h4>
+                <select onChange={handleBattalionSelect}>
+                    {battalionsAvailable.current.map((battalion) => (
+                        <option key={battalion} value={battalion}>{battalion}</option>
+                    ))}
+                </select>
+                
+                <div className="btn-group">
+                    <button onClick={handleBattalionButton}>Select</button>
+                    <button onClick={clearBattalion}>Clear</button>
+                </div>
 
-            <button onClick={handleBattalionButton}>Select</button>
+            </div>
 
             {/*if the battalion is selected, show the battalion setup component*/}
             {battalionFlag === true && 
@@ -322,23 +326,39 @@ function UnitSelect(props){
     }
 
     return (
-        <div>
-            
-            <h1>Select {props.type}</h1>
-
-            <select onChange={handleUnitChange}>
-                {unitList.map((unit) => (
-                    <option key={unit.id} value={unit.id}>{unit.name}</option>
-                ))}
-            </select>
-            <select onChange={handleQualityChange}>
-                {qualityList.map((level) => (
-                    <option key={level.id} value={level.id}>{level.name}</option>
-                ))}
-            </select>
-
-            {/*Sends the selected unit and quality to the parent component*/}
-            <button onClick={handleAddUnit}>Add unit</button>
+        <div className="container-fluid p-0">
+            <div className="row">
+                <div className="col-12">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colSpan={3}>Select {props.type}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td className="col-8 test" >
+                                    <select onChange={handleUnitChange}>
+                                        {unitList.map((unit) => (
+                                            <option key={unit.id} value={unit.id}>{unit.name}</option>
+                                        ))}
+                                    </select>
+                                </td>
+                                <td className="col-2">
+                                    <select onChange={handleQualityChange}>
+                                        {qualityList.map((level) => (
+                                            <option key={level.id} value={level.id}>{level.name}</option>
+                                        ))}
+                                    </select>
+                                </td>
+                                <td className="col-2">
+                                    <button onClick={handleAddUnit}>Add</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>      
 
         </div>
     );
@@ -347,41 +367,67 @@ function UnitSelect(props){
 function UnitDisplay(props){
     return(
         <div>
-            <h1>Selected Command</h1>
-            <ul>
-                {props.selectedCommand.map((item) => (
-                    //key is a composite of the unit and quality names
-                    <li key={item.unit.name + item.quality.name}>{item.unit.name}</li>
-                ))}
-            </ul>
-            
-            <h1>Selected Infantry</h1>
-            <ul>
-                {props.selectedInfantry.map((item) => (
-                    //key is a composite of the unit and quality names
-                    <li key={item.unit.name + item.quality.name}>{item.unit.name} - {item.quality.name}</li>
-                ))}
-            </ul>
-            <h1>Selected Armour</h1>
-            <ul>
-                {props.selectedArmour.map((item) => (
-                    //key is a composite of the unit and quality names
-                    <li key={item.unit.name + item.quality.name}>{item.unit.name} - {item.quality.name}</li>
-                ))}
-            </ul>
-            <h1>Selected Guns</h1>
-            <ul>
-                {props.selectedGuns.map((item) => (
-                    //key is a composite of the unit and quality names
-                    <li key={item.unit.name + item.quality.name}>{item.unit.name} - {item.quality.name}</li>
-                ))}
-            </ul>
-
+            <table className="table selectedunitsdisplay mt-2 table-striped">
+                <thead>
+                    <tr>
+                        <th colSpan={2} className="text-center table-dark">Selected Units</th>
+                    </tr>
+                    <tr className="unittypeheader">
+                        <th colSpan={2} >Command</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    {props.selectedCommand.map((item, index) => (
+                        <tr key={index}>
+                            <td colSpan={2}>{item.unit.name}</td>
+                        </tr>
+                    ))}
+                </tbody>
+                <thead>
+                    <tr className="unittypeheader">
+                        <th >Infantry</th>
+                        <th>Quality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {props.selectedInfantry.map((item, index) => (
+                        <tr key={index}>
+                            <td>{item.unit.name}</td>
+                            <td>{item.quality.name}</td>
+                        </tr>
+                    ))}
+                </tbody>
+                <thead>
+                    <tr className="unittypeheader">
+                        <th>Armour</th>
+                        <th>Quality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {props.selectedArmour.map((item, index) => (
+                        <tr key={index}>
+                            <td>{item.unit.name}</td>
+                            <td>{item.quality.name}</td>
+                        </tr>
+                    ))}
+                </tbody>
+                <thead>
+                    <tr className="unittypeheader">
+                        <th>Guns</th>
+                        <th>Quality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {props.selectedGuns.map((item, index) => (
+                        <tr key={index}>
+                            <td>{item.unit.name}</td>
+                            <td>{item.quality.name}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }
-
-
-
 
 export default UnitSelection;

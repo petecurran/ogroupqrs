@@ -1,0 +1,40 @@
+//pallette
+$primary: #00ff00;
+
+
+//navbar
+.navbar{
+    background-color: $primary;
+}
+
+//unit selection
+.unitselection{
+
+    margin-top: 10px;
+
+    .battalionheader{
+        background-color: $primary;
+        padding:5px;
+
+        h4{
+            display:inline;
+        }
+
+        //align the buttons to the right of the container
+        .btn-group{
+            float:right;
+            //vertically align the buttons
+            vertical-align: middle;
+        }
+    }
+}
+
+//unit selection display
+.selectedunitsdisplay{
+
+    .unittypeheader{
+        background-color: grey;
+        color:white;
+    }
+    
+}
