@@ -1,0 +1,63 @@
+{
+    "weapons":[
+        {
+            "id":"W01",
+            "name":"Rifle",
+            "firepower":"2D6",
+            "battlerange":"0-14\"",
+            "elevatedrange":"0-20\"",
+            "type":"infantry",
+            "he":"false",
+            "assault":"false",
+            "specialrules":""
+        },
+
+        {
+            "id":"W02",
+            "name":"SMG",
+            "firepower":"2D6",
+            "battlerange":"0-6\"",
+            "elevatedrange":"0-10\"",
+            "type":"infantry",
+            "he":"false",
+            "assault":"true",
+            "specialrules":""
+        },
+
+        {
+            "id":"W03",
+            "name":"Assault Rifle",
+            "firepower":"2D6",
+            "battlerange":"0-14\"",
+            "elevatedrange":"0-20\"",
+            "type":"infantry",
+            "he":"false",
+            "assault":"true",
+            "specialrules":""
+        },
+
+        {
+            "id":"W04",
+            "name":"SF MMG",
+            "firepower":"6D6",
+            "battlerange":"0-18\"",
+            "elevatedrange":"0-30\"",
+            "type":"mmg",
+            "he":"false",
+            "assault":"false",
+            "specialrules":""
+        },
+
+        {
+            "id":"W05",
+            "name":"Attached MMG",
+            "firepower":"6D6",
+            "battlerange":"0-14\"",
+            "elevatedrange":"0-20\"",
+            "type":"mmg",
+            "he":"false",
+            "assault":"false",
+            "specialrules":"1 reroll for each attached rifle section. Lost one reroll if holding shock."
+        }
+    ]
+}

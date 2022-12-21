@@ -33,7 +33,8 @@
         "name": "Rifle Infantry",
         "default": "true",
         "move": "2D6\"",
-        "specialrules":""
+        "specialrules":"",
+        "weaponcode":"W01"
     },
 
     {
@@ -41,7 +42,8 @@
         "name": "Rifle infantry with attached MMG",
         "default":"false",
         "move": "2D6\"",
-        "specialrules":""
+        "specialrules":"",
+        "weaponcode":"W05"
     },
 
     {
@@ -57,7 +59,8 @@
         "name": "Sustained fire MMG",
         "default":"false",
         "move": "2D6\"",
-        "specialrules":""
+        "specialrules":"",
+        "weaponcode":"W04"
     },
 
     {
@@ -81,7 +84,8 @@
         "name": "Assault Engineers",
         "default":"false",
         "move": "2D6\"",
-        "specialrules":""
+        "specialrules":"",
+        "weaponcode":"W02"
     },
 
     {
