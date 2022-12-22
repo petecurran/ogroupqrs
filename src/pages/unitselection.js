@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, Suspense } from 'react';
+import { useState, useEffect, useRef, Suspense, Fragment } from 'react';
 
 import quality from '../data/quality.json';
 
@@ -18,8 +18,17 @@ function UnitSelection (props){
     //Flag to check whether the battalion has been loaded
     const [battalionLoaded, setBattalionLoaded] = useState(false);
     
+    //allows a different default battalion for each instance
+    const displayBattalion = useRef(null)
+    
+    if (props.order === "BattalionOne") {
+        displayBattalion.current = battalionsAvailable.current[0];
+    } else {
+        displayBattalion.current = battalionsAvailable.current[1];
+    };
+
     //state to hold the chosen battalion. Default to the first battalion in the list
-    const [chosenBattalion, setChosenBattalion] = useState(battalionsAvailable.current[0]);
+    const [chosenBattalion, setChosenBattalion] = useState(null);
 
     //holds the units for the battalion
     const [selectedCommand, setSelectedCommand] = useState([]);
@@ -91,8 +100,8 @@ function UnitSelection (props){
 
     //function to handle the battalion select
     const handleBattalionSelect = (event) => {
-    //get the selected battalion
-    setChosenBattalion(event.target.value);
+        //get the selected battalion
+        setChosenBattalion(event.target.value);
     }
 
     //Add the default units to the battalion
@@ -161,6 +170,11 @@ function UnitSelection (props){
     }
 
     const handleBattalionButton = () => {
+        if (chosenBattalion === null){
+            return;
+        }
+
+
         //load the correct battalion json
         switch (chosenBattalion) {
             case "British":
@@ -174,6 +188,8 @@ function UnitSelection (props){
                 break;
         }
     
+        //clear local storage
+        clearBattalion();
     
         //set the battalion flag to true
         setBattalionFlag(true);
@@ -237,28 +253,37 @@ function UnitSelection (props){
     return(
         <div className="unitselection">
             <div className="battalionheader">          
-                <h4>Battalion:</h4>
-                <select onChange={handleBattalionSelect}>
+                {battalionFlag === false ?
+
+                <select onChange={handleBattalionSelect} id="battalionheaderselect" defaultValue={displayBattalion}>
+                    <option key="0" value="notchosen">Select Battalion</option>
                     {battalionsAvailable.current.map((battalion) => (
                         <option key={battalion} value={battalion}>{battalion}</option>
                     ))}
                 </select>
+
+                : <h4>{chosenBattalion}</h4>}
+                
                 
                 <div className="btn-group">
-                    <button onClick={handleBattalionButton}>Select</button>
-                    <button onClick={clearBattalion}>Clear</button>
+                    {battalionFlag === false && <button onClick={handleBattalionButton}>Select</button>}
+   
+                    {battalionFlag === true && <button onClick={clearBattalion}>Clear</button>}
+
                 </div>
 
             </div>
 
             {/*if the battalion is selected, show the battalion setup component*/}
             {battalionFlag === true && 
-            <div>
+            <div className="container-fluid p-0">
                 <Suspense fallback={<div>Loading...</div>}>
+                    <table className="table table-striped">
                     <UnitSelect units={units.current} type="command" handleSelectedUnits={handleSelectedUnits}/>
                     <UnitSelect units={units.current} type="infantry" handleSelectedUnits={handleSelectedUnits}/>
                     <UnitSelect units={units.current} type="armour" handleSelectedUnits={handleSelectedUnits}/>
                     <UnitSelect units={units.current} type="guns" handleSelectedUnits={handleSelectedUnits}/>
+                    </table>
                     
                     <UnitDisplay selectedCommand={selectedCommand} selectedInfantry={selectedInfantry} selectedArmour={selectedArmour} selectedGuns={selectedGuns}/>
                 </Suspense>
@@ -326,10 +351,7 @@ function UnitSelect(props){
     }
 
     return (
-        <div className="container-fluid p-0">
-            <div className="row">
-                <div className="col-12">
-                    <table>
+                    <Fragment>
                         <thead>
                             <tr>
                                 <th colSpan={3}>Select {props.type}</th>
@@ -337,37 +359,33 @@ function UnitSelect(props){
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="col-8 test" >
-                                    <select onChange={handleUnitChange}>
+                                <td id="unitselectcol1">
+                                    <select onChange={handleUnitChange} className="unitselectdropdown">
                                         {unitList.map((unit) => (
                                             <option key={unit.id} value={unit.id}>{unit.name}</option>
                                         ))}
                                     </select>
                                 </td>
-                                <td className="col-2">
-                                    <select onChange={handleQualityChange}>
+                                <td id="unitselectcol2">
+                                    <select onChange={handleQualityChange} className="qualitydropdown">
                                         {qualityList.map((level) => (
                                             <option key={level.id} value={level.id}>{level.name}</option>
                                         ))}
                                     </select>
                                 </td>
-                                <td className="col-2">
+                                <td id="unitselectcol3">
                                     <button onClick={handleAddUnit}>Add</button>
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
-                </div>
-            </div>      
-
-        </div>
+                    </Fragment>
     );
 }
 
 function UnitDisplay(props){
     return(
         <div>
-            <table className="table selectedunitsdisplay mt-2 table-striped">
+            <table className="table selectedunitsdisplay table-striped">
                 <thead>
                     <tr>
                         <th colSpan={2} className="text-center table-dark">Selected Units</th>

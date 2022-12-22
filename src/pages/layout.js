@@ -18,7 +18,7 @@ function Layout(){
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg">
+            <nav className="navbar navbar-expand-lg navbar-dark">
                 <div className="container-fluid">
                     <Link to="/" className="navbar-brand">O Group</Link>
                     <button 
