@@ -95,6 +95,7 @@ function UnitSelection (props){
     const clearBattalion = () => {
         localStorage.removeItem(props.order+"battalionName");
         localStorage.removeItem(props.order);
+        setChosenBattalion(null);
         setBattalionFlag(false);
     }
 
@@ -189,7 +190,8 @@ function UnitSelection (props){
         }
     
         //clear local storage
-        clearBattalion();
+        localStorage.removeItem(props.order+"battalionName");
+        localStorage.removeItem(props.order);
     
         //set the battalion flag to true
         setBattalionFlag(true);
