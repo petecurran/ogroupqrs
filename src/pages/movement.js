@@ -37,11 +37,21 @@ function MovementContainer(props){
     
     return (
         <div>
-            <h4>Movement - {battalionOneLabel}</h4>
-            //put some general moves here
-            {battalionOneFlag.current ? <BattalionMoveDisplay battalion={battalionOne} /> : <p>Select a battalion to see the movement table</p>}
-            <h1>{battalionTwoLabel}</h1>
-            {battalionTwoFlag.current ? <BattalionMoveDisplay battalion={battalionTwo} /> : <p></p>}
+            <h4 className="Amovementheader">Movement - {battalionOneLabel}</h4>
+            <ul>
+            <li><strong>Standard move:</strong> choose tactical bound and roll 2D6.</li>
+            <li><strong>Rapid move:</strong> Roll 3D6 and use two highest scores. Reroll any 1s.</li>
+            <li><strong>Suppressed units</strong> may not move.</li>
+            <li><strong>Hesitant units</strong> ay not move closer to enemy in LOS.</li>
+            </ul>
+            {battalionOneFlag.current ? <BattalionMoveDisplay battalion={battalionOne} idprefix="A" /> : <p>Select a battalion to see the movement table</p>}
+            
+            {battalionTwoFlag.current ? 
+            <>
+            <h4 className="Bmovementheader">Movement - {battalionTwoLabel}</h4>
+            <BattalionMoveDisplay battalion={battalionTwo} idprefix="B"/> 
+            </>
+            : <p></p>}
 
         </div>
     )  
@@ -49,20 +59,22 @@ function MovementContainer(props){
 
 function BattalionMoveDisplay(props){
     const battalion = props.battalion;
+    const idprefix = props.idprefix;
 
     return(
         <div>
-            <div className="accordion" id="movementaccordion">
+            <div className="accordion" id={idprefix+"movementaccordion"}>
+                
                 <div className="accordion-item">
-                    <h4 className="accordion-header" id="movementheadingone">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#movementcollapseone" aria-expanded="false" aria-controls="movementcollapseone">
+                    <h4 className="accordion-header" id={idprefix+"movementheadingone"}>
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#"+idprefix+"movementcollapseone"} aria-expanded="false" aria-controls={idprefix+"movementcollapseone"}>
                             Command
                         </button>
                     </h4>
-                    <div id="movementcollapseone" className="accordion-collapse collapse" aria-labelledby="movementheadingone" data-bs-parent="#movementaccordion">
+                    <div id={idprefix+"movementcollapseone"} className="accordion-collapse collapse" aria-labelledby={idprefix+"movementheadingone"} data-bs-parent={"#"+idprefix+"movementaccordion"}>
                         <div className="accordion-body p-0">
                         <table className="table">
-                            <thead>
+                            <thead className="text-light">
                                 <tr>
                                     <th>Unit</th>
                                     <th>Move</th>
@@ -75,7 +87,7 @@ function BattalionMoveDisplay(props){
                                     <tr>
                                         <td>{commandUnit.unit.name}</td>
                                         <td>{commandUnit.unit.move}</td>
-                                        <td>{commandUnit.unit.rapidmove}</td>
+                                        <td className="text-center">{commandUnit.unit.rapidmove}</td>
                                     </tr>
                                     {commandUnit.unit.specialrules !== "" ?
                                     <tr>
@@ -90,14 +102,14 @@ function BattalionMoveDisplay(props){
                     </div>
                 </div>
                 <div className="accordion-item">
-                    <h4 className="accordion-header" id="movementheadingtwo">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#movementcollapsetwo" aria-expanded="false" aria-controls="movementcollapsetwo">
+                    <h4 className="accordion-header" id={idprefix+"movementheadingtwo"}>
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#"+idprefix+"movementcollapsetwo"} aria-expanded="false" aria-controls={idprefix+"movementcollapsetwo"}>
                             Infantry
                         </button>
                     </h4>
-                        <div id="movementcollapsetwo" className="accordion-collapse collapse" aria-labelledby="movementheadingtwo" data-bs-parent="#movementaccordion">
+                        <div id={idprefix+"movementcollapsetwo"} className="accordion-collapse collapse" aria-labelledby={idprefix+"movementheadingtwo"} data-bs-parent={"#"+idprefix+"movementaccordion"}>
                             <table className="table">
-                                <thead>
+                                <thead className="text-light">
                                     <tr>
                                         <th>Unit</th>
                                         <th>Move</th>
@@ -124,14 +136,14 @@ function BattalionMoveDisplay(props){
                         </div>
                 </div>
                 <div className="accordion-item">
-                    <h4 className="accordion-header" id="movementheadingthree">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#movementcollapsethree" aria-expanded="false" aria-controls="movementcollapsethree">
+                    <h4 className="accordion-header" id={idprefix+"movementheadingthree"}>
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#"+idprefix+"movementcollapsethree"} aria-expanded="false" aria-controls={idprefix+"movementcollapsethree"}>
                             Armour
                         </button>
                     </h4>
-                    <div id="movementcollapsethree" className="accordion-collapse collapse" aria-labelledby="movementheadingthree" data-bs-parent="#movementaccordion">
+                    <div id={idprefix+"movementcollapsethree"} className="accordion-collapse collapse" aria-labelledby={idprefix+"movementheadingthree"} data-bs-parent={"#"+idprefix+"movementaccordion"}>
                         <table className="table">
-                            <thead>
+                            <thead className="text-light">
                                 <tr>
                                     <th>Unit</th>
                                     <th>Move</th>
@@ -158,14 +170,14 @@ function BattalionMoveDisplay(props){
                     </div>
                 </div>
                 <div className="accordion-item">
-                    <h4 className="accordion-header" id="movementheadingfour">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#movementcollapsefour" aria-expanded="false" aria-controls="movementcollapsefour">
+                    <h4 className="accordion-header" id={idprefix+"movementheadingfour"}>
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#"+idprefix+"movementcollapsefour"} aria-expanded="false" aria-controls={idprefix+"movementcollapsefour"}>
                             Guns
                         </button>
                     </h4>
-                    <div id="movementcollapsefour" className="accordion-collapse collapse" aria-labelledby="movementheadingfour" data-bs-parent="#movementaccordion">
+                    <div id={idprefix+"movementcollapsefour"} className="accordion-collapse collapse" aria-labelledby={idprefix+"movementheadingfour"} data-bs-parent={"#"+idprefix+"movementaccordion"}>
                         <table className="table">
-                            <thead>
+                            <thead className="text-light">
                                 <tr>
                                     <th>Unit</th>
                                     <th>Move</th>

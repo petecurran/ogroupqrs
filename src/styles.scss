@@ -2,10 +2,20 @@
 $primary: #83894D;
 $ivorytext: #FFFFFF;
 
+
+//overwriting bootstrap colours. Must be before importing bootstrap
+
+//movement accordion
+$accordion-button-active-bg: $primary;
+$accordion-button-active-color: white;
+
+
+//importing bootstrap. Goes here so that the variables can be overwritten below
+@import "~bootstrap/scss/bootstrap.scss";
+
 //navbar
 .navbar{
     background-color: $primary;
-    color: $ivorytext;
 }
 
 //unit selection
@@ -85,3 +95,57 @@ $ivorytext: #FFFFFF;
     }
     
 }
+
+//movement page
+.Amovementheader{
+    margin-top: 10px;
+    padding:10px;
+    background-color: $primary;
+    color: $ivorytext;
+}
+
+.Bmovementheader{
+    margin-top: 10px;
+    padding:10px;
+    background-color: $secondary;
+    color: $ivorytext;
+    margin-bottom:-3px;
+}
+
+
+//movement accordion A
+#Amovementaccordion{
+
+    .accordion-button{
+        background-color:$primary;
+        color:$ivorytext;
+        font-weight:bold;
+    }
+
+    thead{
+        background-color:tint-color($primary, 20%);
+    }
+}
+
+//movement accordion B
+#Bmovementaccordion{
+
+    .accordion-button{
+        background-color:$secondary;
+        color:$ivorytext;
+        font-weight:bold;
+    }
+
+    .accordion-button:focus{
+        box-shadow: 0 0 3px 3px shade-color($secondary,10%);
+    }
+
+    thead{
+        background-color:tint-color($secondary, 20%);
+    }
+}
+
+
+
+
+
