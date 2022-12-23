@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import infantryweapons from '../data/infantryweapons.json';
+import antitankweapons from '../data/antitankweapons.json';
 
 
 function ShootingContainer(props){
@@ -38,39 +39,21 @@ function ShootingContainer(props){
     
     return (
         <div>
-            <h1>Shooting</h1>
-            <h1>{battalionOneLabel}</h1>
-            {battalionOneFlag.current ? <WeaponDisplay battalion={battalionOne}/> : <p>Select a battalion to see the movement table</p>}
-            <h1>{battalionTwoLabel}</h1>
+            {battalionOneFlag.current ? <ShootingUnitSelect battalion={battalionOne} label={battalionOneLabel} idprefix={"A"}/> : <p>Select a battalion to see the movement table</p>}
         </div>
     )  
 }
 
 function WeaponDisplay(props){
 
-    //load the weapons from the json
-    const weapons = infantryweapons.weapons;
-    //make the battalion easier to work with
-    const battalion = props.battalion;
+    //set the id prefix for the table
+    const idprefix = props.idprefix;
 
-    //set the default value for the weapon
-    const [weapon, setWeapon] = useState(weapons.find(weapon => weapon.id === "W01"));
-
-
-    //set the weapon based on the select box below
-    function handleWeapon(event){
-        //search weapons for the weapon code
-        setWeapon(weapons.find(weapon => weapon.id === event.target.value))
-    }
+    //get the weapon from the props
+    const weapon = props.weapon;
 
     return(
         <div>
-            <select onChange={handleWeapon}>
-                {battalion.infantry.map((unit, index) => {
-                    return <option key={index} value={unit.unit.weaponcode}>{unit.unit.name}</option>
-                })}
-            </select>
-
 
             <table className="table">
                 <thead>
@@ -96,20 +79,20 @@ function WeaponDisplay(props){
                 </thead>
                 <tbody>
                     <tr>
-                        <th colSpan={3}>Close range {weapon.type === "infantry" ? <span>0-6"</span> : <span>0-10"</span>}</th>
+                        <th colSpan={3} className={idprefix +"shootingmodifier"}>Close range {weapon.type === "infantry" ? <span>0-6"</span> : <span>0-10"</span>}</th>
                         {weapon.assault === "true" ? <td>+2D6</td> : <td>+1D6</td>}
                     </tr>
                     <tr>
-                        <th colSpan={3}>Will move / Moved / Failed opportunity fire</th>
+                        <th colSpan={3} className={idprefix +"shootingmodifier"}>Will move / Moved / Failed opportunity fire</th>
                         <td>-2D6</td>
                     </tr>
                     <tr>
-                        <th colSpan={3}>Shock / Damaged / Rallied (-1D6 for each)</th>
+                        <th colSpan={3} className={idprefix +"shootingmodifier"}>Shock / Damaged / Rallied (-1D6 for each)</th>
                         <td>-1D6</td>
                     </tr>
                     
                     <tr>                                       
-                        <th colSpan={3}>Green infantry</th>
+                        <th colSpan={3} className={idprefix +"shootingmodifier"}>Green infantry</th>
                         <td>-1D6</td>
                     </tr>
                 </tbody>
@@ -117,26 +100,26 @@ function WeaponDisplay(props){
                     <tr>
                         <th colSpan={4}>Target modifiers</th>
                     </tr>
-                    <tr>
-                        <td colSpan={4}>Roll a spotting die if target is in cover or buildings.<br/>1-3 obscured, 4-6 spotted.</td>
-                    </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th colSpan={3}>Target in cover</th>
+                        <td colSpan={4}>Roll a spotting die if target is in cover or buildings.<br/>1-3 obscured, 4-6 spotted.</td>
+                    </tr>
+                    <tr>
+                        <th colSpan={3} className={idprefix +"shootingmodifier"}>Target in cover</th>
                         <td>SD</td>
                     </tr>
                     <tr>
-                        <th colSpan={3}>In buildings or trench</th>
+                        <th colSpan={3} className={idprefix +"shootingmodifier"}>In buildings or trench</th>
                         <td>{weapon.he === "true" ? <span>-1D6</span> : <span>-2D6</span>}</td>
                     </tr>
                     <tr>
-                        <th colSpan={3}>Combat patrol</th>
+                        <th colSpan={3} className={idprefix +"shootingmodifier"}>Combat patrol</th>
                         <td>-2D6</td>
                     </tr>
                     
                     <tr>                                       
-                        <th colSpan={3}>In a bunker</th>
+                        <th colSpan={3} className={idprefix +"shootingmodifier"}>In a bunker</th>
                         <td>-3D6</td>
                     </tr>
                     <tr>
@@ -148,5 +131,191 @@ function WeaponDisplay(props){
         </div>
     );
 }
+
+function AntiTankDisplay(props){
+    //set the id prefix for the table
+    const idprefix = props.idprefix;
+
+    //get the weapon from the props
+    const weapon = props.weapon;
+    const atweapon = props.atweapon
+
+    return(
+        <div>
+        {weapon.name}
+        {atweapon.name}
+
+        <table className="table">
+            <thead>
+                <tr>
+                    <th colSpan={4} className="text-center">Roll to hit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colSpan={4} className="text-center">Try to roll a 7, dummy!</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <th>Gun type</th>
+                    <th className="text-center">Battle<br/> 0-30"</th>
+                    <th className="text-center">Elevated<br/> 30-40"</th>
+                    <th className="text-center">Elevated<br/> 40-50"</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Light</td>
+                    <td className="text-center">-1D6</td>
+                    <td className="text-center">-2D6</td>
+                    <td className="text-center">-3D6</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <th colSpan={4} className="text-center">To hit modifiers</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th colSpan={4} className={idprefix +"atshootingmodifier text-center"}>Close: target within 10" +1 to hit, +1 firepower</th>
+                </tr>
+                <tr>
+                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Firing unit is veteran</th>
+                    <td>+1</td>
+                </tr>
+                <tr>
+                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Shock / damaged / rallied (-1 for each)</th>
+                    <td>-1</td>
+                </tr>
+                <tr>
+                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Fire moved / will move</th>
+                    <td>-1</td>
+                </tr>
+                <tr>
+                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Failed opportunity fire</th>
+                    <td>-1</td>
+                </tr>
+                <tr>
+                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Target dug-in</th>
+                    <td>-1</td>
+                </tr>
+                <tr>
+                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Target is low profile / recon (ignore if close range)</th>
+                    <td>SD</td>
+                </tr>
+                <tr>
+                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Target is in cover / hull down</th>
+                    <td>SD</td>
+                </tr>
+                <tr>
+                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Poor AFV vs. any target in the open (ignore if close range)</th>
+                    <td>SD</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table className="table">
+            <thead>
+                <tr>
+                    <th colSpan={4} className="text-center">Roll to penetrate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colSpan={4} className="text-center">Explain modifiers</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <th colSpan={3}>Gun type</th>
+                    <th>Firepower</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colSpan={3}>{atweapon.name}</td>
+                    <td>99</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        </div>
+    )
+}
+
+
+function ShootingUnitSelect(props){
+    //set the id prefix for the table
+    const idprefix = props.idprefix;
+
+    //load the weapons from the json
+    const weapons = infantryweapons.weapons;
+    const atweapons = antitankweapons.weapons;
+    //make the battalion easier to work with
+    const battalion = props.battalion;
+
+    //set the default value for the weapon (rifle)
+    const [weapon, setWeapon] = useState(weapons.find(weapon => weapon.id === "W01"));
+    const [atweapon,setATWeapon] =useState(atweapons.find(atweapon => atweapon.id === "AT01"))
+
+    //hold whether we're looking at infantry or antitank
+    const [fireType, setFireType] = useState("infantry");
+
+    //set the weapon based on the select box below
+    function handleWeapon(event){
+
+        //Find the unit we're referencing
+        //If the unit is in the infantry list
+        if (battalion.infantry.find(unit => unit.unit.name === event.target.value)){
+            setWeapon(weapons.find(weapon => weapon.id === battalion.infantry.find(unit => unit.unit.name === event.target.value).unit.weaponcode))
+            setATWeapon(atweapons.find(atweapon => atweapon.id === battalion.infantry.find(unit => unit.unit.name === event.target.value).unit.antitankcode))
+        }
+
+        //If the unit is in the armour list
+        if (battalion.armour.find(unit => unit.unit.name === event.target.value)){
+            setWeapon(weapons.find(weapon => weapon.id === battalion.armour.find(unit => unit.unit.name === event.target.value).unit.weaponcode))
+            setATWeapon(atweapons.find(atweapon => atweapon.id === battalion.armour.find(unit => unit.unit.name === event.target.value).unit.antitankcode))
+        }
+    }
+
+    return(
+        <div className={idprefix + "smallarmsshootingtable"}>
+            
+            <div id={idprefix + "shootingheader"}>
+                <h4>Shooting - {props.label}</h4>
+                <h6>Unit:
+                    <select onChange={handleWeapon}>
+                    <option key="0" value="notchosen">Select unit</option>
+                    {battalion.infantry.map((unit, index) => {
+                        return <option key={"infantry"+index} value={unit.unit.name} >{unit.unit.name}</option>
+                    })}
+                    {battalion.armour.map((unit, index) => {
+                        return <option key={"armour"+index} value={unit.unit.name}>{unit.unit.name}</option>
+                    })}
+                    </select>
+                </h6>
+            </div>
+
+            <div id={idprefix + "fireselector"}>
+                <button id="infantrybutton" onClick={() => setFireType("infantry")}>Small arms</button>
+                <button id="antitankbutton" onClick={() => setFireType("antitank")}>Anti-tank</button>
+            </div>
+            
+            {fireType ==="infantry" ?
+            <WeaponDisplay idprefix={idprefix} battalion={battalion} weapon={weapon}/>
+            : <AntiTankDisplay idprefix={idprefix} battalion={battalion} weapon={weapon} atweapon={atweapon}/> }
+
+
+        </div>
+    )
+
+
+}
+
+
+
 
 export default ShootingContainer;

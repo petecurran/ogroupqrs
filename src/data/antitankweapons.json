@@ -1,0 +1,27 @@
+{
+    "weapons":[
+        {
+            "id":"AT01",
+            "name":"AT RIFLE",
+            "firepower":"2D6",
+            "battlerange":"0-14\"",
+            "elevatedrange":"0-20\"",
+            "type":"infantry",
+            "he":"false",
+            "assault":"false",
+            "specialrules":""
+        },
+
+        {
+            "id":"AT99",
+            "name":"BIG TANK GUN",
+            "firepower":"2D6",
+            "battlerange":"0-14\"",
+            "elevatedrange":"0-20\"",
+            "type":"infantry",
+            "he":"false",
+            "assault":"false",
+            "specialrules":""
+        }
+    ]
+}

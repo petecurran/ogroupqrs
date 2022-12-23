@@ -58,6 +58,18 @@
             "he":"false",
             "assault":"false",
             "specialrules":"1 reroll for each attached rifle section. Lost one reroll if holding shock."
+        },
+
+        {
+            "id":"W99",
+            "name":"TANK MMG",
+            "firepower":"6D6",
+            "battlerange":"0-14\"",
+            "elevatedrange":"0-20\"",
+            "type":"mmg",
+            "he":"false",
+            "assault":"false",
+            "specialrules":"1 reroll for each attached rifle section. Lost one reroll if holding shock."
         }
     ]
 }

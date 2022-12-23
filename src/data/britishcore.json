@@ -34,7 +34,8 @@
         "default": "true",
         "move": "2D6\"",
         "specialrules":"",
-        "weaponcode":"W01"
+        "weaponcode":"W01",
+        "antitankcode": "AT01"
     },
 
     {
@@ -104,7 +105,9 @@
             "name": "Sherman V",
             "default": "false",
             "move": "2D6\" + 2",
-            "specialrules":"Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!"
+            "specialrules":"Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "weaponcode":"W99",
+            "antitankcode": "AT99"
         },
         {
             "id":"1",

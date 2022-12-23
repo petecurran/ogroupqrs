@@ -1,5 +1,6 @@
 //pallette
 $primary: #83894D;
+$primarycompliment: #32341d;
 $ivorytext: #FFFFFF;
 
 
@@ -95,6 +96,56 @@ $accordion-button-active-color: white;
     }
     
 }
+
+//shooting page
+.Asmallarmsshootingtable{
+    thead{
+        background-color: $primary;
+        color:$ivorytext;
+    }
+
+    .Ashootingmodifier{
+        background-color: tint-color($primary, 90%);
+    }
+
+    #Ashootingheader{
+        margin-top: 10px;
+        padding:10px;
+        background-color: $primary;
+        color: $ivorytext;
+    }
+
+    #Afireselector{
+        width:100%;
+
+        #infantrybutton{
+            background-color: $primary;
+            color: $ivorytext;
+            border:none;
+            padding:10px;
+            font-size:20px;
+            width:50%;
+            font-weight:bold;
+        }
+
+        #antitankbutton{
+            background-color: $primarycompliment;
+            color: $ivorytext;
+            border:none;
+            padding:10px;
+            font-size:20px;
+            width:50%;
+            font-weight:bold;
+        }
+
+
+    }
+
+}
+
+
+
+
 
 //movement page
 .Amovementheader{
