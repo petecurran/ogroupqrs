@@ -3,7 +3,7 @@
         {
             "id":"AT01",
             "name":"AT RIFLE",
-            "firepower":"2D6",
+            "firepower":"2",
             "battlerange":"0-14\"",
             "elevatedrange":"0-20\"",
             "type":"infantry",
@@ -15,7 +15,7 @@
         {
             "id":"AT99",
             "name":"BIG TANK GUN",
-            "firepower":"2D6",
+            "firepower":"7",
             "battlerange":"0-14\"",
             "elevatedrange":"0-20\"",
             "type":"infantry",

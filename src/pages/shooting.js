@@ -39,7 +39,7 @@ function ShootingContainer(props){
     
     return (
         <div>
-            {battalionOneFlag.current ? <ShootingUnitSelect battalion={battalionOne} label={battalionOneLabel} idprefix={"A"}/> : <p>Select a battalion to see the movement table</p>}
+            {battalionOneFlag.current ? <ShootingUnitSelect battalion={battalionOne} opposingBattalion={battalionTwo} label={battalionOneLabel} idprefix={"A"} opposingBattalionFlag={battalionTwoFlag.current}/> : <p>Select a battalion to see the movement table</p>}
         </div>
     )  
 }
@@ -140,11 +140,74 @@ function AntiTankDisplay(props){
     const weapon = props.weapon;
     const atweapon = props.atweapon
 
+    //set the state for the target select
+    const [armourTarget, setArmourTarget] = useState(null);
+
+    //variables to hold the modifiers of the target
+    const rawFrontModifier = useRef(0);
+    const rawFlankModifier = useRef(0);
+
+    //set the state for the modifiers
+    const [frontModifier, setFrontModifier] = useState(0);
+    const [flankModifier, setFlankModifier] = useState(0);
+
+    const handleTargetSelect = (event) => {
+
+        if (event.target.value === ""){
+            setArmourTarget(null);
+            setFrontModifier(0);
+            setFlankModifier(0);
+            return;
+        }
+
+        //find the target in opposingBattalion
+        const target = props.opposingBattalion.armour.find((unit) => unit.unit.id === event.target.value);
+        setArmourTarget(target);
+
+        //set the raw modifiers
+        rawFrontModifier.current = target.unit.frontarmour;
+        rawFlankModifier.current = target.unit.flankarmour;
+
+        //calculate the modifiers
+        calcModifiers();
+
+    }
+
+    //calculate the modifiers whenever the target or unit changes
+    useEffect(() => {
+        calcModifiers();
+    }, [armourTarget, atweapon])
+
+
+
+    const calcModifiers = () =>{
+
+        //get the firepower of the selected at weapon as an integer
+        const firepower = parseInt(atweapon.firepower);
+
+        //calculate the front modifier
+        const frontMod = firepower - parseInt(rawFrontModifier.current);        
+        //if the modifier is positive, create a string with a + before it
+        if ((frontMod * -1) > 0){
+            setFrontModifier("+" + (frontMod * -1));
+        } else {
+            setFrontModifier(frontMod * -1);
+        }
+
+        //calculate the flank modifier
+        const flankMod = firepower - parseInt(rawFlankModifier.current);        
+        //if the modifier is positive, create a string with a + before it
+        if ((flankMod * -1) > 0){
+            setFlankModifier("+" + (flankMod * -1));
+        } else {
+            setFlankModifier(flankMod * -1);
+        }  
+
+    }
+
+
     return(
         <div>
-        {weapon.name}
-        {atweapon.name}
-
         <table className="table">
             <thead>
                 <tr>
@@ -224,7 +287,7 @@ function AntiTankDisplay(props){
             </thead>
             <tbody>
                 <tr>
-                    <td colSpan={4} className="text-center">Explain modifiers</td>
+                    <td colSpan={4} className="text-center">Roll 2D6 and add the relevant modifier below.</td>
                 </tr>
             </tbody>
             <thead>
@@ -236,12 +299,93 @@ function AntiTankDisplay(props){
             <tbody>
                 <tr>
                     <td colSpan={3}>{atweapon.name}</td>
-                    <td>99</td>
+                    <td className="text-center">{atweapon.firepower}</td>
                 </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <th colSpan={2}>Target</th>
+                    <th>Front armour</th>
+                    <th>Flank armour</th>
+                </tr>
+            </thead>
+            <tbody>
+                {/*Check if there's an opposing battalion and render advice if not*/}
+                {props.opposingBattalionFlag && props.opposingBattalion.armour.length > 0 ?
+                    <>
+                    <tr>
+                        <th colSpan={2}>
+                            <select id={idprefix + "targetarmourselect"} onChange={handleTargetSelect}>
+                                <option value="">Select a target</option>
+                                {props.opposingBattalion.armour.map((armour, index) => <option key={index} value={armour.unit.id}>{armour.unit.name}</option>)}
+                            </select>
+                        </th>
+                        <td className="text-center">
+                            {armourTarget ? <>{armourTarget.unit.frontarmour}</> : null}
+                        </td>
+                        <td className="text-center">
+                            {armourTarget ? <>{armourTarget.unit.flankarmour}</> : null}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>Modifiers:</th>
+                        <td className="text-center">{armourTarget ? <>{frontModifier}</> : null}</td>
+                        <td className="text-center">{armourTarget ? <>{flankModifier}</> : null}</td>
+                    </tr>
+                    </>
+                    :
+                    <tr>
+                        <td colSpan={4} className="bg-warning text-center">Add tanks to the opposing battalion to see them here.</td>
+                    </tr>}
             </tbody>
         </table>
 
-
+        <table className="table text-center">
+            <thead>
+                <tr>
+                    <th colSpan={4} className="text-center">Roll for damage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colSpan={4} className="text-center">Double six: 1 shock is worst result possible. <br/> Double 1: 1 shock minium result.</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <th colSpan={2}>Result</th>
+                    <th>Spotted</th>
+                    <th>Obscured</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th colSpan={2}>9+</th>
+                    <td>No effect</td>
+                    <td>No effect</td>
+                </tr>
+                <tr>
+                    <th colSpan={2}>8</th>
+                    <td>1 shock</td>
+                    <td>No effect</td>
+                </tr>
+                <tr>
+                    <th colSpan={2}>7</th>
+                    <td>2 shock</td>
+                    <td>1 shock</td>
+                </tr>
+                <tr>
+                    <th colSpan={2}>6-5</th>
+                    <td>Damaged</td>
+                    <td>1 shock</td>
+                </tr>
+                <tr>
+                    <th colSpan={2}>4 or less</th>
+                    <td>Knocked out</td>
+                    <td>2 shock</td>
+                </tr>
+            </tbody>
+            </table>
         </div>
     )
 }
@@ -306,8 +450,7 @@ function ShootingUnitSelect(props){
             
             {fireType ==="infantry" ?
             <WeaponDisplay idprefix={idprefix} battalion={battalion} weapon={weapon}/>
-            : <AntiTankDisplay idprefix={idprefix} battalion={battalion} weapon={weapon} atweapon={atweapon}/> }
-
+            : <AntiTankDisplay idprefix={idprefix} battalion={battalion} opposingBattalion={props.opposingBattalion} opposingBattalionFlag={props.opposingBattalionFlag} weapon={weapon} atweapon={atweapon}/> }
 
         </div>
     )

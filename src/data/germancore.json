@@ -78,7 +78,13 @@
         {
             "id":"0",
             "name": "Panzer IV",
-            "default":"false"
+            "default": "false",
+            "move": "2D6\" + 2",
+            "specialrules":"Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "weaponcode":"W99",
+            "antitankcode": "AT99",
+            "frontarmour":"8",
+            "flankarmour":"5"
         },
 
         {

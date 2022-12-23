@@ -208,29 +208,4 @@ function BattalionMoveDisplay(props){
     )
 }
 
-
-function UnitMoveDisplay(props){
-    return (
-        <div>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Unit</th>
-                        <th>Move</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Unit 1</td>
-                        <td>Move 1</td>
-                    </tr>
-                    <tr>
-                        <td colSpan={2}>Special rules: lots and lots and lots and lots and lots and lots</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    )  
-}
-
 export default MovementContainer;
