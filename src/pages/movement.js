@@ -37,6 +37,9 @@ function MovementContainer(props){
     
     return (
         <div>
+            
+            {battalionOneFlag.current ?
+            <>
             <h4 className="Amovementheader">Movement - {battalionOneLabel}</h4>
             <ul>
             <li><strong>Standard move:</strong> choose tactical bound and roll 2D6.</li>
@@ -44,7 +47,10 @@ function MovementContainer(props){
             <li><strong>Suppressed units</strong> may not move.</li>
             <li><strong>Hesitant units</strong> ay not move closer to enemy in LOS.</li>
             </ul>
-            {battalionOneFlag.current ? <BattalionMoveDisplay battalion={battalionOne} idprefix="A" /> : <p>Select a battalion to see the movement table</p>}
+            
+            <BattalionMoveDisplay battalion={battalionOne} idprefix="A" /> 
+            </>
+            : <p>Select a battalion to see the movement table</p>}
             
             {battalionTwoFlag.current ? 
             <>

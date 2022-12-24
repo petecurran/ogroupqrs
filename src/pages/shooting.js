@@ -39,7 +39,8 @@ function ShootingContainer(props){
     
     return (
         <div>
-            {battalionOneFlag.current ? <ShootingUnitSelect battalion={battalionOne} opposingBattalion={battalionTwo} label={battalionOneLabel} idprefix={"A"} opposingBattalionFlag={battalionTwoFlag.current}/> : <p>Select a battalion to see the movement table</p>}
+            {battalionOneFlag.current ? <ShootingUnitSelect battalion={battalionOne} opposingBattalion={battalionTwo} label={battalionOneLabel} idprefix={"A"} opposingBattalionFlag={battalionTwoFlag.current}/> : <p>Select a battalion to see the shooting table</p>}
+            {battalionTwoFlag.current ? <ShootingUnitSelect battalion={battalionTwo} opposingBattalion={battalionOne} label={battalionTwoLabel} idprefix={"B"} opposingBattalionFlag={battalionOneFlag.current}/> : <></>}
         </div>
     )  
 }
@@ -207,186 +208,217 @@ function AntiTankDisplay(props){
 
 
     return(
-        <div>
-        <table className="table">
-            <thead>
-                <tr>
-                    <th colSpan={4} className="text-center">Roll to hit</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td colSpan={4} className="text-center">Try to roll a 7, dummy!</td>
-                </tr>
-            </tbody>
-            <thead>
-                <tr>
-                    <th>Gun type</th>
-                    <th className="text-center">Battle<br/> 0-30"</th>
-                    <th className="text-center">Elevated<br/> 30-40"</th>
-                    <th className="text-center">Elevated<br/> 40-50"</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Light</td>
-                    <td className="text-center">-1D6</td>
-                    <td className="text-center">-2D6</td>
-                    <td className="text-center">-3D6</td>
-                </tr>
-            </tbody>
-            <thead>
-                <tr>
-                    <th colSpan={4} className="text-center">To hit modifiers</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th colSpan={4} className={idprefix +"atshootingmodifier text-center"}>Close: target within 10" +1 to hit, +1 firepower</th>
-                </tr>
-                <tr>
-                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Firing unit is veteran</th>
-                    <td>+1</td>
-                </tr>
-                <tr>
-                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Shock / damaged / rallied (-1 for each)</th>
-                    <td>-1</td>
-                </tr>
-                <tr>
-                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Fire moved / will move</th>
-                    <td>-1</td>
-                </tr>
-                <tr>
-                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Failed opportunity fire</th>
-                    <td>-1</td>
-                </tr>
-                <tr>
-                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Target dug-in</th>
-                    <td>-1</td>
-                </tr>
-                <tr>
-                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Target is low profile / recon (ignore if close range)</th>
-                    <td>SD</td>
-                </tr>
-                <tr>
-                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Target is in cover / hull down</th>
-                    <td>SD</td>
-                </tr>
-                <tr>
-                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Poor AFV vs. any target in the open (ignore if close range)</th>
-                    <td>SD</td>
-                </tr>
-            </tbody>
-        </table>
+        <div className="accordion" id={idprefix + "ataccordion"}>
+            <div className="accordion-item">
+                <h4 className="accordion-header" id={idprefix + "atheadingOne"}>
+                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#" + idprefix + "atcollapseOne"} aria-expanded="true" aria-controls={idprefix + "atcollapseOne"}>
+                        Roll to hit
+                    </button>
+                </h4>
+                <div id={idprefix + "atcollapseOne"} className="accordion-collapse collapse" aria-labelledby={idprefix + "atheadingOne"} data-bs-parent={"#" + idprefix + "ataccordion"}>
+                    <div className="accordion-body p-0">
+                        <table className="table">
 
-        <table className="table">
-            <thead>
-                <tr>
-                    <th colSpan={4} className="text-center">Roll to penetrate</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td colSpan={4} className="text-center">Roll 2D6 and add the relevant modifier below.</td>
-                </tr>
-            </tbody>
-            <thead>
-                <tr>
-                    <th colSpan={3}>Gun type</th>
-                    <th>Firepower</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td colSpan={3}>{atweapon.name}</td>
-                    <td className="text-center">{atweapon.firepower}</td>
-                </tr>
-            </tbody>
-            <thead>
-                <tr>
-                    <th colSpan={2}>Target</th>
-                    <th>Front armour</th>
-                    <th>Flank armour</th>
-                </tr>
-            </thead>
-            <tbody>
-                {/*Check if there's an opposing battalion and render advice if not*/}
-                {props.opposingBattalionFlag && props.opposingBattalion.armour.length > 0 ?
-                    <>
-                    <tr>
-                        <th colSpan={2}>
-                            <select id={idprefix + "targetarmourselect"} onChange={handleTargetSelect}>
-                                <option value="">Select a target</option>
-                                {props.opposingBattalion.armour.map((armour, index) => <option key={index} value={armour.unit.id}>{armour.unit.name}</option>)}
-                            </select>
-                        </th>
-                        <td className="text-center">
-                            {armourTarget ? <>{armourTarget.unit.frontarmour}</> : null}
-                        </td>
-                        <td className="text-center">
-                            {armourTarget ? <>{armourTarget.unit.flankarmour}</> : null}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th colSpan={2}>Modifiers:</th>
-                        <td className="text-center">{armourTarget ? <>{frontModifier}</> : null}</td>
-                        <td className="text-center">{armourTarget ? <>{flankModifier}</> : null}</td>
-                    </tr>
-                    </>
-                    :
-                    <tr>
-                        <td colSpan={4} className="bg-warning text-center">Add tanks to the opposing battalion to see them here.</td>
-                    </tr>}
-            </tbody>
-        </table>
+                            <tbody>
+                                <tr>
+                                    <td colSpan={4} className="text-center">Try to roll a 7, dummy!</td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th>Gun type</th>
+                                    <th className="text-center">Battle<br/> 0-30"</th>
+                                    <th className="text-center">Elevated<br/> 30-40"</th>
+                                    <th className="text-center">Elevated<br/> 40-50"</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Light</td>
+                                    <td className="text-center">-1D6</td>
+                                    <td className="text-center">-2D6</td>
+                                    <td className="text-center">-3D6</td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th colSpan={4} className="text-center">To hit modifiers</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th colSpan={4} className={idprefix +"atshootingmodifier text-center"}>Close: target within 10" +1 to hit, +1 firepower</th>
+                                </tr>
+                                <tr>
+                                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Firing unit is veteran</th>
+                                    <td>+1</td>
+                                </tr>
+                                <tr>
+                                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Shock / damaged / rallied (-1 for each)</th>
+                                    <td>-1</td>
+                                </tr>
+                                <tr>
+                                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Fire moved / will move</th>
+                                    <td>-1</td>
+                                </tr>
+                                <tr>
+                                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Failed opportunity fire</th>
+                                    <td>-1</td>
+                                </tr>
+                                <tr>
+                                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Target dug-in</th>
+                                    <td>-1</td>
+                                </tr>
+                                <tr>
+                                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Target is low profile / recon (ignore if close range)</th>
+                                    <td>SD</td>
+                                </tr>
+                                <tr>
+                                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Target is in cover / hull down</th>
+                                    <td>SD</td>
+                                </tr>
+                                <tr>
+                                    <th colSpan={3} className={idprefix +"atshootingmodifier"}>Poor AFV vs. any target in the open (ignore if close range)</th>
+                                    <td>SD</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div className="accordion-item">
+                <h4 className="accordion-header" id={idprefix + "atheadingTwo"}>
+                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#" + idprefix + "atcollapseTwo"} aria-expanded="false" aria-controls={idprefix + "atcollapseTwo"}>
+                        Roll to penetrate
+                    </button>
+                </h4>
+                <div id={idprefix + "atcollapseTwo"} className="accordion-collapse collapse" aria-labelledby={idprefix + "atheadingTwo"} data-bs-parent={"#" + idprefix + "ataccordion"}>
+                    <div className="accordion-body p-0">
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th colSpan={4} className="text-center">Roll to penetrate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colSpan={4} className="text-center">Roll 2D6 and add the relevant modifier below.</td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th colSpan={3}>Gun type</th>
+                                    <th>Firepower</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colSpan={3}>{atweapon.name}</td>
+                                    <td className="text-center">{atweapon.firepower}</td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th colSpan={2}>Target</th>
+                                    <th>Front armour</th>
+                                    <th>Flank armour</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/*Check if there's an opposing battalion and render advice if not*/}
+                                {props.opposingBattalionFlag && props.opposingBattalion.armour.length > 0 ?
+                                    <>
+                                    <tr>
+                                        <th colSpan={2}>
+                                            <select id={idprefix + "targetarmourselect"} onChange={handleTargetSelect}>
+                                                <option value="">Select a target</option>
+                                                {props.opposingBattalion.armour.map((armour, index) => <option key={index} value={armour.unit.id}>{armour.unit.name}</option>)}
+                                            </select>
+                                        </th>
+                                        <td className="text-center">
+                                            {armourTarget ? <>{armourTarget.unit.frontarmour}</> : null}
+                                        </td>
+                                        <td className="text-center">
+                                            {armourTarget ? <>{armourTarget.unit.flankarmour}</> : null}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th colSpan={2}>Modifiers:</th>
+                                        <td className="text-center">{armourTarget ? <>{frontModifier}</> : null}</td>
+                                        <td className="text-center">{armourTarget ? <>{flankModifier}</> : null}</td>
+                                    </tr>
+                                    </>
+                                    :
+                                    <tr>
+                                        <td colSpan={4} className="bg-warning text-center">Add tanks to the opposing battalion to see them here.</td>
+                                    </tr>}
+                            </tbody>
+                        </table>
 
-        <table className="table text-center">
-            <thead>
-                <tr>
-                    <th colSpan={4} className="text-center">Roll for damage</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td colSpan={4} className="text-center">Double six: 1 shock is worst result possible. <br/> Double 1: 1 shock minium result.</td>
-                </tr>
-            </tbody>
-            <thead>
-                <tr>
-                    <th colSpan={2}>Result</th>
-                    <th>Spotted</th>
-                    <th>Obscured</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th colSpan={2}>9+</th>
-                    <td>No effect</td>
-                    <td>No effect</td>
-                </tr>
-                <tr>
-                    <th colSpan={2}>8</th>
-                    <td>1 shock</td>
-                    <td>No effect</td>
-                </tr>
-                <tr>
-                    <th colSpan={2}>7</th>
-                    <td>2 shock</td>
-                    <td>1 shock</td>
-                </tr>
-                <tr>
-                    <th colSpan={2}>6-5</th>
-                    <td>Damaged</td>
-                    <td>1 shock</td>
-                </tr>
-                <tr>
-                    <th colSpan={2}>4 or less</th>
-                    <td>Knocked out</td>
-                    <td>2 shock</td>
-                </tr>
-            </tbody>
-            </table>
-        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="accordion-item">
+                <h4 className="accordion-header" id={idprefix + "atheadingThree"}>
+                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#" + idprefix + "atcollapseThree"} aria-expanded="false" aria-controls={idprefix + "atcollapseThree"}>
+                        Roll for damage
+                    </button>
+                </h4>
+                <div id={idprefix + "atcollapseThree"} className="accordion-collapse collapse" aria-labelledby={idprefix + "atheadingThree"} data-bs-parent={"#" + idprefix + "ataccordion"}>
+                    <div className="accordion-body p-0">
+                        <table className="table text-center">
+                            <thead>
+                                <tr>
+                                    <th colSpan={4} className="text-center">Roll for damage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colSpan={4} className="text-center">Double six: 1 shock is worst result possible. <br/> Double 1: 1 shock minium result.</td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th colSpan={2}>Result</th>
+                                    <th>Spotted</th>
+                                    <th>Obscured</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th colSpan={2}>9+</th>
+                                    <td>No effect</td>
+                                    <td>No effect</td>
+                                </tr>
+                                <tr>
+                                    <th colSpan={2}>8</th>
+                                    <td>1 shock</td>
+                                    <td>No effect</td>
+                                </tr>
+                                <tr>
+                                    <th colSpan={2}>7</th>
+                                    <td>2 shock</td>
+                                    <td>1 shock</td>
+                                </tr>
+                                <tr>
+                                    <th colSpan={2}>6-5</th>
+                                    <td>Damaged</td>
+                                    <td>1 shock</td>
+                                </tr>
+                                <tr>
+                                    <th colSpan={2}>4 or less</th>
+                                    <td>Knocked out</td>
+                                    <td>2 shock</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+   
+            </div>
+
     )
 }
 
@@ -402,14 +434,21 @@ function ShootingUnitSelect(props){
     const battalion = props.battalion;
 
     //set the default value for the weapon (rifle)
-    const [weapon, setWeapon] = useState(weapons.find(weapon => weapon.id === "W01"));
-    const [atweapon,setATWeapon] =useState(atweapons.find(atweapon => atweapon.id === "AT01"))
+    const [weapon, setWeapon] = useState(null);
+    const [atweapon,setATWeapon] =useState(null)
 
     //hold whether we're looking at infantry or antitank
     const [fireType, setFireType] = useState("infantry");
 
     //set the weapon based on the select box below
     function handleWeapon(event){
+
+        //Clear on a blank selection
+        if (event.target.value === ""){
+            setWeapon(null);
+            setATWeapon(null);
+            return;
+        }
 
         //Find the unit we're referencing
         //If the unit is in the infantry list
@@ -430,9 +469,9 @@ function ShootingUnitSelect(props){
             
             <div id={idprefix + "shootingheader"}>
                 <h4>Shooting - {props.label}</h4>
-                <h6>Unit:
-                    <select onChange={handleWeapon}>
-                    <option key="0" value="notchosen">Select unit</option>
+                <h6>
+                    <select onChange={handleWeapon} id={idprefix+"shootingunitselector"}>
+                    <option key="0" value="">Select unit</option>
                     {battalion.infantry.map((unit, index) => {
                         return <option key={"infantry"+index} value={unit.unit.name} >{unit.unit.name}</option>
                     })}
@@ -443,14 +482,22 @@ function ShootingUnitSelect(props){
                 </h6>
             </div>
 
+            
+            
+            {weapon === null || atweapon === null ? 
+            <div>
+            </div> 
+            :
+            <>
             <div id={idprefix + "fireselector"}>
                 <button id="infantrybutton" onClick={() => setFireType("infantry")}>Small arms</button>
                 <button id="antitankbutton" onClick={() => setFireType("antitank")}>Anti-tank</button>
             </div>
-            
             {fireType ==="infantry" ?
             <WeaponDisplay idprefix={idprefix} battalion={battalion} weapon={weapon}/>
-            : <AntiTankDisplay idprefix={idprefix} battalion={battalion} opposingBattalion={props.opposingBattalion} opposingBattalionFlag={props.opposingBattalionFlag} weapon={weapon} atweapon={atweapon}/> }
+            : <AntiTankDisplay idprefix={idprefix} battalion={battalion} opposingBattalion={props.opposingBattalion} opposingBattalionFlag={props.opposingBattalionFlag} weapon={weapon} atweapon={atweapon}/>} 
+            </>
+            }
 
         </div>
     )

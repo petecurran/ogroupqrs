@@ -1,6 +1,7 @@
 //pallette
 $primary: #83894D;
 $primarycompliment: #32341d;
+$secondarycompliment:#42484c;
 $ivorytext: #FFFFFF;
 
 
@@ -98,6 +99,10 @@ $accordion-button-active-color: white;
 }
 
 //shooting page
+#Ashootingunitselector{
+    width:100%;
+}
+
 .Asmallarmsshootingtable{
     thead{
         background-color: $primary;
@@ -141,6 +146,88 @@ $accordion-button-active-color: white;
 
     }
 
+}
+
+//antitank table
+#Aataccordion{
+    margin-top:-2px;
+
+
+    .accordion-button{
+        background-color:$primarycompliment;
+        color:$ivorytext;
+        font-weight:bold;
+    }
+
+    thead{
+        background-color:tint-color($primarycompliment, 20%);
+    }
+}
+
+//second battalion display
+#Bshootingunitselector{
+    width:100%;
+}
+
+.Bsmallarmsshootingtable{
+    thead{
+        background-color: $secondary;
+        color:$ivorytext;
+    }
+
+    .Bshootingmodifier{
+        background-color: tint-color($secondary, 90%);
+    }
+
+    #Bshootingheader{
+        margin-top: 10px;
+        padding:10px;
+        background-color: $secondary;
+        color: $ivorytext;
+    }
+
+    #Bfireselector{
+        width:100%;
+
+        #infantrybutton{
+            background-color: $secondary;
+            color: $ivorytext;
+            border:none;
+            padding:10px;
+            font-size:20px;
+            width:50%;
+            font-weight:bold;
+        }
+
+        #antitankbutton{
+            background-color: $secondarycompliment;
+            color: $ivorytext;
+            border:none;
+            padding:10px;
+            font-size:20px;
+            width:50%;
+            font-weight:bold;
+        }
+
+
+    }
+
+}
+
+//second battalion antitank table
+#Bataccordion{
+    margin-top:-2px;
+
+
+    .accordion-button{
+        background-color:$secondarycompliment;
+        color:$ivorytext;
+        font-weight:bold;
+    }
+
+    thead{
+        background-color:tint-color($secondarycompliment, 20%);
+    }
 }
 
 
