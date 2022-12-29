@@ -18,10 +18,15 @@ $accordion-button-active-color: white;
 //navbar
 .navbar{
     background-color: $primary;
+
+    .nav-link{
+        color: $ivorytext;
+    }
+
 }
 
 //unit selection
-.unitselection{
+.BattalionOneunitselection{
 
     margin-top: 10px;
 
@@ -81,14 +86,12 @@ $accordion-button-active-color: white;
         padding-bottom:2px;
     }
 
-}
-
-//unit selection display
-.selectedunitsdisplay{
+    //unit selection display
+    .selectedunitsdisplay{
 
     .unittypeheader{
-        background-color: #606437;
-        color:white;
+        background-color: $primarycompliment;
+        color:$ivorytext;
     }
 
     th{
@@ -96,7 +99,89 @@ $accordion-button-active-color: white;
         padding-bottom:5px;
     }
     
+    }
+
 }
+
+//unit selection battalion 2
+.BattalionTwounitselection{
+
+    margin-top: 10px;
+
+    .battalionheader{
+        background-color: $secondary;
+        padding:10px;
+        color: $ivorytext;
+
+        #battalionheaderselect{
+            width:45%;
+            margin-left:3px;
+        }
+
+        h4{
+            display:inline;
+        }
+
+        //align the buttons to the right of the container
+        .btn-group{
+            float:right;
+            //vertically align the buttons
+            vertical-align: middle;
+        }
+    }
+
+    .unitselectdropdown {
+        width:100%;
+        margin-left:1px;
+    }
+
+    .qualitydropdown {
+        width:100%;
+    }
+
+    #unitselectcol1{
+        width:60%;
+    }
+
+    #unitselectcol2{
+        width:30%;
+    }
+
+    #unitselectcol3{
+        width:10%;
+    }
+
+    tr{
+        vertical-align: middle;
+    }
+
+    th{
+        padding-bottom:0px;
+    }
+
+    td{
+        padding-top:2px;
+        padding-bottom:2px;
+    }
+
+    //unit selection display
+    .selectedunitsdisplay{
+
+        .unittypeheader{
+            background-color: $secondarycompliment;
+            color:$ivorytext;
+        }
+    
+        th{
+            padding-top:5px;
+            padding-bottom:5px;
+        }
+        
+        }
+
+}
+
+
 
 //shooting page
 #Ashootingunitselector{
@@ -247,7 +332,6 @@ $accordion-button-active-color: white;
     padding:10px;
     background-color: $secondary;
     color: $ivorytext;
-    margin-bottom:-3px;
 }
 
 

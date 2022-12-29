@@ -253,7 +253,7 @@ function UnitSelection (props){
 
 
     return(
-        <div className="unitselection">
+        <div className={props.order + "unitselection"}>
             <div className="battalionheader">          
                 {battalionFlag === false ?
 

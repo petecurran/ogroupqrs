@@ -3,9 +3,15 @@ import UnitSelection from "./unitselection";
 function Setup(props){
 
     return(
-        <div>
-            <UnitSelection order={"BattalionOne"}/>
-            <UnitSelection order={"BattalionTwo"}/>
+        <div className="container-sm p-0">
+            <div className="row">
+                <div className="col-md-6">
+                    <UnitSelection order={"BattalionOne"}/>
+                </div>
+                <div className="col-md-6">
+                    <UnitSelection order={"BattalionTwo"}/>
+                </div>
+            </div>
         </div>
     );
 }

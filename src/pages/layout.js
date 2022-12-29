@@ -1,5 +1,6 @@
 import {Outlet, Link} from "react-router-dom"
 import { useEffect } from "react";
+import logo from '../assets/ogrouplogo.png'
 
 function Layout(){
 
@@ -20,7 +21,7 @@ function Layout(){
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark">
                 <div className="container-fluid">
-                    <Link to="/" className="navbar-brand">O Group</Link>
+                    <Link to="/" className="navbar-brand"><img src={logo} style={{width:120 +'px'}} alt="ogrouplogo"/></Link>
                     <button 
                         className="navbar-toggler" type="button" 
                         data-bs-toggle="collapse" data-bs-target="#mainNav" 
