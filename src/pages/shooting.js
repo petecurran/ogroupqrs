@@ -61,18 +61,17 @@ function WeaponDisplay(props){
 
     return(
         <div>
-
             <table className="table">
                 <thead>
-                    <tr>
+                    <tr className="text-center align-middle">
                         <th>Weapon</th>
-                        <th>Firepower</th>
+                        <th>Firepower<br/> per section</th>
                         <th>Range</th>
                         <th>Elevated</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr className="text-center">
                         <td>{weapon.name}</td>
                         <td>{weapon.firepower}</td>
                         <td>{weapon.battlerange}</td>
@@ -223,13 +222,32 @@ function AntiTankDisplay(props){
                 </h4>
                 <div id={idprefix + "atcollapseOne"} className="accordion-collapse collapse" aria-labelledby={idprefix + "atheadingOne"} data-bs-parent={"#" + idprefix + "ataccordion"}>
                     <div className="accordion-body p-0">
-                        <table className="table">
 
+                        <table className="table">
+                            <thead>
+                                {/*Empty so the body below works*/}
+                            </thead>
                             <tbody>
                                 <tr>
-                                    <td colSpan={4} className="text-center">Try to roll a 7, dummy!</td>
+                                    <td colSpan={4} className="text-center">Roll 2D6 per section firing. 7+ is a hit.</td>
                                 </tr>
                             </tbody>
+                            <thead>
+                                <tr className="align-middle">
+                                    <th colSpan={2}>Weapon</th>
+                                    <th className="text-center">Range</th>
+                                    <th className="text-center">Elevated</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colSpan={2}>{atweapon.name}</td>
+                                    <td className="text-center">{atweapon.battlerange}</td>
+                                    <td className="text-center">{atweapon.elevatedrange}</td>
+                                </tr>
+                            </tbody>
+
+
                             <thead>
                                 <tr>
                                     <th>Gun type</th>

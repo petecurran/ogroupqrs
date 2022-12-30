@@ -2,26 +2,214 @@
     "weapons":[
         {
             "id":"AT01",
-            "name":"AT RIFLE",
-            "firepower":"2",
-            "battlerange":"0-14\"",
-            "elevatedrange":"0-20\"",
-            "type":"infantry",
-            "he":"false",
-            "assault":"false",
+            "name":"Integral AT (Late)",
+            "firepower":"5",
+            "battlerange":"4\" + 1D6\"",
+            "elevatedrange":"-",
+            "type":"infantryat",
             "specialrules":""
         },
 
         {
-            "id":"AT99",
-            "name":"BIG TANK GUN",
-            "firepower":"7",
-            "battlerange":"0-14\"",
-            "elevatedrange":"0-20\"",
-            "type":"infantry",
-            "he":"false",
-            "assault":"false",
-            "specialrules":""
+            "id": "AT10",
+            "name": "HMG",
+            "firepower": "2",
+            "battlerange": "",
+            "elevatedrange": "",
+            "type": "mg",
+            "specialrules": ""
+        },
+        {
+            "id": "AT11",
+            "name": "MMG",
+            "firepower": "1",
+            "battlerange": "",
+            "elevatedrange": "",
+            "type": "mg",
+            "specialrules": ""
+        },
+        {
+            "id": "AT12",
+            "name": "2pdr",
+            "firepower": "5",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "lowvelocity",
+            "specialrules": ""
+        },
+        {
+            "id": "AT13",
+            "name": "6pdr",
+            "firepower": "7",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "standard",
+            "specialrules": ""
+        },
+        {
+            "id": "AT14",
+            "name": "40mm",
+            "firepower": "5",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "lowvelocity",
+            "specialrules": ""
+        },
+        {
+            "id": "AT15",
+            "name": "75mm",
+            "firepower": "7",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "standard",
+            "specialrules": ""
+        },
+        {
+            "id": "AT16",
+            "name": "95mm",
+            "firepower": "7",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "standard",
+            "specialrules": ""
+        },
+        {
+            "id": "AT17",
+            "name": "Flamethrower and 75mm",
+            "firepower": "7",
+            "battlerange": "0-6\"",
+            "elevatedrange": "0-6\"",
+            "type": "flamethrower",
+            "specialrules": ""
+        },
+        {
+            "id": "AT18",
+            "name": "290mm",
+            "firepower": "11",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "standard",
+            "specialrules": ""
+        },
+        {
+            "id": "AT19",
+            "name": "77mm",
+            "firepower": "10",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "superior",
+            "specialrules": ""
+        },
+        {
+            "id": "AT20",
+            "name": "17pdr",
+            "firepower": "11",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "superior",
+            "specialrules": ""
+        },
+        {
+            "id": "AT21",
+            "name": "37mm",
+            "firepower": "3",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "lowvelocity",
+            "specialrules": ""
+        },
+        {
+            "id": "AT22",
+            "name": "76mm",
+            "firepower": "9",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "superior",
+            "specialrules": ""
+        },
+        {
+            "id": "AT23",
+            "name": "AT rifle",
+            "firepower": "2",
+            "battlerange": "0-14\"",
+            "elevatedrange": "0-20\"",
+            "type": "atrifle",
+            "specialrules": ""
+        },
+        {
+            "id": "AT24",
+            "name": "Flamethrower",
+            "firepower": "-",
+            "battlerange": "0-6\"",
+            "elevatedrange": "0-6\"",
+            "type": "flamethrower",
+            "specialrules": ""
+        },
+
+        {
+            "id": "ATGUN10",
+            "name": "2pdr",
+            "firepower": "5",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "lowvelocity",
+            "specialrules": ""
+        },
+        {
+            "id": "ATGUN11",
+            "name": "6pdr",
+            "firepower": "7",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "standard",
+            "specialrules": ""
+        },
+        {
+            "id": "ATGUN12",
+            "name": "17pdr",
+            "firepower": "11",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "superior",
+            "specialrules": ""
+        },
+        {
+            "id": "ATGUN13",
+            "name": "25mm",
+            "firepower": "4",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "lowvelocity",
+            "specialrules": ""
+        },
+        {
+            "id": "ATGUN14",
+            "name": "18pdr",
+            "firepower": "5",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "standard",
+            "specialrules": ""
+        },
+        {
+            "id": "ATGUN15",
+            "name": "25pdr",
+            "firepower": "6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "standard",
+            "specialrules": ""
+        },
+        {
+            "id": "ATGUN16",
+            "name": "6dpr",
+            "firepower": "7",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "standard",
+            "specialrules": ""
         }
+
+
     ]
 }

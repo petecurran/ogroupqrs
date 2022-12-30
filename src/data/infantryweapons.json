@@ -61,15 +61,169 @@
         },
 
         {
-            "id":"W99",
-            "name":"TANK MMG",
-            "firepower":"6D6",
-            "battlerange":"0-14\"",
-            "elevatedrange":"0-20\"",
-            "type":"mmg",
-            "he":"false",
-            "assault":"false",
-            "specialrules":"1 reroll for each attached rifle section. Lost one reroll if holding shock."
+            "id": "W10",
+            "name": "HMG",
+            "firepower": "4D6",
+            "battlerange": "0-18\"",
+            "elevatedrange": "0-30\"",
+            "type": "mmg",
+            "he": "false",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W11",
+            "name": "MMG",
+            "firepower": "4D6",
+            "battlerange": "0-18\"",
+            "elevatedrange": "0-30\"",
+            "type": "mmg",
+            "he": "false",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W12",
+            "name": "2pdr",
+            "firepower": "3D6",
+            "battlerange": "",
+            "elevatedrange": "",
+            "type": "",
+            "he": "false",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W13",
+            "name": "6pdr",
+            "firepower": "3D6",
+            "battlerange": "",
+            "elevatedrange": "",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W14",
+            "name": "40mm",
+            "firepower": "5D6",
+            "battlerange": "",
+            "elevatedrange": "",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W15",
+            "name": "75mm",
+            "firepower": "5D6",
+            "battlerange": "",
+            "elevatedrange": "",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W16",
+            "name": "95mm",
+            "firepower": "6D6",
+            "battlerange": "",
+            "elevatedrange": "",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W17",
+            "name": "Flamethrower and 75mm",
+            "firepower": "7D6",
+            "battlerange": "0-6\"",
+            "elevatedrange": "0-6\"",
+            "type": "flamethrower",
+            "he": "false",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W18",
+            "name": "290mm",
+            "firepower": "10D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W19",
+            "name": "77mm",
+            "firepower": "4D6",
+            "battlerange": "",
+            "elevatedrange": "",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W20",
+            "name": "17pdr",
+            "firepower": "4D6",
+            "battlerange": "",
+            "elevatedrange": "",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W21",
+            "name": "37mm",
+            "firepower": "4D6",
+            "battlerange": "",
+            "elevatedrange": "",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W22",
+            "name": "76mm",
+            "firepower": "4D6",
+            "battlerange": "",
+            "elevatedrange": "",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W23",
+            "name": "AT rifle",
+            "firepower": "3D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "W24",
+            "name": "Flamethrower",
+            "firepower": "7D6",
+            "battlerange": "0-6\"",
+            "elevatedrange": "0-6\"",
+            "type": "flamethrower",
+            "he": "false",
+            "assault": "false",
+            "specialrules": ""
         }
     ]
 }
