@@ -234,7 +234,7 @@ function AntiTankDisplay(props){
                             </tbody>
                             <thead>
                                 <tr className="align-middle">
-                                    <th colSpan={2}>Weapon</th>
+                                    <th colSpan={2}>Gun type</th>
                                     <th className="text-center">Range</th>
                                     <th className="text-center">Elevated</th>
                                 </tr>
@@ -258,7 +258,7 @@ function AntiTankDisplay(props){
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Light</td>
+                                    <td>{atweapon.name}</td>
                                     <td className="text-center">-1D6</td>
                                     <td className="text-center">-2D6</td>
                                     <td className="text-center">-3D6</td>

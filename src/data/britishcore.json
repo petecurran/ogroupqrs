@@ -110,7 +110,8 @@
             "weaponcode": "W10",
             "antitankcode": "AT10",
             "frontarmour": "3",
-            "flankarmour": "3"
+            "flankarmour": "3",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR11",
@@ -122,7 +123,8 @@
             "weaponcode": "W11",
             "antitankcode": "AT11",
             "frontarmour": "8",
-            "flankarmour": "5"
+            "flankarmour": "5",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR12",
@@ -134,7 +136,8 @@
             "weaponcode": "W10",
             "antitankcode": "AT10",
             "frontarmour": "8",
-            "flankarmour": "5"
+            "flankarmour": "5",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR13",
@@ -146,7 +149,8 @@
             "weaponcode": "W12",
             "antitankcode": "AT12",
             "frontarmour": "9",
-            "flankarmour": "7"
+            "flankarmour": "7",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR14",
@@ -158,7 +162,8 @@
             "weaponcode": "W12",
             "antitankcode": "AT12",
             "frontarmour": "3",
-            "flankarmour": "3"
+            "flankarmour": "3",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR15",
@@ -170,7 +175,8 @@
             "weaponcode": "W12",
             "antitankcode": "AT12",
             "frontarmour": "4",
-            "flankarmour": "3"
+            "flankarmour": "3",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR16",
@@ -182,7 +188,8 @@
             "weaponcode": "W12",
             "antitankcode": "AT12",
             "frontarmour": "5",
-            "flankarmour": "4"
+            "flankarmour": "4",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR17",
@@ -194,7 +201,8 @@
             "weaponcode": "W12",
             "antitankcode": "AT12",
             "frontarmour": "5",
-            "flankarmour": "4"
+            "flankarmour": "4",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR18",
@@ -206,7 +214,8 @@
             "weaponcode": "W13",
             "antitankcode": "AT13",
             "frontarmour": "6",
-            "flankarmour": "4"
+            "flankarmour": "4",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR19",
@@ -218,7 +227,8 @@
             "weaponcode": "W14",
             "antitankcode": "AT14",
             "frontarmour": "6",
-            "flankarmour": "4"
+            "flankarmour": "4",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR20",
@@ -230,7 +240,8 @@
             "weaponcode": "W12",
             "antitankcode": "AT12",
             "frontarmour": "9",
-            "flankarmour": "7"
+            "flankarmour": "7",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR21",
@@ -239,10 +250,11 @@
             "move": "2D6\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "75mm +1 point",
-            "weaponcode": "W13",
+            "weaponcode": "W15",
             "antitankcode": "AT13",
             "frontarmour": "9",
-            "flankarmour": "7"
+            "flankarmour": "7",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR22",
@@ -251,10 +263,11 @@
             "move": "2D6\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "",
-            "weaponcode": "W15",
+            "weaponcode": "W16",
             "antitankcode": "AT15",
             "frontarmour": "9",
-            "flankarmour": "7"
+            "flankarmour": "7",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR23",
@@ -263,10 +276,11 @@
             "move": "2D6\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "",
-            "weaponcode": "W15",
+            "weaponcode": "W16",
             "antitankcode": "AT15",
             "frontarmour": "11",
-            "flankarmour": "8"
+            "flankarmour": "8",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR24",
@@ -274,11 +288,12 @@
             "default": "false",
             "move": "2D6\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "(A)",
-            "weaponcode": "W16",
+            "specialrules": "",
+            "weaponcode": "W17",
             "antitankcode": "AT16",
             "frontarmour": "9",
-            "flankarmour": "7"
+            "flankarmour": "7",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR25",
@@ -287,10 +302,11 @@
             "move": "2D6\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "",
-            "weaponcode": "W17",
+            "weaponcode": "",
             "antitankcode": "AT17",
             "frontarmour": "11",
-            "flankarmour": "8"
+            "flankarmour": "8",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR26",
@@ -299,10 +315,11 @@
             "move": "2D6\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "Scenario only",
-            "weaponcode": "W18",
+            "weaponcode": "W19",
             "antitankcode": "AT18",
             "frontarmour": "9",
-            "flankarmour": "7"
+            "flankarmour": "7",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR27",
@@ -314,7 +331,8 @@
             "weaponcode": "W12",
             "antitankcode": "AT12",
             "frontarmour": "8",
-            "flankarmour": "6"
+            "flankarmour": "6",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR28",
@@ -323,10 +341,11 @@
             "move": "2D6\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "Poor",
-            "weaponcode": "W13",
+            "weaponcode": "W15",
             "antitankcode": "AT13",
             "frontarmour": "8",
-            "flankarmour": "6"
+            "flankarmour": "6",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR29",
@@ -335,10 +354,11 @@
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "-/8 if Recce",
-            "weaponcode": "W15",
+            "weaponcode": "W16",
             "antitankcode": "AT15",
             "frontarmour": "7",
-            "flankarmour": "5"
+            "flankarmour": "5",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR30",
@@ -346,11 +366,12 @@
             "default": "false",
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "(A)",
-            "weaponcode": "W16",
+            "specialrules": "",
+            "weaponcode": "W17",
             "antitankcode": "AT16",
             "frontarmour": "7",
-            "flankarmour": "5"
+            "flankarmour": "5",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR31",
@@ -359,10 +380,11 @@
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "",
-            "weaponcode": "W19",
+            "weaponcode": "W20",
             "antitankcode": "AT19",
             "frontarmour": "9",
-            "flankarmour": "6"
+            "flankarmour": "6",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR32",
@@ -370,11 +392,12 @@
             "default": "false",
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "(B)",
-            "weaponcode": "W20",
+            "specialrules": "Replaces 1 x Firefly section in Cromwell platoons at a cost of +1 point. Apply Firefly rule - See Damaged AFVs Section 14.9 p66.",
+            "weaponcode": "W21",
             "antitankcode": "AT20",
             "frontarmour": "8",
-            "flankarmour": "6"
+            "flankarmour": "6",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR33",
@@ -383,10 +406,11 @@
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "Recce",
-            "weaponcode": "W21",
+            "weaponcode": "W22",
             "antitankcode": "AT21",
             "frontarmour": "4",
-            "flankarmour": "3"
+            "flankarmour": "3",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR34",
@@ -395,10 +419,11 @@
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "Recce",
-            "weaponcode": "W21",
+            "weaponcode": "W22",
             "antitankcode": "AT21",
             "frontarmour": "5",
-            "flankarmour": "4"
+            "flankarmour": "4",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR35",
@@ -407,10 +432,11 @@
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "",
-            "weaponcode": "W21",
-            "antitankcode": "AT21",
+            "weaponcode": "W23",
+            "antitankcode": "AT22",
             "frontarmour": "6",
-            "flankarmour": "4"
+            "flankarmour": "4",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR36",
@@ -418,11 +444,12 @@
             "default": "false",
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "(!)",
-            "weaponcode": "W15",
-            "antitankcode": "AT15",
+            "specialrules": "AFV main gun cannot adopt a Hull Down position",
+            "weaponcode": "W16",
+            "antitankcode": "AT23",
             "frontarmour": "6",
-            "flankarmour": "4"
+            "flankarmour": "4",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR37",
@@ -431,10 +458,11 @@
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "-/8 in 1942",
-            "weaponcode": "W15",
+            "weaponcode": "W16",
             "antitankcode": "AT15",
             "frontarmour": "7",
-            "flankarmour": "5"
+            "flankarmour": "5",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR38",
@@ -442,11 +470,12 @@
             "default": "false",
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "(A)",
-            "weaponcode": "W20",
+            "specialrules": "",
+            "weaponcode": "W21",
             "antitankcode": "AT20",
             "frontarmour": "7",
-            "flankarmour": "5"
+            "flankarmour": "5",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR39",
@@ -455,10 +484,11 @@
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "",
-            "weaponcode": "W22",
-            "antitankcode": "AT22",
+            "weaponcode": "W24",
+            "antitankcode": "AT24",
             "frontarmour": "6",
-            "flankarmour": "5"
+            "flankarmour": "5",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR40",
@@ -466,11 +496,12 @@
             "default": "false",
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "(!)",
-            "weaponcode": "W20",
+            "specialrules": "AFV main gun cannot adopt a Hull Down position",
+            "weaponcode": "W21",
             "antitankcode": "AT20",
             "frontarmour": "4",
-            "flankarmour": "3"
+            "flankarmour": "3",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR41",
@@ -479,10 +510,11 @@
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "",
-            "weaponcode": "W20",
+            "weaponcode": "W21",
             "antitankcode": "AT20",
             "frontarmour": "7",
-            "flankarmour": "5"
+            "flankarmour": "5",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR42",
@@ -490,11 +522,12 @@
             "default": "false",
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "Recce, (*)",
-            "weaponcode": "W11",
-            "antitankcode": "AT11",
+            "specialrules": "Recce",
+            "weaponcode": "W25",
+            "antitankcode": "AT25",
             "frontarmour": "2",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR43",
@@ -502,11 +535,12 @@
             "default": "false",
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "Recce, (*)",
-            "weaponcode": "W23",
-            "antitankcode": "AT23",
+            "specialrules": "Recce",
+            "weaponcode": "W26",
+            "antitankcode": "AT26",
             "frontarmour": "2",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR44",
@@ -518,7 +552,8 @@
             "weaponcode": "W10",
             "antitankcode": "AT10",
             "frontarmour": "2",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR45",
@@ -526,11 +561,12 @@
             "default": "false",
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "Recce, (*)",
-            "weaponcode": "W11",
-            "antitankcode": "AT11",
+            "specialrules": "Recce",
+            "weaponcode": "W25",
+            "antitankcode": "AT25",
             "frontarmour": "2",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR46",
@@ -538,11 +574,12 @@
             "default": "false",
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "Recce, (*)",
-            "weaponcode": "W23",
-            "antitankcode": "AT23",
+            "specialrules": "Recce",
+            "weaponcode": "W26",
+            "antitankcode": "AT26",
             "frontarmour": "2",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR47",
@@ -550,11 +587,12 @@
             "default": "false",
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "Recce, (A)",
-            "weaponcode": "W11",
-            "antitankcode": "AT11",
+            "specialrules": "Recce",
+            "weaponcode": "W25",
+            "antitankcode": "AT25",
             "frontarmour": "2",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR48",
@@ -562,11 +600,12 @@
             "default": "false",
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "Recce, (A)",
+            "specialrules": "Recce",
             "weaponcode": "W12",
             "antitankcode": "AT12",
             "frontarmour": "2",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR49",
@@ -574,11 +613,12 @@
             "default": "false",
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "Recce, (A)",
-            "weaponcode": "W11",
-            "antitankcode": "AT11",
+            "specialrules": "Recce",
+            "weaponcode": "W25",
+            "antitankcode": "AT25",
             "frontarmour": "2",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR50",
@@ -586,11 +626,12 @@
             "default": "false",
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "Recce, (A)",
-            "weaponcode": "W21",
-            "antitankcode": "AT21",
+            "specialrules": "Recce",
+            "weaponcode": "W23",
+            "antitankcode": "AT22",
             "frontarmour": "2",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR51",
@@ -599,10 +640,11 @@
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "Recce",
-            "weaponcode": "W21",
-            "antitankcode": "AT21",
+            "weaponcode": "W23",
+            "antitankcode": "AT22",
             "frontarmour": "4",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR52",
@@ -611,10 +653,11 @@
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "Recce",
-            "weaponcode": "W13",
+            "weaponcode": "W15",
             "antitankcode": "AT13",
             "frontarmour": "4",
-            "flankarmour": "3"
+            "flankarmour": "3",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR53",
@@ -623,10 +666,11 @@
             "move": "2D6\" + 4\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "Recce",
-            "weaponcode": "W15",
+            "weaponcode": "W16",
             "antitankcode": "AT15",
             "frontarmour": "4",
-            "flankarmour": "3"
+            "flankarmour": "3",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR54",
@@ -634,11 +678,12 @@
             "default": "false",
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "(C)",
-            "weaponcode": "W11",
-            "antitankcode": "AT11",
+            "specialrules": "Replaces Halftracks for one Infantry Company in 1945 if player purchases Motor Battalion halftrack supports.",
+            "weaponcode": "W25",
+            "antitankcode": "AT25",
             "frontarmour": "6",
-            "flankarmour": "4"
+            "flankarmour": "4",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR55",
@@ -646,11 +691,12 @@
             "default": "false",
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "Low profile, (*)",
-            "weaponcode": "W11",
-            "antitankcode": "AT11",
+            "specialrules": "Low profile",
+            "weaponcode": "W25",
+            "antitankcode": "AT25",
             "frontarmour": "2",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR56",
@@ -658,11 +704,12 @@
             "default": "false",
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
-            "specialrules": "Low profile, (*)",
-            "weaponcode": "W23",
-            "antitankcode": "AT23",
+            "specialrules": "Low profile",
+            "weaponcode": "W26",
+            "antitankcode": "AT26",
             "frontarmour": "2",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR57",
@@ -671,10 +718,11 @@
             "move": "2D6\" + 2\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "Low profile",
-            "weaponcode": "W24",
-            "antitankcode": "AT24",
+            "weaponcode": "W27",
+            "antitankcode": "AT27",
             "frontarmour": "2",
-            "flankarmour": "2"
+            "flankarmour": "2",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR58",
@@ -686,7 +734,8 @@
             "weaponcode": "W12",
             "antitankcode": "AT12",
             "frontarmour": "3",
-            "flankarmour": "3"
+            "flankarmour": "3",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR59",
@@ -696,9 +745,10 @@
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "Low profile, Poor",
             "weaponcode": "W12",
-            "antitankcode": "AT12",
+            "antitankcode": "AT28",
             "frontarmour": "3",
-            "flankarmour": "3"
+            "flankarmour": "3",
+            "rapidmove": "Y"
         },
         {
             "id": "ARMOUR60",
@@ -707,10 +757,11 @@
             "move": "2D6\"",
             "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
             "specialrules": "Scenario only",
-            "weaponcode": "W15",
+            "weaponcode": "W16",
             "antitankcode": "AT15",
             "frontarmour": "7",
-            "flankarmour": "5"
+            "flankarmour": "5",
+            "rapidmove": "Y"
         }
     ],
 
