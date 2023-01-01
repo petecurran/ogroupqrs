@@ -61,6 +61,30 @@
         },
 
         {
+            "id":"W06",
+            "name":"SMG with flamethrower",
+            "firepower":"2D6",
+            "battlerange":"0-6\"",
+            "elevatedrange":"0-10\"",
+            "type":"infantry",
+            "he":"false",
+            "assault":"true",
+            "specialrules":"Attached flamethrower: range 0-4\", firepower 6D6"
+        },
+
+        {
+            "id":"W07",
+            "name":"Assault rifle",
+            "firepower":"2D6",
+            "battlerange":"0-14\"",
+            "elevatedrange":"0-20\"",
+            "type":"infantry",
+            "he":"false",
+            "assault":"true",
+            "specialrules":""
+        },
+
+        {
             "id": "W10",
             "name": "HMG",
             "firepower": "4D6",
@@ -427,6 +451,172 @@
             "id": "W43",
             "name": "20mm x 4",
             "firepower": "6D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+
+        {
+            "id": "G10",
+            "name": "2pdr",
+            "firepower": "1D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "false",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G11",
+            "name": "6pdr",
+            "firepower": "4D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G12",
+            "name": "17pdr",
+            "firepower": "4D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G13",
+            "name": "25mm",
+            "firepower": "1D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G14",
+            "name": "18pdr",
+            "firepower": "4D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G15",
+            "name": "25pdr",
+            "firepower": "5D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G16",
+            "name": "6dpr",
+            "firepower": "4D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G17",
+            "name": "Short 75mm",
+            "firepower": "5D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G18",
+            "name": "20mm",
+            "firepower": "4D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G19",
+            "name": "37mm L45",
+            "firepower": "3D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G20",
+            "name": "50mm L60",
+            "firepower": "4D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G21",
+            "name": "75mm",
+            "firepower": "5D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G22",
+            "name": "75mm L46",
+            "firepower": "4D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G23",
+            "name": "88mm",
+            "firepower": "5D6",
+            "battlerange": "10-30\"",
+            "elevatedrange": "10-40\"",
+            "type": "",
+            "he": "true",
+            "assault": "false",
+            "specialrules": ""
+        },
+        {
+            "id": "G24",
+            "name": "88mm L71",
+            "firepower": "5D6",
             "battlerange": "10-30\"",
             "elevatedrange": "10-40\"",
             "type": "",

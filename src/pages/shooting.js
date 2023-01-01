@@ -38,7 +38,7 @@ function ShootingContainer(props){
     }, []);
     
     return (
-        <div className="container-sm p-0">
+        <div className="container-sm">
             <div className="row">
                 <div className="col-md-6">
                     {battalionOneFlag.current ? <ShootingUnitSelect battalion={battalionOne} opposingBattalion={battalionTwo} label={battalionOneLabel} idprefix={"A"} opposingBattalionFlag={battalionTwoFlag.current}/> : <p>Select a battalion to see the shooting table</p>}
@@ -60,8 +60,8 @@ function WeaponDisplay(props){
     const weapon = props.weapon;
 
     return(
-        <div>
-            <table className="table">
+        <div className="bg-light">
+            <table className="table table-striped">
                 <thead>
                     <tr className="text-center align-middle">
                         <th>Weapon</th>
@@ -184,6 +184,68 @@ function AntiTankDisplay(props){
         calcModifiers();
     }, [armourTarget, atweapon])
 
+    //function to calculate the range modifiers
+    const RangeModifiersDisplay = (props) => {
+        const gunType = props.gunType;
+        const specialrules = props.specialrules;
+        let poor = false;
+
+        //Check if the word 'poor' is in a lowecase version of the specialrules
+        if (specialrules.toLowerCase().includes("poor")){
+            poor = true;
+        }
+
+
+        if (gunType === "lowvelocity"){
+            return (
+                <>
+                    <tr>
+                        <th colSpan={3} className={idprefix +"atshootingmodifier"}>Elevated: 30" - 40"</th>
+                        <td>-1</td>
+                    </tr>
+                    <tr>
+                        <th colSpan={4} className={idprefix +"atshootingmodifier text-center"}>Elevated: 40" - 50" Not allowed</th>
+                    </tr>
+                </>
+            )
+        } else if (gunType === "superior" && poor === false){
+            return(
+                <>
+                    <tr>
+                        <th colSpan={4} className={idprefix +"atshootingmodifier text-center"}>Elevated: 40" - 50" -1 to hit.</th>
+                    </tr>
+                </>
+            );
+        } else if (gunType === "superior" && poor === true){
+            return(
+                <>
+                    <tr>
+                        <th colSpan={4} className={idprefix +"atshootingmodifier text-center"}>Elevated: 40" - 50" Not allowed.</th>
+                    </tr>
+                </>
+            );
+        
+        } else if (gunType === "standard" && poor === false){
+            return(
+                <>
+                    <tr>
+                        <th colSpan={4} className={idprefix +"atshootingmodifier text-center"}>Elevated: 40" - 50" -1 to hit & -1 firepower.</th>
+                    </tr>
+                </>
+            );
+        } else if (gunType === "standard" && poor === true){
+            return(
+                <>
+                    <tr>
+                        <th colSpan={4} className={idprefix +"atshootingmodifier text-center"}>Elevated: 40" - 50" Not allowed.</th>
+                    </tr>
+                </>
+            );
+        } else {
+            return <></>
+        }
+    }
+
 
 
     const calcModifiers = () =>{
@@ -216,11 +278,11 @@ function AntiTankDisplay(props){
         <div className="accordion" id={idprefix + "ataccordion"}>
             <div className="accordion-item">
                 <h4 className="accordion-header" id={idprefix + "atheadingOne"}>
-                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#" + idprefix + "atcollapseOne"} aria-expanded="true" aria-controls={idprefix + "atcollapseOne"}>
+                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={"#" + idprefix + "atcollapseOne"} aria-expanded="true" aria-controls={idprefix + "atcollapseOne"}>
                         Roll to hit
                     </button>
                 </h4>
-                <div id={idprefix + "atcollapseOne"} className="accordion-collapse collapse" aria-labelledby={idprefix + "atheadingOne"} data-bs-parent={"#" + idprefix + "ataccordion"}>
+                <div id={idprefix + "atcollapseOne"} className="accordion-collapse collapse show" aria-labelledby={idprefix + "atheadingOne"} data-bs-parent={"#" + idprefix + "ataccordion"}>
                     <div className="accordion-body p-0">
 
                         <table className="table">
@@ -229,7 +291,7 @@ function AntiTankDisplay(props){
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td colSpan={4} className="text-center">Roll 2D6 per section firing. 7+ is a hit.</td>
+                                    <td colSpan={4} className="text-center">Roll 2D6 per section firing. 7+ after modifiers is a hit.</td>
                                 </tr>
                             </tbody>
                             <thead>
@@ -246,24 +308,6 @@ function AntiTankDisplay(props){
                                     <td className="text-center">{atweapon.elevatedrange}</td>
                                 </tr>
                             </tbody>
-
-
-                            <thead>
-                                <tr>
-                                    <th>Gun type</th>
-                                    <th className="text-center">Battle<br/> 0-30"</th>
-                                    <th className="text-center">Elevated<br/> 30-40"</th>
-                                    <th className="text-center">Elevated<br/> 40-50"</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{atweapon.name}</td>
-                                    <td className="text-center">-1D6</td>
-                                    <td className="text-center">-2D6</td>
-                                    <td className="text-center">-3D6</td>
-                                </tr>
-                            </tbody>
                             <thead>
                                 <tr>
                                     <th colSpan={4} className="text-center">To hit modifiers</th>
@@ -273,6 +317,8 @@ function AntiTankDisplay(props){
                                 <tr>
                                     <th colSpan={4} className={idprefix +"atshootingmodifier text-center"}>Close: target within 10" +1 to hit, +1 firepower</th>
                                 </tr>
+                                <RangeModifiersDisplay gunType={atweapon.type} specialrules={atweapon.specialrules}/>
+
                                 <tr>
                                     <th colSpan={3} className={idprefix +"atshootingmodifier"}>Firing unit is veteran</th>
                                     <td>+1</td>
@@ -486,6 +532,13 @@ function ShootingUnitSelect(props){
             setWeapon(weapons.find(weapon => weapon.id === battalion.armour.find(unit => unit.unit.name === event.target.value).unit.weaponcode))
             setATWeapon(atweapons.find(atweapon => atweapon.id === battalion.armour.find(unit => unit.unit.name === event.target.value).unit.antitankcode))
         }
+
+        //If the unit is in the artillery list
+        if (battalion.guns.find(unit => unit.unit.name === event.target.value)){
+            setWeapon(weapons.find(weapon => weapon.id === battalion.guns.find(unit => unit.unit.name === event.target.value).unit.weaponcode))
+            setATWeapon(atweapons.find(atweapon => atweapon.id === battalion.guns.find(unit => unit.unit.name === event.target.value).unit.antitankcode))
+        }
+
     }
 
     return(
@@ -501,6 +554,9 @@ function ShootingUnitSelect(props){
                     })}
                     {battalion.armour.map((unit, index) => {
                         return <option key={"armour"+index} value={unit.unit.name}>{unit.unit.name}</option>
+                    })}
+                    {battalion.guns.map((unit, index) => {
+                        return <option key={"guns"+index} value={unit.unit.name}>{unit.unit.name}</option>
                     })}
                     </select>
                 </h6>

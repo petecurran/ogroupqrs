@@ -3,75 +3,118 @@
         {
             "id":"0",
             "name": "Company Commander",
-            "default":"true"
+            "default": "true",
+            "move": "3D6\" Rapid Move",
+            "specialrules":"",
+            "rapidmove": "Y"
         },
         {
             "id":"1",
             "name": "Forward Observer",
-            "default":"true"
+            "default": "true",
+            "move": "3D6\" Rapid Move",
+            "specialrules":"",
+            "rapidmove": "Y"
         },
         {
             "id":"2",
             "name": "Combat Patrol",
-            "default":"true"
+            "default": "true",
+            "move": "2D6\"",
+            "specialrules":"",
+            "rapidmove": "N"
         }
     ],
     
     
     "infantry":[
-    {
-        "id":"0",
-        "name": "Rifle infantry",
-        "default":"true"
-    },
+        {
+            "id":"0",
+            "name": "Rifle Infantry",
+            "default": "true",
+            "move": "2D6\"",
+            "specialrules":"",
+            "weaponcode":"W01",
+            "antitankcode": "AT01",
+        "rapidmove": "Y"
+        },
 
-    {
-        "id":"1",
-        "name": "Rifle infantry with MMG",
-        "default":"false"
-    },
+        {
+            "id":"1",
+            "name": "Rifle infantry with attached MMG",
+            "default":"false",
+            "move": "2D6\"",
+            "specialrules":"",
+            "weaponcode":"W05",
+            "antitankcode": "AT01",
+            "rapidmove": "Y"
+        },
 
-    {
-        "id":"2",
-        "name": "Rifle infantry with Panzerschreck",
-        "default":"false"
-    },
+        {
+            "id":"2",
+            "name": "Rifle infantry with attached Panzerschreck",
+            "default":"false",
+            "move": "2D6\"",
+            "specialrules":"",
+            "weaponcode":"W01",
+            "antitankcode": "AT04",
+            "rapidmove": "Y"
+        },
 
-    {
-        "id":"3",
-        "name": "Sustained fire MMG",
-        "default":"false"
-    },
+        {
+            "id":"3",
+            "name": "Sustained fire MMG",
+            "default":"false",
+            "move": "2D6\"",
+            "specialrules":"",
+            "weaponcode":"W04",
+            "antitankcode": "AT11",
+            "rapidmove": "Y"
+        },
 
-    {
-        "id":"4",
-        "name": "Panzerschreck section",
-        "default":"false"
-    },
+        {
+            "id":"4",
+            "name": "Panzerschreck section",
+            "default":"false",
+            "move": "2D6\"",
+            "specialrules":"",
+            "weaponcode":"W01",
+            "antitankcode": "AT05",
+            "rapidmove": "Y"
+        },
 
-    {
-        "id":"5",
-        "name": "Assault engineers",
-        "default":"false"
-    },
+        {
+            "id":"5",
+            "name": "Assault Engineers",
+            "default":"false",
+            "move": "2D6\"",
+            "specialrules":"",
+            "weaponcode":"W02",
+            "antitankcode": "AT01",
+            "rapidmove": "Y"
+        },
+    
+        {
+            "id":"6",
+            "name": "Assault Engineers with attached flamethrower",
+            "default":"false",
+            "move": "2D6\"",
+            "specialrules":"",
+            "weaponcode":"W06",
+            "antitankcode": "AT01",
+            "rapidmove": "Y"
+        },
 
-    {
-        "id":"6",
-        "name": "Assault engineers with flamethrower",
-        "default":"false"
-    },
-
-    {
-        "id":"7",
-        "name": "Assault platoon with Assault Rifles",
-        "default":"false"
-    },
-
-    {
-        "id":"8",
-        "name": "Assault platoon with SMGs",
-        "default":"false"
-    }
+        {
+            "id":"7",
+            "name": "Assault platoon with Assault Rifles",
+            "default":"false",
+            "move": "2D6\"",
+            "specialrules":"",
+            "weaponcode":"W07",
+            "antitankcode": "AT01",
+            "rapidmove": "Y"
+        }
     ],
 
     "armour":[
@@ -756,17 +799,130 @@
 
     "guns":[
         {
-            "id":"0",
-            "name": "75mm Gun",
-            "default": "false"
+            "id": "GUN20",
+            "name": "75mm IG18",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single highest score",
+            "type": "light",
+            "specialrules": "Light Gun",
+            "weaponcode": "G17",
+            "antitankcode": "ATGUN17",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: free.",
+            "rapidmove": "N"
         },
         {
-            "id":"1",
-            "name": "105mm Gun"
+            "id": "GUN21",
+            "name": "20mm Flak 30/38",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single highest score",
+            "type": "light",
+            "specialrules": "Light Gun",
+            "weaponcode": "G18",
+            "antitankcode": "ATGUN18",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: free.",
+            "rapidmove": "N"
         },
         {
-            "id":"2",
-            "name": "155mm Gun"
+            "id": "GUN22",
+            "name": "37mm Pak 36 Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single highest score",
+            "type": "light",
+            "specialrules": "Light Gun",
+            "weaponcode": "G19",
+            "antitankcode": "ATGUN19",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: free.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN23",
+            "name": "50mm Pak 38 Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single highest score",
+            "type": "light",
+            "specialrules": "Light Gun",
+            "weaponcode": "G20",
+            "antitankcode": "ATGUN20",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: free.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN24",
+            "name": "75mm PaK 97/38 Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single lowest score",
+            "type": "heavy",
+            "specialrules": "Heavy Gun",
+            "weaponcode": "G21",
+            "antitankcode": "ATGUN21",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: all of move.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN25",
+            "name": "75mm Pak 40 Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single lowest score",
+            "type": "heavy",
+            "specialrules": "Heavy Gun",
+            "weaponcode": "G22",
+            "antitankcode": "ATGUN22",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: all of move.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN26",
+            "name": "88mm Flak 36/41",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single lowest score",
+            "type": "heavy",
+            "specialrules": "Heavy Gun",
+            "weaponcode": "G23",
+            "antitankcode": "ATGUN23",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: all of move.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN27",
+            "name": "88mm Pak 43/41 Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single lowest score",
+            "type": "heavy",
+            "specialrules": "Heavy Gun",
+            "weaponcode": "G24",
+            "antitankcode": "ATGUN24",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: all of move.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN28",
+            "name": "Sdkfz 8 Flak 18",
+            "default": "false",
+            "move": "2D6\"",
+            "type": "special",
+            "specialrules": "Scenario only",
+            "weaponcode": "G23",
+            "antitankcode": "ATGUN23",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "",
+            "rapidmove": "N"
         }
     ]
 }

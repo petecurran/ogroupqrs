@@ -35,7 +35,8 @@
         "move": "2D6\"",
         "specialrules":"",
         "weaponcode":"W01",
-        "antitankcode": "AT01"
+        "antitankcode": "AT01",
+        "rapidmove": "Y"
     },
 
     {
@@ -44,7 +45,9 @@
         "default":"false",
         "move": "2D6\"",
         "specialrules":"",
-        "weaponcode":"W05"
+        "weaponcode":"W05",
+        "antitankcode": "AT01",
+        "rapidmove": "Y"
     },
 
     {
@@ -52,7 +55,10 @@
         "name": "Rifle infantry with attached PIAT",
         "default":"false",
         "move": "2D6\"",
-        "specialrules":""
+        "specialrules":"",
+        "weaponcode":"W01",
+        "antitankcode": "AT02",
+        "rapidmove": "Y"
     },
 
     {
@@ -61,7 +67,9 @@
         "default":"false",
         "move": "2D6\"",
         "specialrules":"",
-        "weaponcode":"W04"
+        "weaponcode":"W04",
+        "antitankcode": "AT11",
+        "rapidmove": "Y"
     },
 
     {
@@ -69,7 +77,10 @@
         "name": "PIAT section",
         "default":"false",
         "move": "2D6\"",
-        "specialrules":""
+        "specialrules":"",
+        "weaponcode":"W01",
+        "antitankcode": "AT03",
+        "rapidmove": "Y"
     },
 
     {
@@ -77,7 +88,10 @@
         "name": "Infantry reconnaisance platoon",
         "default":"false",
         "move": "2D6\"",
-        "specialrules":""
+        "specialrules":"",
+        "weaponcode":"W01",
+        "antitankcode": "AT01",
+        "rapidmove": "Y"
     },
 
     {
@@ -86,7 +100,9 @@
         "default":"false",
         "move": "2D6\"",
         "specialrules":"",
-        "weaponcode":"W02"
+        "weaponcode":"W02",
+        "antitankcode": "AT01",
+        "rapidmove": "Y"
     },
 
     {
@@ -94,7 +110,10 @@
         "name": "Assault Engineers with attached flamethrower",
         "default":"false",
         "move": "2D6\"",
-        "specialrules":""
+        "specialrules":"",
+        "weaponcode":"W06",
+        "antitankcode": "AT01",
+        "rapidmove": "Y"
     }
     
     ],
@@ -767,17 +786,144 @@
 
     "guns":[
         {
-            "id":"0",
-            "name": "75mm Gun",
-            "default": "false"
+            "id": "GUN10",
+            "name": "QF 2pdr Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single highest score",
+            "type": "light",
+            "specialrules": "Light Gun/No HE",
+            "weaponcode": "G10",
+            "antitankcode": "ATGUN10",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: free.",
+            "rapidmove": "N"
         },
         {
-            "id":"1",
-            "name": "105mm Gun"
+            "id": "GUN11",
+            "name": "QF 2pdr Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single highest score",
+            "type": "light",
+            "specialrules": "Light Gun/No HE",
+            "weaponcode": "G10",
+            "antitankcode": "ATGUN10",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: free.",
+            "rapidmove": "N"
         },
         {
-            "id":"2",
-            "name": "155mm Gun"
+            "id": "GUN12",
+            "name": "QF 6pdr Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single highest score",
+            "type": "light",
+            "specialrules": "Light Gun",
+            "weaponcode": "G11",
+            "antitankcode": "ATGUN11",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: free.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN13",
+            "name": "QF 17pdr Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single lowest score",
+            "type": "heavy",
+            "specialrules": "Heavy Gun",
+            "weaponcode": "G12",
+            "antitankcode": "ATGUN12",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: all of move.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN14",
+            "name": "25mm AT Gun SA34",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single highest score",
+            "type": "light",
+            "specialrules": "Light Gun + tow, 1940 only",
+            "weaponcode": "G13",
+            "antitankcode": "ATGUN13",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: free.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN15",
+            "name": "18pdr Field Gun",
+            "default": "false",
+            "move": "-",
+            "type": "special",
+            "specialrules": "Scenario only",
+            "weaponcode": "G14",
+            "antitankcode": "ATGUN14",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "N/A",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN16",
+            "name": "25pdr Field Gun",
+            "default": "false",
+            "move": "-",
+            "type": "special",
+            "specialrules": "Scenario only",
+            "weaponcode": "G15",
+            "antitankcode": "ATGUN15",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "N/A",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN17",
+            "name": "2pdr Portee",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "type": "special",
+            "specialrules": "Low Profile, No HE, AFV main gun cannot adopt a Hull Down position",
+            "weaponcode": "G10",
+            "antitankcode": "ATGUN10",
+            "frontarmour": "0",
+            "flankarmour": "0",
+            "limber": "",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "GUN18",
+            "name": "6pdr Portee",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "type": "special",
+            "specialrules": "AFV main gun cannot adopt a Hull Down position",
+            "weaponcode": "G16",
+            "antitankcode": "ATGUN16",
+            "frontarmour": "0",
+            "flankarmour": "0",
+            "limber": "",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "GUN19",
+            "name": "AEC Deacon",
+            "default": "false",
+            "move": "2D6\"",
+            "type": "special",
+            "specialrules": "AFV main gun cannot adopt a Hull Down position",
+            "weaponcode": "G11",
+            "antitankcode": "ATGUN11",
+            "frontarmour": "2",
+            "flankarmour": "2",
+            "limber": "",
+            "rapidmove": "N"
         }
     ]
 }

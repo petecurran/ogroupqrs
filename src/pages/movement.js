@@ -36,9 +36,10 @@ function MovementContainer(props){
     }, []);
     
     return (
-        <div className="container-sm p-0">
+        <div className="container-sm">
             <div className="row">
                 <div className="col-md-6"> 
+                    <div className="bg-light">
                     {battalionOneFlag.current ?
                     <>
                     <h4 className="Amovementheader">Movement - {battalionOneLabel}</h4>
@@ -52,22 +53,23 @@ function MovementContainer(props){
                     <BattalionMoveDisplay battalion={battalionOne} idprefix="A" /> 
                     </>
                     : <p>Select a battalion to see the movement table</p>}
-                    
+                    </div>
                 </div>
                 <div className="col-md-6">
-
-                {battalionTwoFlag.current ? 
-                <>
-                <h4 className="Bmovementheader">Movement - {battalionTwoLabel}</h4>
-                <ul>
-                    <li><strong>Standard move:</strong> choose tactical bound and roll 2D6.</li>
-                    <li><strong>Rapid move:</strong> Roll 3D6 and use two highest scores. Reroll any 1s.</li>
-                    <li><strong>Suppressed units</strong> may not move.</li>
-                    <li><strong>Hesitant units</strong> ay not move closer to enemy in LOS.</li>
-                </ul>
-                <BattalionMoveDisplay battalion={battalionTwo} idprefix="B"/> 
-                </>
-                : <p></p>}
+                    <div className="bg-light">
+                        {battalionTwoFlag.current ? 
+                        <>
+                        <h4 className="Bmovementheader">Movement - {battalionTwoLabel}</h4>
+                        <ul>
+                            <li><strong>Standard move:</strong> choose tactical bound and roll 2D6.</li>
+                            <li><strong>Rapid move:</strong> Roll 3D6 and use two highest scores. Reroll any 1s.</li>
+                            <li><strong>Suppressed units</strong> may not move.</li>
+                            <li><strong>Hesitant units</strong> ay not move closer to enemy in LOS.</li>
+                        </ul>
+                        <BattalionMoveDisplay battalion={battalionTwo} idprefix="B"/> 
+                        </>
+                        : <p></p>}
+                    </div>
                 </div>
             </div>
         </div>

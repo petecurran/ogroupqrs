@@ -15,6 +15,17 @@ $accordion-button-active-color: white;
 //importing bootstrap. Goes here so that the variables can be overwritten below
 @import "~bootstrap/scss/bootstrap.scss";
 
+//main background
+body{
+    background-image: url('./assets/bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: grey;
+
+}
+
+
 //navbar
 .navbar{
     background-color: $primary;
@@ -25,10 +36,19 @@ $accordion-button-active-color: white;
 
 }
 
+//main setup page
+.battalion-image{
+    height:200px;
+    margin-top: 20px;
+    -webkit-filter: drop-shadow(5px 5px 5px #222222);
+    filter: drop-shadow(5px 5px 5px #222222);
+}
+
 //unit selection
 .BattalionOneunitselection{
 
     margin-top: 10px;
+    background-color:white;
 
     .battalionheader{
         background-color: $primary;
@@ -107,6 +127,7 @@ $accordion-button-active-color: white;
 .BattalionTwounitselection{
 
     margin-top: 10px;
+    background-color:white;
 
     .battalionheader{
         background-color: $secondary;
