@@ -39,7 +39,7 @@ function MovementContainer(props){
         <div className="container-sm">
             <div className="row">
                 <div className="col-md-6"> 
-                    <div className="bg-light">
+                    <div className="bg-light shadow">
                     {battalionOneFlag.current ?
                     <>
                     <h4 className="Amovementheader">Movement - {battalionOneLabel}</h4>
@@ -56,7 +56,7 @@ function MovementContainer(props){
                     </div>
                 </div>
                 <div className="col-md-6">
-                    <div className="bg-light">
+                    <div className="bg-light shadow">
                         {battalionTwoFlag.current ? 
                         <>
                         <h4 className="Bmovementheader">Movement - {battalionTwoLabel}</h4>
@@ -82,7 +82,7 @@ function BattalionMoveDisplay(props){
 
     return(
         <div>
-            <div className="accordion" id={idprefix+"movementaccordion"}>
+            <div className="accordion accordion-flush" id={idprefix+"movementaccordion"}>
                 
                 <div className="accordion-item">
                     <h4 className="accordion-header" id={idprefix+"movementheadingone"}>

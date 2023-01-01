@@ -275,7 +275,7 @@ function AntiTankDisplay(props){
 
 
     return(
-        <div className="accordion" id={idprefix + "ataccordion"}>
+        <div className="accordion accordion-flush" id={idprefix + "ataccordion"}>
             <div className="accordion-item">
                 <h4 className="accordion-header" id={idprefix + "atheadingOne"}>
                     <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={"#" + idprefix + "atcollapseOne"} aria-expanded="true" aria-controls={idprefix + "atcollapseOne"}>
@@ -542,7 +542,7 @@ function ShootingUnitSelect(props){
     }
 
     return(
-        <div className={idprefix + "smallarmsshootingtable"}>
+        <div className={idprefix + "smallarmsshootingtable shadow"}>
             
             <div id={idprefix + "shootingheader"}>
                 <h4>Shooting - {props.label}</h4>

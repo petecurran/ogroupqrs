@@ -253,7 +253,7 @@ function UnitSelection (props){
 
 
     return(
-        <div className={props.order + "unitselection"}>
+        <div className={props.order + "unitselection shadow"}>
             <div className="battalionheader">          
                 {battalionFlag === false ?
 
@@ -417,34 +417,44 @@ function UnitDisplay(props){
                         </tr>
                     ))}
                 </tbody>
-                <thead>
-                    <tr className="unittypeheader">
-                        <th>Armour</th>
-                        <th>Quality</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {props.selectedArmour.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.unit.name}</td>
-                            <td>{item.quality.name}</td>
+
+                {props.selectedArmour.length > 0 ? (
+                <>
+                    <thead>
+                        <tr className="unittypeheader">
+                            <th>Armour</th>
+                            <th>Quality</th>
                         </tr>
-                    ))}
-                </tbody>
-                <thead>
-                    <tr className="unittypeheader">
-                        <th>Guns</th>
-                        <th>Quality</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {props.selectedGuns.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.unit.name}</td>
-                            <td>{item.quality.name}</td>
+                    </thead>                
+                    <tbody>
+                        {props.selectedArmour.map((item, index) => (
+                            <tr key={index}>
+                                <td>{item.unit.name}</td>
+                                <td>{item.quality.name}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </>
+                ): null}
+
+                {props.selectedGuns.length > 0 ? (
+                <>
+                    <thead>
+                        <tr className="unittypeheader">
+                            <th>Guns</th>
+                            <th>Quality</th>
                         </tr>
-                    ))}
-                </tbody>
+                    </thead>
+                    <tbody>
+                        {props.selectedGuns.map((item, index) => (
+                            <tr key={index}>
+                                <td>{item.unit.name}</td>
+                                <td>{item.quality.name}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </>
+                ): null}
             </table>
         </div>
     );
