@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState, Fragment} from 'react';
 import infantryweapons from '../data/infantryweapons.json';
 import antitankweapons from '../data/antitankweapons.json';
 
@@ -63,7 +63,7 @@ function WeaponDisplay(props){
         <div className="bg-light">
             <table className="table table-striped">
                 <thead>
-                    <tr className="text-center align-middle">
+                    <tr className={idprefix +"smallarmsheader align-middle"}>
                         <th>Weapon</th>
                         <th>Firepower<br/> per section</th>
                         <th>Range</th>
@@ -84,6 +84,9 @@ function WeaponDisplay(props){
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td colSpan={4}>Calculate the number of dice to roll. Each 4+ is a hit.</td>
+                    </tr>
                     <tr>
                         <th colSpan={3} className={idprefix +"shootingmodifier"}>Close range {weapon.type === "infantry" ? <span>0-6"</span> : <span>0-10"</span>}</th>
                         {weapon.assault === "true" ? <td>+2D6</td> : <td>+1D6</td>}
@@ -128,12 +131,13 @@ function WeaponDisplay(props){
                         <th colSpan={3} className={idprefix +"shootingmodifier"}>In a bunker</th>
                         <td>-3D6</td>
                     </tr>
-                    <tr>
-                        <td colSpan={4}>Special rules</td>
-                    </tr>
                 </tbody>
 
+                <MoraleDisplay idprefix={idprefix}/>
+
             </table>
+
+            
         </div>
     );
 }
@@ -585,7 +589,110 @@ function ShootingUnitSelect(props){
 
 }
 
+function MoraleDisplay(props){
+    const idprefix = props.idprefix;
 
+    return(
+        <Fragment>
+            <thead className={idprefix +"smallarmsheader"}>
+                    <tr>
+                        <th colSpan={4}>Morale tests</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colSpan={4}>Target rolls 1D6 to test for each successful hit.</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colSpan={2}>Target quality</th>
+                        <th>Spotted</th>
+                        <th>Obscured</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th colSpan={2}>Veteran</th>
+                        <td>3+</td>
+                        <td>3+</td>
+                    </tr>
+                    <tr>
+                        <td colSpan={4}><em>Veterans save on 4+ in the open.</em></td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>Confident</th>
+                        <td>4+</td>
+                        <td>3+</td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>Regular</th>
+                        <td>4+</td>
+                        <td>3+</td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>Green</th>
+                        <td>5+</td>
+                        <td>3+</td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>Combat Patrol</th>
+                        <td>-</td>
+                        <td>3+</td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>Company Commander / Forward Observer</th>
+                        <td>2+</td>
+                        <td>2+</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colSpan={4}>Results</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colSpan={4}>
+                            Each failed roll adds 1 shock. If the target has 3 shock it is now suppressed.
+                        </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colSpan={4}>Excess shock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th colSpan={2}>
+                            Every 2 excess Shock
+                        </th>
+                        <td colSpan={2}>
+                            1 KIA
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>
+                            1 excess Shock
+                        </th>
+                        <td colSpan={2}>
+                            1 KIA on 5+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>
+                            Attached support weapon
+                        </th>
+                        <td colSpan={2}>
+                            KIA on 1-2
+                        </td>
+                    </tr>
+                </tbody>
+
+        </Fragment>
+    )
+}
 
 
 export default ShootingContainer;

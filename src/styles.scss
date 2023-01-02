@@ -17,12 +17,15 @@ $accordion-button-active-color: white;
 
 //main background
 body{
-    //background-image: url('./assets/bg.jpg');
+
+    background-image:url('./assets/bg.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center;
+    background-size: cover;
+    background-position: center center;
     background-color: grey;
 
+    
 }
 
 
@@ -211,8 +214,18 @@ body{
 
 .Asmallarmsshootingtable{
     thead{
-        background-color: $primary;
+        background-color: tint-color($primary, 20%);
         color:$ivorytext;
+        text-align:center;
+    }
+
+    .Asmallarmsheader{
+        background-color: $primary;
+        color: $ivorytext;
+    }
+
+    td {
+        text-align:center;
     }
 
     .Ashootingmodifier{
@@ -277,8 +290,18 @@ body{
 
 .Bsmallarmsshootingtable{
     thead{
-        background-color: $secondary;
+        background-color: tint-color($secondary, 20%);
         color:$ivorytext;
+        text-align:center;
+    }
+
+    .Bsmallarmsheader{
+        background-color: $secondary;
+        color: $ivorytext;
+    }
+
+    td {
+        text-align:center;
     }
 
     .Bshootingmodifier{
