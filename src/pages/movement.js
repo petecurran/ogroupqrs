@@ -1,4 +1,6 @@
 import React, { Fragment, useEffect, useRef } from "react";
+import carrier from '../assets/carrier.png';
+import panzer from '../assets/panzerIV.png';
 
 
 function MovementContainer(props){
@@ -39,6 +41,7 @@ function MovementContainer(props){
         <div className="container-sm">
             <div className="row">
                 <div className="col-md-6"> 
+                    <img src={carrier} alt="battalion A carrier" className="mx-auto d-block battalion-image"/>
                     <div className="bg-light shadow">
                     {battalionOneFlag.current ?
                     <>
@@ -56,6 +59,7 @@ function MovementContainer(props){
                     </div>
                 </div>
                 <div className="col-md-6">
+                    <img src={panzer} alt="battalion B panzer" className="mx-auto d-block battalion-image"/>
                     <div className="bg-light shadow">
                         {battalionTwoFlag.current ? 
                         <>

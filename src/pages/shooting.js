@@ -1,6 +1,8 @@
 import React, {useEffect, useRef, useState, Fragment} from 'react';
 import infantryweapons from '../data/infantryweapons.json';
 import antitankweapons from '../data/antitankweapons.json';
+import britinfantry from '../assets/britinfantry.png';
+import germaninfantry from '../assets/germaninfantry.png';
 
 
 function ShootingContainer(props){
@@ -41,9 +43,11 @@ function ShootingContainer(props){
         <div className="container-sm">
             <div className="row">
                 <div className="col-md-6">
+                    <img src={britinfantry} alt="battalion A infantry" className="mx-auto d-block battalion-image"/>
                     {battalionOneFlag.current ? <ShootingUnitSelect battalion={battalionOne} opposingBattalion={battalionTwo} label={battalionOneLabel} idprefix={"A"} opposingBattalionFlag={battalionTwoFlag.current}/> : <p>Select a battalion to see the shooting table</p>}
                 </div>
                 <div className="col-md-6">
+                <img src={germaninfantry} alt="battalion A infantry" className="mx-auto d-block battalion-image"/>
                     {battalionTwoFlag.current ? <ShootingUnitSelect battalion={battalionTwo} opposingBattalion={battalionOne} label={battalionTwoLabel} idprefix={"B"} opposingBattalionFlag={battalionOneFlag.current}/> : <></>}
                 </div>
             </div>

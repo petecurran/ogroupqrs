@@ -1,6 +1,6 @@
 import UnitSelection from "./unitselection";
-import tiger from "../assets/tigerplaceholder.png";
-import tetrarch from "../assets/tetrarchplaceholder.png";
+import brit from "../assets/britcommand.png";
+import german from "../assets/germancommand.png";
 
 function Setup(props){
 
@@ -8,11 +8,11 @@ function Setup(props){
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
-                    <img src={tiger} alt="tiger" className="mx-auto d-block battalion-image"/>
+                    <img src={brit} alt="batallion A command" className="mx-auto d-block battalion-image"/>
                     <UnitSelection order={"BattalionOne"}/>
                 </div>
                 <div className="col-md-6">
-                    <img src={tetrarch} alt="tetrarch" className="mx-auto d-block battalion-image"/>
+                    <img src={german} alt="batallion A command" className="mx-auto d-block battalion-image"/>
                     <UnitSelection order={"BattalionTwo"}/>
                 </div>
             </div>
