@@ -13,8 +13,6 @@ function App() {
               <Route index element={<Setup />}/>
               <Route path="shooting" element={<ShootingContainer />}/>
               <Route path="movement" element={<MovementContainer />}/>
-              {/*<Route path="orders" element={<Orders/>} />
-              <Route path="attacking" element={<Attacking/>}/>*/}
             </Route>
         </Routes>
       </div>

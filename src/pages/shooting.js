@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState, Fragment} from 'react';
+import NotSelected from '../components/notselected.js';
 import infantryweapons from '../data/infantryweapons.json';
 import antitankweapons from '../data/antitankweapons.json';
 import britinfantry from '../assets/britinfantry.png';
@@ -42,14 +43,29 @@ function ShootingContainer(props){
     return (
         <div className="container-sm">
             <div className="row">
-                <div className="col-md-6">
-                    <img src={britinfantry} alt="battalion A infantry" className="mx-auto d-block battalion-image"/>
-                    {battalionOneFlag.current ? <ShootingUnitSelect battalion={battalionOne} opposingBattalion={battalionTwo} label={battalionOneLabel} idprefix={"A"} opposingBattalionFlag={battalionTwoFlag.current}/> : <p>Select a battalion to see the shooting table</p>}
-                </div>
-                <div className="col-md-6">
-                <img src={germaninfantry} alt="battalion A infantry" className="mx-auto d-block battalion-image"/>
-                    {battalionTwoFlag.current ? <ShootingUnitSelect battalion={battalionTwo} opposingBattalion={battalionOne} label={battalionTwoLabel} idprefix={"B"} opposingBattalionFlag={battalionOneFlag.current}/> : <></>}
-                </div>
+                
+                    {battalionOneFlag.current ? 
+                    <>
+                    <div className="col-md-6">
+                        <img src={britinfantry} alt="battalion A infantry" className="mx-auto d-block battalion-image"/>
+                        <ShootingUnitSelect battalion={battalionOne} opposingBattalion={battalionTwo} label={battalionOneLabel} idprefix={"A"} opposingBattalionFlag={battalionTwoFlag.current}/> 
+                    </div>
+                    <div className="col-md-6">
+                
+                        {battalionTwoFlag.current ? 
+                        <>
+                        <img src={germaninfantry} alt="battalion A infantry" className="mx-auto d-block battalion-image"/>
+                        <ShootingUnitSelect battalion={battalionTwo} opposingBattalion={battalionOne} label={battalionTwoLabel} idprefix={"B"} opposingBattalionFlag={battalionOneFlag.current}/> 
+                        </>
+                        : 
+                        null}
+                    </div>
+                    </>
+                    :
+                    <div>
+                        <NotSelected type="shooting"/>
+                    </div>}
+                
             </div>
         </div>
     )  
