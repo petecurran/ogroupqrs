@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState, Fragment} from 'react';
+import React, {useEffect, useRef, useState, Fragment, Suspense} from 'react';
 import NotSelected from '../components/notselected.js';
 import infantryweapons from '../data/infantryweapons.json';
 import antitankweapons from '../data/antitankweapons.json';
@@ -15,6 +15,7 @@ function ShootingContainer(props){
     const [battalionTwo, setBattalionTwo] = useState(null);
     const [battalionTwoLabel, setBattalionTwoLabel] = useState(null);
     const battalionTwoFlag = useRef(false);
+    const [loaded, setLoaded] = useState(false);
     
     //check if we have units saved in local storage
     useEffect(() => {
@@ -38,21 +39,24 @@ function ShootingContainer(props){
             setBattalionTwoLabel(JSON.parse(localStorage.getItem("BattalionTwobattalionName")));
         }
 
+        setLoaded(true);
+
     }, []);
-    
-    return (
-        <div className="container-sm">
-            <div className="row">
-                
-                    {battalionOneFlag.current ? 
-                    <>
+
+    const ShootingDisplay = (props) => {
+        if (props.loaded !== true) {
+            return (<></>)
+
+        } else if (props.battalionOneFlag == true){
+            return (
+                <>
                     <div className="col-md-6">
                         <img src={britinfantry} alt="battalion A infantry" className="mx-auto d-block battalion-image"/>
                         <ShootingUnitSelect battalion={battalionOne} opposingBattalion={battalionTwo} label={battalionOneLabel} idprefix={"A"} opposingBattalionFlag={battalionTwoFlag.current}/> 
                     </div>
                     <div className="col-md-6">
                 
-                        {battalionTwoFlag.current ? 
+                        {props.battalionTwoFlag ? 
                         <>
                         <img src={germaninfantry} alt="battalion A infantry" className="mx-auto d-block battalion-image"/>
                         <ShootingUnitSelect battalion={battalionTwo} opposingBattalion={battalionOne} label={battalionTwoLabel} idprefix={"B"} opposingBattalionFlag={battalionOneFlag.current}/> 
@@ -60,12 +64,21 @@ function ShootingContainer(props){
                         : 
                         null}
                     </div>
-                    </>
-                    :
-                    <div>
-                        <NotSelected type="shooting"/>
-                    </div>}
-                
+                </>
+            )
+        } else {
+            return (
+            <div>
+                <NotSelected type="shooting"/>
+            </div>
+            )
+        }
+    }
+    
+    return (
+        <div className="container-sm">
+            <div className="row">   
+                <ShootingDisplay loaded={loaded} battalionOneFlag={battalionOneFlag.current} battalionTwoFlag={battalionTwoFlag.current}/>
             </div>
         </div>
     )  

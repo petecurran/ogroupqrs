@@ -43,7 +43,9 @@ function Layout(){
                     </div>
                 </div>
             </nav>
+            <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
+            </Suspense>
         </div>
     )
 };
