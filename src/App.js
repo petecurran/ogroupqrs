@@ -13,17 +13,17 @@ function App() {
         <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div></div>}>
                   <Setup />
                 </Suspense>
               }/>
             <Route path="shooting" element={
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div></div>}>
                   <ShootingContainer />
                 </Suspense>
               }/>
             <Route path="movement" element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div></div>}>
                 <MovementContainer />
               </Suspense>
             }/>

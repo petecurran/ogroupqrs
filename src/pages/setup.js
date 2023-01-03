@@ -8,11 +8,15 @@ function Setup(props){
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
-                    <img src={brit} alt="batallion A command" className="mx-auto d-block battalion-image"/>
+                    <div className="imagePlaceholder">
+                        <img src={brit} alt="batallion A command" className="mx-auto d-block battalion-image"/>
+                    </div>
                     <UnitSelection order={"BattalionOne"}/>
                 </div>
                 <div className="col-md-6">
-                    <img src={german} alt="batallion A command" className="mx-auto d-block battalion-image"/>
+                    <div className="imagePlaceholder">
+                        <img src={german} alt="batallion A command" className="mx-auto d-block battalion-image"/>
+                    </div>
                     <UnitSelection order={"BattalionTwo"}/>
                 </div>
             </div>

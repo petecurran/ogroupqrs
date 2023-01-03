@@ -47,18 +47,23 @@ function ShootingContainer(props){
         if (props.loaded !== true) {
             return (<></>)
 
-        } else if (props.battalionOneFlag == true){
+        } else if (props.battalionOneFlag === true){
             return (
                 <>
                     <div className="col-md-6">
+                        <div className="imagePlaceholder">
                         <img src={britinfantry} alt="battalion A infantry" className="mx-auto d-block battalion-image"/>
+                        </div>
                         <ShootingUnitSelect battalion={battalionOne} opposingBattalion={battalionTwo} label={battalionOneLabel} idprefix={"A"} opposingBattalionFlag={battalionTwoFlag.current}/> 
                     </div>
+                    
                     <div className="col-md-6">
                 
                         {props.battalionTwoFlag ? 
                         <>
+                        <div className="imagePlaceholder">
                         <img src={germaninfantry} alt="battalion A infantry" className="mx-auto d-block battalion-image"/>
+                        </div>
                         <ShootingUnitSelect battalion={battalionTwo} opposingBattalion={battalionOne} label={battalionTwoLabel} idprefix={"B"} opposingBattalionFlag={battalionOneFlag.current}/> 
                         </>
                         : 
@@ -77,7 +82,7 @@ function ShootingContainer(props){
     
     return (
         <div className="container-sm">
-            <div className="row">   
+            <div className="row">
                 <ShootingDisplay loaded={loaded} battalionOneFlag={battalionOneFlag.current} battalionTwoFlag={battalionTwoFlag.current}/>
             </div>
         </div>

@@ -1,4 +1,5 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
+import NotSelected from '../components/notselected';
 import carrier from '../assets/carrier.png';
 import panzer from '../assets/panzerIV.png';
 
@@ -6,12 +7,13 @@ import panzer from '../assets/panzerIV.png';
 function MovementContainer(props){
 
     //Load the battalions from local storage
-    const [battalionOne, setBattalionOne] = React.useState(null);
-    const [battalionOneLabel, setBattalionOneLabel] = React.useState(null);
+    const [battalionOne, setBattalionOne] = useState(null);
+    const [battalionOneLabel, setBattalionOneLabel] = useState(null);
     const battalionOneFlag = useRef(false);
-    const [battalionTwo, setBattalionTwo] = React.useState(null);
-    const [battalionTwoLabel, setBattalionTwoLabel] = React.useState(null);
+    const [battalionTwo, setBattalionTwo] = useState(null);
+    const [battalionTwoLabel, setBattalionTwoLabel] = useState(null);
     const battalionTwoFlag = useRef(false);
+    const [loaded, setLoaded] = useState(false);
     
     //check if we have units saved in local storage
     useEffect(() => {
@@ -35,57 +37,77 @@ function MovementContainer(props){
             setBattalionTwoLabel(JSON.parse(localStorage.getItem("BattalionTwobattalionName")));
         }
 
+        setLoaded(true);
+
     }, []);
     
     return (
         <div className="container-sm">
             <div className="row">
-                <div className="col-md-6"> 
-                    <img src={carrier} alt="battalion A carrier" className="mx-auto d-block battalion-image"/>
-                    <div className="bg-light shadow">
-                    {battalionOneFlag.current ?
-                    <>
-                    <h4 className="Amovementheader">Movement - {battalionOneLabel}</h4>
+                <DisplayLoader 
+                loaded={loaded} 
+                battalionOneFlag={battalionOneFlag.current} 
+                battalionTwoFlag={battalionTwoFlag.current} 
+                battalionOne={battalionOne} 
+                battalionTwo={battalionTwo}
+                battalionOneLabel={battalionOneLabel}
+                battalionTwoLabel={battalionTwoLabel}                
+                />                
+            </div>
+        </div>
+    )  
+}
+
+function DisplayLoader (props){
+    if (props.loaded != true) {
+        return (<></>)
+    } else if (props.battalionOneFlag === true) {
+        return (
+            <>
+            <div className="col-md-6">
+                <div className="imagePlaceholder">
+                    <img src={carrier} alt="battalion A carrier" className="mx-auto d-block battalion-image" />
+                </div>
+                <div className="bg-light shadow">
+                    <BattalionMoveDisplay battalion={props.battalionOne} label={props.battalionOneLabel} idprefix="A" />
+                </div>
+            </div>
+            {props.battalionTwoFlag ?
+            <div className="col-md-6">
+                <div className="imagePlaceholder">
+                <img src={panzer} alt="battalion B panzer" className="mx-auto d-block battalion-image" />
+                </div>
+                <div className="bg-light shadow">
+                    <BattalionMoveDisplay battalion={props.battalionTwo} label={props.battalionTwoLabel} idprefix="B" />
+                </div>
+            </div>
+            : <></>}
+            </>
+        )
+
+
+    } else {
+        return(
+            <NotSelected type="movement"/>
+        )
+    }
+
+}
+
+function BattalionMoveDisplay(props){
+    const battalion = props.battalion;
+    const idprefix = props.idprefix;
+    const label = props.label;
+
+    return(
+        <div>
+            <h4 className={idprefix +"movementheader"}>Movement - {label}</h4>
                     <ul>
                     <li><strong>Standard move:</strong> choose tactical bound and roll 2D6.</li>
                     <li><strong>Rapid move:</strong> Roll 3D6 and use two highest scores. Reroll any 1s.</li>
                     <li><strong>Suppressed units</strong> may not move.</li>
                     <li><strong>Hesitant units</strong> ay not move closer to enemy in LOS.</li>
                     </ul>
-                    
-                    <BattalionMoveDisplay battalion={battalionOne} idprefix="A" /> 
-                    </>
-                    : <p>Select a battalion to see the movement table</p>}
-                    </div>
-                </div>
-                <div className="col-md-6">
-                    <img src={panzer} alt="battalion B panzer" className="mx-auto d-block battalion-image"/>
-                    <div className="bg-light shadow">
-                        {battalionTwoFlag.current ? 
-                        <>
-                        <h4 className="Bmovementheader">Movement - {battalionTwoLabel}</h4>
-                        <ul>
-                            <li><strong>Standard move:</strong> choose tactical bound and roll 2D6.</li>
-                            <li><strong>Rapid move:</strong> Roll 3D6 and use two highest scores. Reroll any 1s.</li>
-                            <li><strong>Suppressed units</strong> may not move.</li>
-                            <li><strong>Hesitant units</strong> ay not move closer to enemy in LOS.</li>
-                        </ul>
-                        <BattalionMoveDisplay battalion={battalionTwo} idprefix="B"/> 
-                        </>
-                        : <p></p>}
-                    </div>
-                </div>
-            </div>
-        </div>
-    )  
-}
-
-function BattalionMoveDisplay(props){
-    const battalion = props.battalion;
-    const idprefix = props.idprefix;
-
-    return(
-        <div>
             <div className="accordion accordion-flush" id={idprefix+"movementaccordion"}>
                 
                 <div className="accordion-item">
@@ -158,6 +180,9 @@ function BattalionMoveDisplay(props){
                             </table>
                         </div>
                 </div>
+
+                {battalion.armour.length > 0 ?
+
                 <div className="accordion-item">
                     <h4 className="accordion-header" id={idprefix+"movementheadingthree"}>
                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#"+idprefix+"movementcollapsethree"} aria-expanded="false" aria-controls={idprefix+"movementcollapsethree"}>
@@ -192,6 +217,11 @@ function BattalionMoveDisplay(props){
                         </table>
                     </div>
                 </div>
+
+                : null}
+
+                {battalion.guns.length > 0 ?
+
                 <div className="accordion-item">
                     <h4 className="accordion-header" id={idprefix+"movementheadingfour"}>
                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#"+idprefix+"movementcollapsefour"} aria-expanded="false" aria-controls={idprefix+"movementcollapsefour"}>
@@ -226,6 +256,8 @@ function BattalionMoveDisplay(props){
                         </table>
                     </div>
                 </div>
+
+                : null}
             </div>
         </div>
     )
