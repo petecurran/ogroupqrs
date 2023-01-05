@@ -1,6 +1,7 @@
 import {Outlet, Link} from "react-router-dom"
 import { useEffect, Suspense } from "react";
 import logo from '../assets/ogrouplogo.png'
+import Footer from '../components/footer.js'
 
 function Layout(){
 
@@ -18,7 +19,7 @@ function Layout(){
       }, []);
 
     return (
-        <div>
+        <div className="page-container">
             <nav className="navbar navbar-expand-lg navbar-dark">
                 <div className="container-fluid">
                     <Link to="/" className="navbar-brand"><img src={logo} style={{width:120 +'px'}} alt="ogrouplogo"/></Link>
@@ -43,9 +44,12 @@ function Layout(){
                     </div>
                 </div>
             </nav>
-            <Suspense fallback={<div></div>}>
-            <Outlet />
-            </Suspense>
+            <div className="content-container">
+                <Suspense fallback={<div></div>}>
+                <Outlet />
+                </Suspense>
+            </div>
+            <Footer/>
         </div>
     )
 };
