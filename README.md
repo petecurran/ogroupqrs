@@ -1,6 +1,6 @@
 # A Quick Reference App for Reisswitz Press' *'O' Group*
 
-[See the project in action here.](ogroup.nomorelostsheets.com)
+[See the project in action here.](https://ogroup.nomorelostsheets.com)
 
 The project runs as a static React app on AWS. All of the data is stored as JSON files.
 
