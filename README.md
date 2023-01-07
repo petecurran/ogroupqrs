@@ -2,7 +2,7 @@
 <img src="src/assets/britcommand.png">
 </p>
 
-# A Quick Reference App for Reisswitz Press' *'O' Group*
+# A Quick Reference App for the Reisswitz Press game *'O' Group.*
 
 [See the project in action here.](https://ogroup.nomorelostsheets.com)
 
