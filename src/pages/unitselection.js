@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef, Suspense, Fragment } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import quality from '../data/quality.json';
 
@@ -213,7 +215,7 @@ function UnitSelection (props){
             //check if the unit and quality are already selected
             const found = selectedInfantry.find((item) => item.unit.id === unit.unit.id && item.quality.id === unit.quality.id);
             if (found) {
-                alert("Unit already added");
+                toast.error(unit.unit.name + " - " + unit.quality.name + " already added");
                 return;
             }
             //add the new unit to the selectedInfantry state
@@ -223,7 +225,7 @@ function UnitSelection (props){
             //check if the unit and quality are already selected
             const found = selectedArmour.find((item) => item.unit.id === unit.unit.id && item.quality.id === unit.quality.id);
             if (found) {
-                alert("Unit already added");
+                toast.error(unit.unit.name + " - " + unit.quality.name + " already added");
                 return;
             }
             //add the new unit to the selectedArmour state
@@ -232,7 +234,7 @@ function UnitSelection (props){
             //check if the unit and quality are already selected
             const found = selectedCommand.find((item) => item.unit.id === unit.unit.id && item.quality.id === unit.quality.id);
             if (found) {
-                alert("Unit already added");
+                toast.error(unit.unit.name + " - " + unit.quality.name + " already added");
                 return;
             }
             //add the new unit to the selectedCommand state
@@ -241,13 +243,16 @@ function UnitSelection (props){
             //check if the unit and quality are already selected
             const found = selectedGuns.find((item) => item.unit.id === unit.unit.id && item.quality.id === unit.quality.id);
             if (found) {
-                alert("Unit already added");
+                toast.error(unit.unit.name + " - " + unit.quality.name + " already added");
                 return;
             }
             //add the new unit to the selectedCommand state
             setSelectedGuns([...selectedGuns,unit]);
         }
-     
+
+        //toast the unit added
+        toast(unit.unit.name + " - " + unit.quality.name + " added", "success")
+
     
     } 
 
@@ -350,6 +355,7 @@ function UnitSelect(props){
     const handleAddUnit = () => {
         //send the selected unit and quality to the parent component
         props.handleSelectedUnits(selectedUnit,props.type);
+
     }
 
     return (
