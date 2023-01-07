@@ -15,18 +15,34 @@ $accordion-button-active-color: white;
 //importing bootstrap. Goes here so that the variables can be overwritten below
 @import "~bootstrap/scss/bootstrap.scss";
 
+html{
+    margin:0;
+    padding:0;
+}
+
 //main background
 body{
 
     background-image:url('./assets/bg.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
+    background-size: 100vw auto;
+    background-position: top left;
     background-color: white;
-    height:100vh;
 
 }
+
+@media (max-width: 768px) {
+    body{
+        background-image:url('./assets/bgmobile.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100vw auto;
+        background-position: top left;
+        background-color: white;
+    }
+}
+
 
 //main container
 .page-container{
