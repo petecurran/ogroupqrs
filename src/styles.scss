@@ -22,14 +22,18 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-position: center center;
-    background-color: grey;    
+    background-position: center;
+    background-color: white;
+    height:100vh;
+
 }
 
 //main container
 .page-container{
     position:relative;
     min-height:100vh;
+
+    
 }
 
 
