@@ -43,11 +43,12 @@ function UnitSelection (props){
         
         //only update local storage if the battalion has been selected
         if (battalionFlag) {
-            //update the local storage
             //Store the battalion type in local storage
             localStorage.setItem(props.order + "battalionName", JSON.stringify(chosenBattalion));
             //Store the battalion in local storage
             localStorage.setItem(props.order, JSON.stringify({command: selectedCommand, infantry: selectedInfantry, armour: selectedArmour, guns: selectedGuns}));
+            //Add a timestamp to the local storage
+            localStorage.setItem("lastSave", JSON.stringify(Date()));
         }
     }, [selectedCommand, selectedInfantry, selectedArmour, selectedGuns, props.order]);
 
