@@ -32,13 +32,13 @@ function Layout(){
                     <div className="collapse navbar-collapse" id="mainNav">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link to="/" className="nav-link">Select units</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="/shooting" className="nav-link">Shooting</Link>
+                                <Link to="/selectunits" className="nav-link">Select units</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to="/movement" className="nav-link">Movement</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/shooting" className="nav-link">Shooting</Link>
                             </li>
                         </ul>
                     </div>
