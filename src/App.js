@@ -25,6 +25,9 @@ function App() {
       if (lastSave < lastUpdate) {
         localStorage.clear();
       }
+    } else {
+      //if lastSave does not exist, clear local storage
+      localStorage.clear();
     }
   }
 

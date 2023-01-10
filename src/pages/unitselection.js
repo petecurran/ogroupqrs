@@ -7,11 +7,12 @@ import quality from '../data/quality.json';
 //import the battalions available
 import british from '../data/britishcore.json';
 import german from '../data/germancore.json';
+import us from '../data/americancore.json';
 
 function UnitSelection (props){
 
-    //list of available battalions
-    const battalionsAvailable = useRef(["British", "German"])
+    //list of available battalions. Also update the list at Marker A01 below
+    const battalionsAvailable = useRef(["British late war", "German late war", "US late war"])
     //placeholder for json data
     const units = useRef(null);
     //Flag to check whether the battalion has been selected
@@ -20,16 +21,7 @@ function UnitSelection (props){
     //Flag to check whether the battalion has been loaded
     const [battalionLoaded, setBattalionLoaded] = useState(false);
     
-    //allows a different default battalion for each instance
-    const displayBattalion = useRef(null)
-    
-    if (props.order === "BattalionOne") {
-        displayBattalion.current = battalionsAvailable.current[0];
-    } else {
-        displayBattalion.current = battalionsAvailable.current[1];
-    };
-
-    //state to hold the chosen battalion. Default to the first battalion in the list
+    //state to hold the chosen battalion.
     const [chosenBattalion, setChosenBattalion] = useState(null);
 
     //holds the units for the battalion
@@ -63,10 +55,13 @@ function UnitSelection (props){
                 //set the chosen battalion
                 setChosenBattalion(battalionName);
                 
-                if (battalionName === "British") {
+                //set the units based on the battalion name - Marker A01
+                if (battalionName === "British late war") {
                     units.current = british;
-                } else if (battalionName === "German") {
+                } else if (battalionName === "German late war") {
                     units.current = german;
+                } else if (battalionName === "US late war"){
+                    units.current = us;
                 }
 
             }
@@ -178,14 +173,16 @@ function UnitSelection (props){
             return;
         }
 
-
-        //load the correct battalion json
+        //load the correct battalion json - Marker A01
         switch (chosenBattalion) {
-            case "British":
+            case "British late war":
                 units.current = british;
                 break;
-            case "German":
+            case "German late war":
                 units.current = german;
+                break;
+            case "US late war":
+                units.current = us;
                 break;
             default:
                 units.current = british;
@@ -263,7 +260,7 @@ function UnitSelection (props){
             <div className="battalionheader">          
                 {battalionFlag === false ?
 
-                <select onChange={handleBattalionSelect} id="battalionheaderselect" defaultValue={displayBattalion}>
+                <select onChange={handleBattalionSelect} id="battalionheaderselect">
                     <option key="0" value="notchosen">Select Battalion</option>
                     {battalionsAvailable.current.map((battalion) => (
                         <option key={battalion} value={battalion}>{battalion}</option>
