@@ -1,0 +1,572 @@
+{
+    "command":[
+        {
+            "id":"0",
+            "name": "Company Commander",
+            "default": "true",
+            "move": "3D6\" Rapid Move",
+            "specialrules":"",
+            "rapidmove": "Y"
+        },
+        {
+            "id":"1",
+            "name": "Forward Observer",
+            "default": "true",
+            "move": "3D6\" Rapid Move",
+            "specialrules":"",
+            "rapidmove": "Y"
+        },
+        {
+            "id":"2",
+            "name": "Combat Patrol",
+            "default": "true",
+            "move": "2D6\"",
+            "specialrules":"",
+            "rapidmove": "N"
+        }
+    ],
+    
+    
+    "infantry":[
+    {
+        "id":"0",
+        "name": "Rifle Infantry",
+        "default": "true",
+        "move": "2D6\"",
+        "specialrules":"",
+        "weaponcode":"W01",
+        "antitankcode": "AT01",
+        "rapidmove": "Y"
+    },
+
+    {
+        "id":"1",
+        "name": "Rifle infantry with attached MMG",
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":"",
+        "weaponcode":"W05",
+        "antitankcode": "AT01",
+        "rapidmove": "Y"
+    },
+
+    {
+        "id":"2",
+        "name": "Rifle infantry with attached Bazooka",
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":"",
+        "weaponcode":"W01",
+        "antitankcode": "AT06",
+        "rapidmove": "Y"
+    },
+
+    {
+        "id":"3",
+        "name": "Sustained fire MMG",
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":"",
+        "weaponcode":"W04",
+        "antitankcode": "AT11",
+        "rapidmove": "Y"
+    },
+
+    {
+        "id":"4",
+        "name": "Bazooka section",
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":"",
+        "weaponcode":"W01",
+        "antitankcode": "AT07",
+        "rapidmove": "Y"
+    },
+
+    {
+        "id":"5",
+        "name": "Assault Engineers",
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":"",
+        "weaponcode":"W02",
+        "antitankcode": "AT01",
+        "rapidmove": "Y"
+    },
+
+    {
+        "id":"6",
+        "name": "Assault Engineers with attached flamethrower",
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":"",
+        "weaponcode":"W06",
+        "antitankcode": "AT01",
+        "rapidmove": "Y"
+    },
+
+    {
+        "id":"7",
+        "name": "60mm Mortar section",
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":"",
+        "weaponcode":"W08",
+        "antitankcode": "AT01",
+        "rapidmove": "Y"
+    },
+
+    {
+        "id":"8",
+        "name": "Rifle infantry with attached 60mm mortar",
+        "default":"false",
+        "move": "2D6\"",
+        "specialrules":"",
+        "weaponcode":"W08",
+        "antitankcode": "AT01",
+        "rapidmove": "Y"
+    }
+    
+    ],
+
+    "armour":[
+        {
+            "id": "ARMOUR113",
+            "name": "M8 Greyhound A/C",
+            "default": "false",
+            "move": "2D6\" + 4\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "Recce",
+            "weaponcode": "W23",
+            "antitankcode": "AT22",
+            "frontarmour": "2",
+            "flankarmour": "2",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR114",
+            "name": "M20 A/C",
+            "default": "false",
+            "move": "2D6\" + 4\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "Recce",
+            "weaponcode": "W43",
+            "antitankcode": "AT45",
+            "frontarmour": "2",
+            "flankarmour": "2",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR115",
+            "name": "M3A1 Scout car",
+            "default": "false",
+            "move": "2D6\" + 4\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "Recce",
+            "weaponcode": "W43",
+            "antitankcode": "AT45",
+            "frontarmour": "2",
+            "flankarmour": "2",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR116",
+            "name": "M3 Stuart",
+            "default": "false",
+            "move": "2D6\" + 4\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "Recce",
+            "weaponcode": "W23",
+            "antitankcode": "AT22",
+            "frontarmour": "4",
+            "flankarmour": "3",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR117",
+            "name": "M5 Stuart",
+            "default": "false",
+            "move": "2D6\" + 4\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "Recce",
+            "weaponcode": "W23",
+            "antitankcode": "AT22",
+            "frontarmour": "5",
+            "flankarmour": "4",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR118",
+            "name": "M3 Lee - 37mm",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "AFV main gun cannot adopt a Hull Down position",
+            "weaponcode": "W23",
+            "antitankcode": "AT22",
+            "frontarmour": "6",
+            "flankarmour": "4",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR119",
+            "name": "M3 Lee - 75mm",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "AFV main gun cannot adopt a Hull Down position",
+            "weaponcode": "W16",
+            "antitankcode": "AT23",
+            "frontarmour": "6",
+            "flankarmour": "4",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR120",
+            "name": "M4 Sherman (1942)",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W16",
+            "antitankcode": "AT15",
+            "frontarmour": "7",
+            "flankarmour": "5",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR121",
+            "name": "M4 Sherman (1944)",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W24",
+            "antitankcode": "AT24",
+            "frontarmour": "7",
+            "flankarmour": "5",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR122",
+            "name": "Sherman E8",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W24",
+            "antitankcode": "AT24",
+            "frontarmour": "8",
+            "flankarmour": "5",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR123",
+            "name": "Sherman Jumbo (75mm)",
+            "default": "false",
+            "move": "2D6\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W16",
+            "antitankcode": "AT15",
+            "frontarmour": "11",
+            "flankarmour": "6",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR124",
+            "name": "Sherman Jumbo (76mm)",
+            "default": "false",
+            "move": "2D6\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W24",
+            "antitankcode": "AT24",
+            "frontarmour": "11",
+            "flankarmour": "6",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR125",
+            "name": "Sherman (105mm)",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W44",
+            "antitankcode": "AT46",
+            "frontarmour": "7",
+            "flankarmour": "5",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR126",
+            "name": "M26 Pershing",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W45",
+            "antitankcode": "AT47",
+            "frontarmour": "11",
+            "flankarmour": "8",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR127",
+            "name": "M10",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W24",
+            "antitankcode": "AT24",
+            "frontarmour": "6",
+            "flankarmour": "4",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR128",
+            "name": "M18 Hellcat",
+            "default": "false",
+            "move": "2D6\" + 4\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "Low profile",
+            "weaponcode": "W24",
+            "antitankcode": "AT24",
+            "frontarmour": "4",
+            "flankarmour": "3",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR129",
+            "name": "M36 Jackson",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W45",
+            "antitankcode": "AT47",
+            "frontarmour": "6",
+            "flankarmour": "4",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR130",
+            "name": "M36B Jackson",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W45",
+            "antitankcode": "AT47",
+            "frontarmour": "7",
+            "flankarmour": "5",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR131",
+            "name": "M24 Chaffee",
+            "default": "false",
+            "move": "2D6\" + 4\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "Recce",
+            "weaponcode": "W46",
+            "antitankcode": "AT48",
+            "frontarmour": "4",
+            "flankarmour": "3",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR132",
+            "name": "M3 GMC",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W47",
+            "antitankcode": "AT49",
+            "frontarmour": "2",
+            "flankarmour": "2",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR133",
+            "name": "T30 HMC",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W47",
+            "antitankcode": "AT49",
+            "frontarmour": "2",
+            "flankarmour": "2",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR134",
+            "name": "M8 Howitzer Scott",
+            "default": "false",
+            "move": "2D6\" + 4\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W16",
+            "antitankcode": "AT23",
+            "frontarmour": "4",
+            "flankarmour": "3",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR135",
+            "name": "M16 Quad",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "AFV main gun cannot adopt a Hull Down position",
+            "weaponcode": "W48",
+            "antitankcode": "AT50",
+            "frontarmour": "2",
+            "flankarmour": "2",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR136",
+            "name": "M22 Locust",
+            "default": "false",
+            "move": "2D6\" + 4\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "Scenario only",
+            "weaponcode": "W23",
+            "antitankcode": "AT22",
+            "frontarmour": "3",
+            "flankarmour": "3",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR137",
+            "name": "Sherman Zippo",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "",
+            "antitankcode": "AT27",
+            "frontarmour": "7",
+            "flankarmour": "5",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR138",
+            "name": "M3 Satan",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "",
+            "antitankcode": "AT27",
+            "frontarmour": "4",
+            "flankarmour": "3",
+            "rapidmove": "Y"
+        },
+        {
+            "id": "ARMOUR139",
+            "name": "Sherman Flail/Roller",
+            "default": "false",
+            "move": "2D6\"",
+            "movespecialrules": "Rough terrain: 2D6\". Take the single highest score. Any doubles rolled = Bogged!",
+            "specialrules": "",
+            "weaponcode": "W16",
+            "antitankcode": "AT15",
+            "frontarmour": "7",
+            "flankarmour": "5",
+            "rapidmove": "Y"
+        }
+    ],
+
+    "guns":[
+        {
+            "id": "GUN29",
+            "name": "37mm M3 Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single highest score",
+            "type": "light",
+            "specialrules": "",
+            "weaponcode": "G25",
+            "antitankcode": "ATGUN25",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: free.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN30",
+            "name": "57mm M1 Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single highest score",
+            "type": "light",
+            "specialrules": "",
+            "weaponcode": "G26",
+            "antitankcode": "ATGUN26",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: free.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN31",
+            "name": "75mm M1 Howitzer",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single highest score",
+            "type": "light",
+            "specialrules": "",
+            "weaponcode": "G17",
+            "antitankcode": "ATGUN27",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: free.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN32",
+            "name": "76mm M5 Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single lowest score",
+            "type": "heavy",
+            "specialrules": "",
+            "weaponcode": "G27",
+            "antitankcode": "ATGUN28",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: all of move.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN33",
+            "name": "90mm M1/M2 Gun",
+            "default": "false",
+            "move": "Manhandle: 2D6\" - use single lowest score",
+            "type": "heavy",
+            "specialrules": "",
+            "weaponcode": "G28",
+            "antitankcode": "ATGUN29",
+            "frontarmour": "",
+            "flankarmour": "",
+            "limber": "Limber/unlimber: all of move.",
+            "rapidmove": "N"
+        },
+        {
+            "id": "GUN34",
+            "name": "M12 GMC",
+            "default": "false",
+            "move": "2D6\" + 2\"",
+            "type": "special",
+            "specialrules": "Poor",
+            "weaponcode": "G29",
+            "antitankcode": "ATGUN30",
+            "frontarmour": "4",
+            "flankarmour": "3",
+            "limber": "",
+            "rapidmove": "Y"
+        }
+    ]
+}

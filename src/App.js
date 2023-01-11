@@ -1,12 +1,13 @@
 import './App.css';
 import {Route, Routes} from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
-import Layout from './pages/layout.js';
-import Welcome from './pages/welcome.js';
+import ReactLoading from 'react-loading';
 
 const Setup = lazy(() => import('./pages/setup.js'));
 const ShootingContainer = lazy(() => import('./pages/shooting'));
 const MovementContainer = lazy(() => import('./pages/movement'));
+const WelcomeContainer = lazy(() => import('./pages/welcome'));
+const LayoutContainer = lazy(() => import('./pages/layout'));
 
 function App() {
 
@@ -25,6 +26,9 @@ function App() {
       if (lastSave < lastUpdate) {
         localStorage.clear();
       }
+    } else {
+      //if lastSave does not exist, clear local storage
+      localStorage.clear();
     }
   }
 
@@ -35,24 +39,24 @@ function App() {
   return (
     <div>
         <Routes>
-            <Route path="/" element={<Layout />}>
+            <Route path="/" element={<LayoutContainer />}>
               <Route index element={
-                <Suspense fallback={<div></div>}>
-                  <Welcome />
+                <Suspense fallback={<ReactLoading type={"bars"} color={"#83894D"} height={'50px'} width={'50px'} className="loadinganimation"/>}>
+                  <WelcomeContainer />
                 </Suspense>
               }/>
             <Route path="selectunits" element={
-                <Suspense fallback={<div></div>}>
+                <Suspense fallback={<ReactLoading type={"bars"} color={"#83894D"} height={'50px'} width={'50px'} className="loadinganimation"/>}>
                   <Setup />
                 </Suspense>
               }/>
             <Route path="shooting" element={
-                <Suspense fallback={<div></div>}>
+                <Suspense fallback={<ReactLoading type={"bars"} color={"#83894D"} height={'50px'} width={'50px'} className="loadinganimation"/>}>
                   <ShootingContainer />
                 </Suspense>
               }/>
             <Route path="movement" element={
-              <Suspense fallback={<div></div>}>
+              <Suspense fallback={<ReactLoading type={"bars"} color={"#83894D"} height={'50px'} width={'50px'} className="loadinganimation"/>}>
                 <MovementContainer />
               </Suspense>
             }/>

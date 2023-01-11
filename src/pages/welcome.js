@@ -30,7 +30,7 @@ function Welcome(props) {
             <div className="row">
                 <div className="col mx-auto">
                 <img src={sherman} alt="Sherman" className="mx-auto d-block battalion-image" style={{height:"200px"}}/>
-                <img src={logo} alt="O Group Logo" className="mx-auto d-block battalion-image" style={{marginBottom:"30px"}}/>
+                {/*<img src={logo} alt="O Group Logo" className="mx-auto d-block battalion-image" style={{marginBottom:"30px"}}/>*/}
                 <h5>A quick reference designed to help new players learn <em>'O' Group</em></h5>
                 <h5>
                     <ul>
