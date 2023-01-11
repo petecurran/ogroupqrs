@@ -92,15 +92,9 @@ body{
 }
 
 //welcome page
-//centre the introcard div in both axis
 .introcard{
 
-    @media (min-width: 768px) {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+    margin-top:20px;
     width: 90%;
     max-width: 700px;
     padding: 20px;
