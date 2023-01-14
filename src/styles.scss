@@ -435,9 +435,15 @@ body{
     color: $ivorytext;
 }
 
+.movementintro{
+    background-color:white;
+}
+
 
 //movement accordion A
 #Amovementaccordion{
+
+    background-color: white;
 
     .accordion-button{
         background-color:$primary;
@@ -453,6 +459,8 @@ body{
 //movement accordion B
 #Bmovementaccordion{
 
+    background-color: white;
+
     .accordion-button{
         background-color:$secondary;
         color:$ivorytext;
@@ -466,6 +474,51 @@ body{
     thead{
         background-color:tint-color($secondary, 20%);
     }
+}
+
+//artillery page
+.Aartilleryheader{
+    margin-top: 10px;
+    padding:10px;
+    background-color: $primary;
+    color: $ivorytext;
+
+    .artillerybattaliontitle{
+        display:inline;
+        clear:both;
+    }
+
+    .battalionswap{
+        float:right;
+    }
+}
+
+.Bartilleryheader{
+    margin-top: 10px;
+    padding:10px;
+    background-color: $secondary;
+    color: $ivorytext;
+
+    .artillerybattaliontitle{
+        display:inline;
+        clear:both;
+    }
+
+    .battalionswap{
+        float:right;
+    }
+}
+
+.artilleryintro{
+    background-color:white;
+    margin-top:0px;
+    padding-bottom:5px;
+
+    p{
+        padding:10px;
+        margin-bottom:0px;
+    }
+
 }
 
 .notselectedcontainer{
