@@ -64,6 +64,19 @@ const ArtilleryAccordion = (props) => {
     const battalionTwoLabel = props.battalionTwoLabel;
     const swapBattalion = props.swapBattalion;
 
+    const [artillery, setArtillery] = useState(null);
+    const [showArtillery, setShowArtillery] = useState(null);
+
+    const handleArtillerySelect = (event) => {
+        setArtillery(event.target.value);
+        if (event.target.value != "notchosen" && event.target.value != "battalion") {
+            setShowArtillery("show")
+        } else {
+            setShowArtillery("")
+        }
+    }
+    
+
     return (
 
         <div className="shadow">
@@ -83,7 +96,25 @@ const ArtilleryAccordion = (props) => {
                     <li><strong>Elevated range:</strong> 50"</li>
                 </ul>
             </div>
-            <div className={idprefix+"artilleryaccordion"}>
+            <div className="accordion accordion-flush" id={idprefix+"artilleryaccordion"}>
+                <div className="accordion-item">
+                    <h4 className="accordion-header" id={idprefix+"artilleryheadingone"}>
+                        <select className="artilleryselect" onChange={(event) => handleArtillerySelect(event)}>
+                            <option key="0" value="notchosen">Select artillery</option>
+                            <option key="1" value="battalion">Battalion mortars</option>
+                            <option key="2" value="regimental">Regimental artillery</option>
+                            <option key="3" value="divisional">Divisional artillery</option>
+                        </select>
+                    </h4>
+                    <div id={idprefix+"artillerycollapseone"} className={`accordion-collapse collapse ${showArtillery}`}  aria-labelledby={idprefix+"artilleryheadingone"} data-bs-parent={"#"+idprefix+"artilleryaccordion"}>
+                        <div className="accordion-body">
+                            <p>HELA</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
 
 
 
