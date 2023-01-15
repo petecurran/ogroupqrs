@@ -8,7 +8,6 @@ const ShootingContainer = lazy(() => import('./pages/shooting'));
 const MovementContainer = lazy(() => import('./pages/movement'));
 const WelcomeContainer = lazy(() => import('./pages/welcome'));
 const LayoutContainer = lazy(() => import('./pages/layout'));
-const ArtilleryContainer = lazy(() => import('./pages/artillery'));
 
 function App() {
 
@@ -59,11 +58,6 @@ function App() {
             <Route path="movement" element={
               <Suspense fallback={<ReactLoading type={"bars"} color={"#83894D"} height={'50px'} width={'50px'} className="loadinganimation"/>}>
                 <MovementContainer />
-              </Suspense>
-            }/>
-            <Route path="artillery" element={
-              <Suspense fallback={<ReactLoading type={"bars"} color={"#83894D"} height={'50px'} width={'50px'} className="loadinganimation"/>}>
-                <ArtilleryContainer />
               </Suspense>
             }/>
             </Route>

@@ -68,7 +68,7 @@ function DisplayLoader (props){
                 <div className="imagePlaceholder">
                     <img src={carrier} alt="battalion A carrier" className="mx-auto d-block battalion-image" />
                 </div>
-                <div className="shadow">
+                <div className="bg-light shadow">
                     <BattalionMoveDisplay battalion={props.battalionOne} label={props.battalionOneLabel} idprefix="A" />
                 </div>
             </div>
@@ -77,7 +77,7 @@ function DisplayLoader (props){
                 <div className="imagePlaceholder">
                 <img src={panzer} alt="battalion B panzer" className="mx-auto d-block battalion-image" />
                 </div>
-                <div className="shadow">
+                <div className="bg-light shadow">
                     <BattalionMoveDisplay battalion={props.battalionTwo} label={props.battalionTwoLabel} idprefix="B" />
                 </div>
             </div>
@@ -102,11 +102,11 @@ function BattalionMoveDisplay(props){
     return(
         <div>
             <h4 className={idprefix +"movementheader"}>Movement - {label}</h4>
-                    <ul className="movementintro">
+                    <ul>
                     <li><strong>Standard move:</strong> choose tactical bound and roll 2D6.</li>
                     <li><strong>Rapid move:</strong> Roll 3D6 and use two highest scores. Reroll any 1s.</li>
                     <li><strong>Suppressed units</strong> may not move.</li>
-                    <li><strong>Hesitant units</strong> may not move closer to enemy in LOS.</li>
+                    <li><strong>Hesitant units</strong> ay not move closer to enemy in LOS.</li>
                     </ul>
             <div className="accordion accordion-flush" id={idprefix+"movementaccordion"}>
                 
