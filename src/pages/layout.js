@@ -40,9 +40,11 @@ function Layout(){
                             <li className="nav-item">
                                 <Link to="/shooting" className="nav-link">Shooting</Link>
                             </li>
+{/*
                             <li className="nav-item">
                                 <Link to="/artillery" className="nav-link">Artillery</Link>
                             </li>
+ */}
                         </ul>
                     </div>
                 </div>
