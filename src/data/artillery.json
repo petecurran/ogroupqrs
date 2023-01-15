@@ -1,0 +1,51 @@
+{
+    "artillery":[
+        {
+        "id":"ART01",
+        "name":"Battalion mortars",
+        "firepower":"5D6",
+        "radius":"4\"",
+        "specialrules":""
+        },
+
+        {
+        "id":"ART02",
+        "name":"Medium battery",
+        "firepower":"7D6",
+        "radius":"4\"",
+        "specialrules":""
+        },
+
+        {
+        "id":"ART03",
+        "name":"Heavy battery",
+        "firepower":"8D6",
+        "radius":"5\"",
+        "specialrules":""
+        },
+
+        {
+        "id":"ART04",
+        "name":"Heavy howitzers",
+        "firepower":"9/8/7/6D6",
+        "radius":"5\"",
+        "specialrules": "Firepower is descends for each unit hit."
+        },
+
+        {
+        "id":"ART05",
+        "name":"Rockets",
+        "firepower":"9D6",
+        "radius":"6\"",
+        "specialrules":""
+        },
+
+        {
+        "id":"ART06",
+        "name":"Jabos",
+        "firepower":"8D6",
+        "radius":"6\"",
+        "specialrules":""
+        }
+    ]
+}

@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import NotSelected from '../components/notselected.js';
+import artilleryData from '../data/artillery.json';
 
 const ArtilleryContainer = () => {
 
@@ -149,6 +150,46 @@ const ArtilleryAccordion = (props) => {
                                     </tr>
                                 </tbody>
                             </table>
+                            <table className="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th colSpan={4}>Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>10+</th>
+                                        <td colSpan={3}>Critical hit!</td>
+                                    </tr>
+                                    <tr>
+                                        <th>7+</th>
+                                        <td colSpan={3}>Zeroed in!</td>
+                                    </tr>
+                                    <tr>
+                                        <th>6-3</th>
+                                        <td colSpan={3}>Harassing!</td>
+                                    </tr>
+                                    <tr>
+                                        <th>2 or less</th>
+                                        <td colSpan={3}>Danger close!<br/>Roll 3D6" and move aim point the total score towards the nearest friendly section. Harassing fire.</td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan={4}> CONDITIONAL Any unmodified score of 4 or less: battalion mortars low on ammo.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div className="accordion-item">
+                    <h4 className="accordion-header" id={idprefix+"artilleryheadingthree"}>
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#"+idprefix+"artillerycollapsethree"} aria-expanded="false" aria-controls={idprefix+"artillerycollapsethree"}>
+                            Roll for hits
+                        </button>
+                    </h4>
+                    <div id={idprefix+"artillerycollapsethree"} className="accordion-collapse collapse" aria-labelledby={idprefix+"artilleryheadingthree"} data-bs-parent={"#"+idprefix+"artilleryaccordion"}>
+                        <div className="accordion-body px-0">
+                            {RollForHits(idprefix)}
                         </div>
                     </div>
                 </div>
@@ -260,5 +301,101 @@ const RollForArtillery = (artillery,idprefix) => {
         )
     }
 }
+
+const RollForHits = (idprefix) => {
+    
+    const [artilleryID, setArtilleryID] = useState("notselected");
+    const [unit,setUnit] = useState({
+        "id": "",
+        "name": "",
+        "firepower": "",
+        "radius": "",
+        "specialrules": ""
+    });
+
+    useEffect (() => {
+
+        if (artilleryID === "notselected") {
+            setUnit(
+                {
+                    "id": "",
+                    "name": "",
+                    "firepower": "",
+                    "radius": "",
+                    "specialrules": ""
+            }
+            )
+            return;
+        }
+        //fetch the data from artillery for the value selected
+        artilleryData.artillery.forEach((item)=>{
+            if (artilleryID === item.id) {
+                setUnit({
+                    "id": item.id,
+                    "name": item.name,
+                    "firepower": item.firepower,
+                    "radius": item.radius,
+                    "specialrules": item.specialrules,
+                })
+            }
+        })
+
+    },[artilleryID])
+
+    return (
+        <div>
+            <select onChange={(event) => setArtilleryID(event.target.value)}>
+                <option key="0" value="notselected">Select Artillery</option>
+                <option key="1" value="ART01">Battalion Mortars</option>
+                <option key="2" value="ART02">Medium Battery</option>
+                <option key="3" value="ART03">Heavy Battery</option>
+                <option key="4" value="ART04">Heavy Howitzers</option>
+                <option key="5" value="ART05">Rockets</option>
+                <option key="6" value="ART06">Jabos</option>
+            </select>
+
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th colSpan={4}>Firepower: {unit.firepower}</th>
+                    </tr>
+                    <tr>
+                        <th colSpan={4}>Radius: {unit.radius}</th>
+                    </tr>
+                    <tr>
+                        <th>Modifiers</th>
+                        <th>Target is:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>+1D6</td>
+                        <td>Critical hit! +1D6 firepower against each target in beaten zone.<br/>Double 6 = +1 shock on aim point target.</td>
+                    </tr>
+                    <tr>
+                        <td>-1D6</td>
+                        <td>In buildings or Medium AFV to Late Battle AFV. NEED SPECIFICS HERE</td>
+                    </tr>
+                    <tr>
+                        <td>-2D6</td>
+                        <td>In trench / dug out, or Infantry AFV to Super-heavy AFV. NEED SPECIFICS HERE</td>
+                    </tr>
+                    <tr>
+                        <td>-3D6</td>
+                        <td>In pillbox / bunker</td>
+                    </tr>
+                    <tr>
+                        <td colSpan={4}>CONDITIONAL Battalion mortars use harrasing fire against all Medium to Super-Heavy AFV targets regardless of accuracy.</td>
+                    </tr>
+                    <tr>
+                        <td colSpan={4}>CONDITIONAL Following a regimental or divisional attack, all units in open / cover must retreat or take one additional shock to stay in position.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    )
+
+}
+
 
 export default ArtilleryContainer;
