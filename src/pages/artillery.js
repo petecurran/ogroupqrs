@@ -1,11 +1,15 @@
 import React, {useState, useEffect, useRef} from 'react';
 import NotSelected from '../components/notselected.js';
+import artilleryData from '../data/artillery.json';
+import britmortar from '../assets/britmortar.png';
+
 
 const ArtilleryContainer = () => {
 
     const [battalionOneLabel, setBattalionOneLabel] = useState(null);
     const [battalionTwoLabel, setBattalionTwoLabel] = useState(null);
     const [selectedBattalion, setSelectedBattalion] = useState(null);
+    const [loaded, setLoaded] = useState(false);
     const idprefix = useRef(null)
  
 
@@ -25,6 +29,9 @@ const ArtilleryContainer = () => {
                 idprefix.current = "B"
             }
         }
+
+        //set the loaded state to true
+        setLoaded(true);
     }, [])
 
     const swapBattalion = () => {
@@ -40,7 +47,7 @@ const ArtilleryContainer = () => {
 
 
     //if no battalion is selected, display the not selected component
-    if (battalionOneLabel == null && battalionTwoLabel == null) {
+    if (battalionOneLabel == null && battalionTwoLabel == null && loaded === true) {
         return (
             <NotSelected type="artillery"/>
         )
@@ -50,7 +57,14 @@ const ArtilleryContainer = () => {
         <div className="container">
             <div className="row">
                 <div className="col-12">
-                    <ArtilleryAccordion idprefix={idprefix.current} selectedBattalion={selectedBattalion} battalionOneLabel={battalionOneLabel} battalionTwoLabel={battalionTwoLabel} swapBattalion={swapBattalion}/>
+                    {loaded === true &&
+                    <>
+                        <div className="imagePlaceholder">
+                            <img src={britmortar} alt="mortars" className="mx-auto d-block battalion-image"/>
+                        </div>
+                        <ArtilleryAccordion idprefix={idprefix.current} selectedBattalion={selectedBattalion} battalionOneLabel={battalionOneLabel} battalionTwoLabel={battalionTwoLabel} swapBattalion={swapBattalion}/>
+                    </>
+                    }
                 </div>
             </div>
         </div>
@@ -98,17 +112,17 @@ const ArtilleryAccordion = (props) => {
             </div>
             <div className="accordion accordion-flush" id={idprefix+"artilleryaccordion"}>
                 <div className="accordion-item">
-                    <h4 className="accordion-header" id={idprefix+"artilleryheadingone"}>
+                    <p className="accordion-header" id={idprefix+"artilleryheadingone"}>
                         <select className="artilleryselect" onChange={(event) => handleArtillerySelect(event)}>
                             <option key="0" value="notchosen">Select artillery</option>
                             <option key="1" value="battalion">Battalion mortars</option>
                             <option key="2" value="regimental">Regimental artillery</option>
                             <option key="3" value="divisional">Divisional artillery</option>
                         </select>
-                    </h4>
+                    </p>
                     <div id={idprefix+"artillerycollapseone"} className={`accordion-collapse collapse ${showArtillery}`}  aria-labelledby={idprefix+"artilleryheadingone"} data-bs-parent={"#"+idprefix+"artilleryaccordion"}>
                         <div className="accordion-body p-0">
-                            {RollForArtillery(artillery,idprefix)}
+                            {RollForArtillery(artillery,idprefix, battalionOneLabel,battalionTwoLabel)}
                         </div>
                     </div>
                 </div>
@@ -123,7 +137,7 @@ const ArtilleryAccordion = (props) => {
                             <table className="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th colSpan={4}>Roll 2D6</th>
+                                        <td colSpan={4} className="text-center">Roll 2D6 and add the modifiers below:</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -149,39 +163,219 @@ const ArtilleryAccordion = (props) => {
                                     </tr>
                                 </tbody>
                             </table>
+                            <table className={idprefix+"artilleryaccuracytable table table-striped"}>
+                                <thead>
+                                    <tr>
+                                        <th colSpan={4}>Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>10+</th>
+                                        <td colSpan={3}>Critical hit!</td>
+                                    </tr>
+                                    <tr>
+                                        <th>7+</th>
+                                        <td colSpan={3}>Zeroed in!</td>
+                                    </tr>
+                                    <tr>
+                                        <th>6-3</th>
+                                        <td colSpan={3}>Harassing!</td>
+                                    </tr>
+                                    <tr>
+                                        <th>2 or less</th>
+                                        <td colSpan={3}>Danger close!<br/>Roll 3D6" and move aim point the total score towards the nearest friendly section. Harassing fire.</td>
+                                    </tr>
+                                    {artillery === "battalion" ?
+                                        <tr className="text-center">
+                                            <td colSpan={4}>Any unmodified score of 4 or less: battalion mortars low on ammo.</td>
+                                        </tr>
+                                        :
+                                        null
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-
-
-
-
+                <div className="accordion-item">
+                    <h4 className="accordion-header" id={idprefix+"artilleryheadingthree"}>
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#"+idprefix+"artillerycollapsethree"} aria-expanded="false" aria-controls={idprefix+"artillerycollapsethree"}>
+                            Roll for hits
+                        </button>
+                    </h4>
+                    <div id={idprefix+"artillerycollapsethree"} className="accordion-collapse collapse" aria-labelledby={idprefix+"artilleryheadingthree"} data-bs-parent={"#"+idprefix+"artilleryaccordion"}>
+                        <div className="accordion-body px-0 py-0">
+                            {RollForHits(idprefix)}
+                        </div>
+                    </div>
+                </div>
+                <div className="accordion-item">
+                    <h4 className="accordion-header" id={idprefix+"artilleryheadingfour"}>
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#"+idprefix+"artillerycollapsefour"} aria-expanded="false" aria-controls={idprefix+"artillerycollapsefour"}>
+                           Morale tests
+                        </button>
+                    </h4>
+                    <div id={idprefix+"artillerycollapsefour"} className="accordion-collapse collapse" aria-labelledby={idprefix+"artilleryheadingfour"} data-bs-parent={"#"+idprefix+"artilleryaccordion"}>
+                        <div className="accordion-body px-0 py-0">
+                            {MoraleDisplay(idprefix)}
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-
-
         </div>
     )
 
 
 }
 
-const RollForArtillery = (artillery,idprefix) => {
+const RollForArtillery = (artillery, idprefix, battalionOneLabel, battalionTwoLabel) => {
+
+    const regimentalSixRoll = (idprefix, battalionOneLabel, battalionTwoLabel) => {
+        if (idprefix === "A"){
+            if (battalionOneLabel === "US late war") {
+                return (
+                    <>
+                        <td>Medium battery mission!<br/>If the spotter was a Company Commander, use battalion mortars.</td>
+                    </>
+                )
+            } else if (battalionOneLabel === "German late war") {
+                return (
+                    <>
+                        <td>Battalion mortars.</td>
+                    </>
+                )
+            } else if (battalionOneLabel === "British late war") {
+                return (
+                    <>
+                        <td>Medium battery mission!<br/>If the spotter was a Company Commander, use battalion mortars.</td>
+                    </>
+                )
+            } else {
+                return(<>
+                <td></td>
+                </>)
+            }
+        } else if(idprefix === "B") {
+            if (battalionTwoLabel === "US late war") {
+                return (
+                    <>
+                        <td>Medium battery mission!<br/>If the spotter was a Company Commander, use battalion mortars.</td>
+                    </>
+                )
+            } else if (battalionTwoLabel === "German late war") {
+                return (
+                    <>
+                        <td>Battalion mortars.</td>
+                    </>
+                )
+            } else if (battalionTwoLabel === "British late war") {
+                return (
+                    <>
+                        <td>Medium battery mission!<br/>If the spotter was a Company Commander, use battalion mortars.</td>
+                    </>
+                )
+            } else {
+                return(<>
+                <td></td>
+                </>)
+            }
+        }
+
+
+    }
+
+    const divisionalTenRoll = (idprefix, battalionOneLabel, battalionTwoLabel) => {
+        if (idprefix === "A"){
+            if (battalionOneLabel === "US late war") {
+                return (
+                    <>
+                        <td>Time on Target! Heavy battery mission. Target unit takes 1 shock. A double 6 in any attack adds 1 shock.</td>
+                    </>
+                )
+            } else if (battalionOneLabel === "German late war") {
+                return (
+                    <>
+                        <td>Rockets!</td>
+                    </>
+                )
+            } else if (battalionOneLabel === "British late war") {
+                return (
+                    <>
+                        <td>Mike Mission! Heavy battery mission with 2 rerolls per attack.</td>
+                    </>
+                )
+            } else {
+                return(<>
+                <td></td>
+                </>)
+            }
+        } else if(idprefix === "B") {
+            if (battalionTwoLabel === "US late war") {
+                return (
+                    <>
+                        <td>Time on Target! Heavy battery mission. Target unit takes 1 shock. A double 6 in any attack adds 1 shock.</td>
+                    </>
+                )
+            } else if (battalionTwoLabel === "German late war") {
+                return (
+                    <>
+                        <td>Rockets!</td>
+                    </>
+                )
+            } else if (battalionTwoLabel === "British late war") {
+                return (
+                    <>
+                        <td>Mike Mission! Heavy battery mission with 2 rerolls per attack.</td>
+                    </>
+                )
+            } else {
+                return(<>
+                <td></td>
+                </>)
+            }
+        }
+    }
+    
+    const divisionalSevenRoll = (idprefix, battalionOneLabel, battalionTwoLabel) => {
+        if (idprefix === "A"){
+            if (battalionOneLabel === "British late war" || battalionOneLabel === "US late war") {
+                return (
+                    <>
+                        <td>If spotter is FO: Medium battery mission! Else as per 6 below.</td>
+                    </>
+                )
+            } else {
+                return(<>
+                <td>No support received.</td>
+                </>)
+            }
+        } else if(idprefix === "B") {
+            if (battalionTwoLabel === "British late war" || battalionTwoLabel === "US late war") {
+                return (
+                    <>
+                        <td>If spotter is FO: Medium battery mission! Else as per 6 below.</td>
+                    </>
+                )
+            } else {
+                return(<>
+                <td>No support received.</td>
+                </>)
+            }
+        }
+    }
+
+
     if (artillery === "regimental") {
         return (
             <div>
-            <table className="table">
+            <table className={idprefix+"artilleryarrivaltable table table-striped"}>
                     <thead>
-                    </thead>
-                    <tbody>
                         <tr>
                             <td className="text-center" colSpan={4}>
-                                Roll 2D6.<br />An artillery mission is only consumed on success.
+                                Roll 2D6 and consult the table below.<br />An artillery mission is only consumed on success.
                             </td>
                         </tr>
-                    </tbody>
-                    <thead>
                         <tr>
                             <th>Score</th>
                             <th>Result</th>
@@ -189,19 +383,19 @@ const RollForArtillery = (artillery,idprefix) => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>12</td>
+                            <th>12</th>
                             <td>Roll on the Divisional table. 7 or less = Medium battery fire mission.</td>
                         </tr>
                         <tr>
-                            <td>7-11</td>
+                            <th>7-11</th>
                             <td>Medium battery fire mission.</td>
                         </tr>
                         <tr>
-                            <td>6</td>
-                            <td>NATION SPECIFIC</td>
+                            <th>6</th>
+                            {regimentalSixRoll(idprefix, battalionOneLabel, battalionTwoLabel)}
                         </tr>
                         <tr>
-                            <td>5 or less</td>
+                            <th>5 or less</th>
                             <td>"No, that's map section three, not four!" No support received.</td>
                         </tr>
                     </tbody>
@@ -212,16 +406,14 @@ const RollForArtillery = (artillery,idprefix) => {
     } else if (artillery === "divisional") {
         return (
             <div>
-                <table className="table">
+                <table className={idprefix+"artilleryarrivaltable table table-striped"}>
                     <thead>
-                    </thead>
-                    <tbody>
                         <tr>
                             <td className="text-center" colSpan={4}>
                                 Roll 2D6.<br />An artillery mission is only consumed on success.
                             </td>
                         </tr>
-                    </tbody>
+                    </thead>
                     <thead>
                         <tr>
                             <th>Score</th>
@@ -230,23 +422,23 @@ const RollForArtillery = (artillery,idprefix) => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>12</td>
+                            <th>12</th>
                             <td>Jabos! 3 attacks</td>
                         </tr>
                         <tr>
-                            <td>10-11</td>
-                            <td>NATION SPECIFIC</td>
+                            <th>10-11</th>
+                            {divisionalTenRoll(idprefix, battalionOneLabel, battalionTwoLabel)}
                         </tr>
                         <tr>
-                            <td>8-9</td>
+                            <th>8-9</th>
                             <td>Heavy battery fire mission</td>
                         </tr>
                         <tr>
-                            <td>7</td>
-                            <td>NATION SPECIFIC</td>
+                            <th>7</th>
+                            {divisionalSevenRoll(idprefix, battalionOneLabel, battalionTwoLabel)}
                         </tr>
                         <tr>
-                            <td>6 or less</td>
+                            <th>6 or less</th>
                             <td>"It's the radios Sir... we haven't been able to make contact!" No support received.</td>
                         </tr>
                     </tbody>
@@ -260,5 +452,210 @@ const RollForArtillery = (artillery,idprefix) => {
         )
     }
 }
+
+const RollForHits = (idprefix) => {
+    
+    const [artilleryID, setArtilleryID] = useState("notselected");
+    const [unit,setUnit] = useState({
+        "id": "",
+        "name": "",
+        "firepower": "",
+        "radius": "",
+        "specialrules": ""
+    });
+
+    useEffect (() => {
+
+        if (artilleryID === "notselected") {
+            setUnit(
+                {
+                    "id": "",
+                    "name": "",
+                    "firepower": "",
+                    "radius": "",
+                    "specialrules": ""
+            }
+            )
+            return;
+        }
+        //fetch the data from artillery for the value selected
+        artilleryData.artillery.forEach((item)=>{
+            if (artilleryID === item.id) {
+                setUnit({
+                    "id": item.id,
+                    "name": item.name,
+                    "firepower": item.firepower,
+                    "radius": item.radius,
+                    "specialrules": item.specialrules,
+                })
+            }
+        })
+
+    },[artilleryID])
+
+    return (
+        <div>
+            <p className={idprefix+"artilleryhitsselector"}>
+                <select onChange={(event) => setArtilleryID(event.target.value)}>
+                    <option key="0" value="notselected">Select Artillery</option>
+                    <option key="1" value="ART01">Battalion Mortars</option>
+                    <option key="2" value="ART02">Medium Battery</option>
+                    <option key="3" value="ART03">Heavy Battery</option>
+                    <option key="4" value="ART04">Heavy Howitzers</option>
+                    <option key="5" value="ART05">Rockets</option>
+                    <option key="6" value="ART06">Jabos</option>
+                </select>
+            </p>
+
+            {artilleryID !== "notselected" &&
+            <table className={idprefix+"artilleryhitsmodifiers table table-striped"}>
+                <thead>
+                    <tr>
+                        <th>Firepower</th>
+                        <td>{unit.firepower}</td>
+                        <th>Radius</th>
+                        <td>{unit.radius}</td>
+                    </tr>
+                    <tr>
+                        <th>Modifiers</th>
+                        <th colSpan={3}>Target is:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>+1D6</th>
+                        <td colSpan={3}>Critical hit! +1D6 firepower against each target in beaten zone.<br/>Double 6 = +1 shock on aim point target.</td>
+                    </tr>
+                    {unit.id !== "ART03" && unit.id !== "ART04" && unit.id !== "ART05" && 
+                    <>
+                    <tr>
+                        <th>-1D6</th>
+                        <td colSpan={3}>In buildings or Medium AFV to Late Battle AFV.</td>
+                    </tr>
+                    </>}
+                    <tr>
+                        {unit.id === "ART03" || unit.id ==="ART04" ?
+                        <th>-1D6</th>
+                        :
+                        <th>-2D6</th>
+                        }
+                        <td colSpan={3}>In trench / dug out, or Infantry AFV to Super-heavy AFV.</td>
+                    </tr>
+                    <tr>
+                        <th>-3D6</th>
+                        <td colSpan={3}>In pillbox / bunker</td>
+                    </tr>
+                    {unit.id === "ART01" &&
+                    <tr>
+                        <td colSpan={4}>Battalion mortars use harrasing fire against all Medium to Super-Heavy AFV targets regardless of accuracy.</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        </div>
+    )
+
+}
+
+const MoraleDisplay = (idprefix) =>{
+    return(
+        <table className={idprefix +"artillerymoraletests table table-striped"}>
+            <thead>
+                <tr>
+                    <td colSpan={4} className="text-center">Target rolls 1D6 to test for each successful hit.</td>
+                </tr>
+                <tr>
+                    <th colSpan={2}>Target quality</th>
+                    <th>Zeroed in</th>
+                    <th>Harassing</th>
+                </tr>
+            </thead>
+                <tbody>
+                    <tr>
+                        <th colSpan={2}>Veteran</th>
+                        <td>3+</td>
+                        <td>3+</td>
+                    </tr>
+                    <tr>
+                        <td colSpan={4}><em>Veterans save on 4+ in the open.</em></td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>Confident</th>
+                        <td>4+</td>
+                        <td>3+</td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>Regular</th>
+                        <td>4+</td>
+                        <td>3+</td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>Green</th>
+                        <td>5+</td>
+                        <td>3+</td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>Combat Patrol</th>
+                        <td>4+</td>
+                        <td>3+</td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>Company Commander / Forward Observer</th>
+                        <td>2+</td>
+                        <td>2+</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colSpan={4}>Results</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colSpan={4}>
+                            Each failed roll adds 1 shock. If the target has 3 shock it is now suppressed.
+                        </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colSpan={4}>Excess shock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th colSpan={2}>
+                            Every 2 excess Shock
+                        </th>
+                        <td colSpan={2}>
+                            1 KIA
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>
+                            1 excess Shock
+                        </th>
+                        <td colSpan={2}>
+                            1 KIA on 5+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colSpan={2}>
+                            Attached support weapon
+                        </th>
+                        <td colSpan={2}>
+                            KIA on 1-2
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colSpan={4}>Following a regimental or divisional attack, all units in open / cover must retreat or take one additional shock to stay in position.</td>
+                    </tr>
+                </tbody>
+
+        </table>
+    )
+}
+
 
 export default ArtilleryContainer;
