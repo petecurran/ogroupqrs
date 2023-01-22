@@ -521,6 +521,227 @@ body{
 
 }
 
+#Aartilleryaccordion{
+    margin-top:-2px;
+
+    .accordion-button{
+        background-color:$primary;
+        color:$ivorytext;
+        font-weight:bold;
+    }
+}
+
+#Bartilleryaccordion{
+    margin-top:-2px;
+
+    .accordion-button{
+        background-color:$secondary;
+        color:$ivorytext;
+        font-weight:bold;
+    }
+}
+
+
+#Aartilleryheadingone{
+    width:100%;
+    background-color: $primary;
+    padding:5px;
+}
+
+#Bartilleryheadingone{
+    width:100%;
+    background-color: $secondary;
+    padding:5px;
+}
+
+.artilleryselect{
+    width:50%;
+}
+
+.Aartilleryarrivaltable{
+
+    padding-bottom:0px;
+
+    th{
+        background-color: tint-color($primary, 20%);
+        color:$ivorytext;
+    } 
+
+    .ruleintro{
+        background-color:white;
+    }
+}
+
+.Bartilleryarrivaltable{
+
+    padding-bottom:0px;
+
+    th{
+        background-color: tint-color($secondary, 20%);
+        color:$ivorytext;
+    } 
+
+    .ruleintro{
+        background-color:white;
+    }
+}
+
+.Aartilleryaccuracytable{
+
+    padding-bottom:0px;
+
+    thead{
+        th{
+        background-color: tint-color($primary, 20%);
+        color:$ivorytext;
+        text-align:center;
+        }
+    }
+    tbody{
+        th{
+            text-align:center;
+            vertical-align: middle;
+        }
+    }
+}
+
+.Bartilleryaccuracytable{
+
+    padding-bottom:0px;
+
+    thead{
+        th{
+        background-color: tint-color($secondary, 20%);
+        color:$ivorytext;
+        text-align:center;
+        }
+    } 
+    tbody{
+        th{
+            text-align:center;
+            vertical-align: middle;
+        }
+    }
+}
+
+.Aartilleryhitsselector{
+    width:100%;
+    background-color: $primary;
+    padding:5px;
+    margin-bottom:0px;
+
+    select{
+        width:50%;
+    }
+}
+
+.Bartilleryhitsselector{
+    width:100%;
+    background-color: $secondary;
+    padding:5px;
+    margin-bottom:0px;
+
+    select{
+        width:50%;
+    }
+}
+
+.Aartilleryhitsmodifiers{
+
+    thead {
+        text-align:center;
+    
+        th{
+            background-color: tint-color($primary, 20%);
+            color:$ivorytext;
+        }
+    }
+
+    tbody{
+        th{
+            text-align:center;
+            vertical-align: middle;
+        }
+    }
+}
+
+.Bartilleryhitsmodifiers{
+
+    thead {
+        text-align:center;
+    
+        th{
+            background-color: tint-color($secondary, 20%);
+            color:$ivorytext;
+        }
+    }
+
+    tbody{
+        th{
+            text-align:center;
+            vertical-align: middle;
+        }
+    }
+}
+
+.Aartillerymoraletests{
+    
+        thead {
+            text-align:center;
+        
+            th{
+                background-color: tint-color($primary, 20%);
+                color:$ivorytext;
+                vertical-align: middle;
+            }
+        }
+    
+        tbody{
+            th{
+                text-align:left;
+                vertical-align: middle;
+            }
+            td{
+                text-align:center;
+                vertical-align: middle;
+            }
+        }
+}
+
+.Bartillerymoraletests{
+    
+        thead {
+            text-align:center;
+        
+            th{
+                background-color: tint-color($secondary, 20%);
+                color:$ivorytext;
+                vertical-align: middle;
+            }
+        }
+    
+        tbody{
+            th{
+                text-align:left;
+                vertical-align: middle;
+            }
+            td{
+                text-align:center;
+                vertical-align: middle;
+            }
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
 .notselectedcontainer{
     
     height:90vh;
