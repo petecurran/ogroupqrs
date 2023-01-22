@@ -555,17 +555,30 @@ body{
 }
 
 .artilleryselect{
-    width:50%;
+    width:100%;
+    //align the select bar to the center
+    margin:auto;
+    display:block;
+
 }
 
 .Aartilleryarrivaltable{
 
     padding-bottom:0px;
 
-    th{
-        background-color: tint-color($primary, 20%);
-        color:$ivorytext;
-    } 
+    thead{
+        th{
+            background-color: tint-color($primary, 20%);
+            color:$ivorytext;
+        }
+    }
+
+    tbody{
+        th{
+            text-align:center;
+            vertical-align: middle;
+        }
+    }
 
     .ruleintro{
         background-color:white;
@@ -576,10 +589,20 @@ body{
 
     padding-bottom:0px;
 
-    th{
-        background-color: tint-color($secondary, 20%);
-        color:$ivorytext;
-    } 
+    thead{
+        th{
+            background-color: tint-color($secondary, 20%);
+            color:$ivorytext;
+        } 
+    }
+
+    tbody{
+        th{
+            text-align:center;
+            vertical-align: middle;
+        }
+    }
+    
 
     .ruleintro{
         background-color:white;
@@ -631,7 +654,9 @@ body{
     margin-bottom:0px;
 
     select{
-        width:50%;
+        width:100%;
+        display:block;
+        margin:auto;
     }
 }
 
@@ -642,7 +667,9 @@ body{
     margin-bottom:0px;
 
     select{
-        width:50%;
+        width:100%;
+        display:block;
+        margin:auto;
     }
 }
 
